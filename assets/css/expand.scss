@@ -1,3 +1,5 @@
+@import 'var';
+
 @font-face {
     font-family: 'barkentina_testregular';
     src: url('../font/8735-webfont.eot');
@@ -29,10 +31,13 @@ h2 {
 
 .grape {
     position: fixed;
-    width: 160px;
-    right: -3px;
-    top: -7px;
+    width: 170px;
+    right: -13px;
+    top: -5px;
     @media (max-width: $tablet_width) {
+        display:block;
+    }
+    @media (max-width: $smartphone_width) {
         display: none;
     }
 }
@@ -40,7 +45,7 @@ h2 {
 .frame_top {
     position: fixed;
     left: 0;
-    top: $nav_height * 0.7;
+    top: $nav_height * 0.8;
     z-index: -1;
     width: 430px;
     @media (max-width: $tablet_width) {
@@ -51,31 +56,22 @@ h2 {
     }
 }
 
-// .main__module__portfolio {
-//     * {border: 1px solid black;}
-//     .main__module_portfolio__content {
-//         display: flex;
-//         justify-content: space-between;
-//         align-items: center;
-//         .main__module_portfolio__content__arrow {
-//             display: flex;
-//             align-items: center;
-//             justify-content: center;
-//             width: 10%;
-//             height: 10%;
-//             border-radius: 50%;
-//             background-color: $header_text;
-//         }
-//         .main__module_portfolio__content__product {
-//             display: flex;
-//             justify-content: space-around;
-//             align-items: center;
-//             width: 70%;
-//             overflow: hidden;
-//             .main__module_portfolio__content__product__item {
-//                 width: 200px;
-//                 height: 200px;
-//             }
-//         }
-//     }
-// }
+.main__module__footer {
+    width: 100%!important;
+    margin: 0!important;
+    background-color: $nav_bgc;
+    h2 {
+        color: $nav_text!important;
+    }
+    .main__module__text {
+        width: 100%;
+        h2 {
+            color: $nav_text!important;
+            text-align: center!important;
+            &.copyright {
+                font-size: 0.7em;
+                font-weight: normal;
+            }
+        }
+    }
+}

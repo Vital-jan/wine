@@ -7,18 +7,28 @@
     <title>World's Finest Wines</title>
     <meta name="description" content="World's Finest Wines. Wine is born, not made">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="assets/js/slider.js"></script>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/expand.css">
+    <link rel="stylesheet" href="assets/css/slider.css">
     <link href="https://fonts.googleapis.com/css?family=Merienda|Source+Sans+Pro&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- font-family: 'Merienda', cursive;
     font-family: 'Source Sans Pro', sans-serif; -->
 </head>
+
 <?
     require_once "about.php";
     require_once "wines.php";
     require_once "portfolio.php";
+    require_once "footer.php";
 
     $main_content = array ( // контент сайту
+        array("menu_item"=>"Home", "id"=>"home", "class"=>"", 
+        "header"=>"Home header text ..... ", 
+        "text"=>'Home text.... Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa eligendi dignissimos obcaecati quibusdam sed odit porro, nobis perferendis praesentium iusto vel similique pariatur cumque reprehenderit error nesciunt optio dolore debitis dolores ut iure nihil totam. Dolor et facere est suscipit.', "img1"=>"", "img2"=>""),
+
         array("menu_item"=>"About us", "id"=>"about", "class"=>"", 
         "header"=>"Welcome to the wonderful world of Georgian wines! We have created our company “World’s Finest Wines” with the aim of publicizing delicious, elegant and genuinely unique wines from the country of Georgia.", 
         "text"=>$module_about, "img1"=>"", "img2"=>""),
@@ -31,9 +41,9 @@
         "header"=>"Our portfolio",
         "text"=>$portfolio, "img1"=>"", "img2"=>""),
 
-        array("menu_item"=>"Contact us", "id"=>"contacts", "class"=>"",
-        "header"=>"Our contacts",
-        "text"=>"", "img1"=>"", "img2"=>"")
+        array("menu_item"=>"Contact us", "id"=>"contacts", "class"=>"main__module__footer",
+        "header"=>"Our contacts:",
+        "text"=>$footer, "img1"=>"", "img2"=>"")
     );
 ?>
 <body>
@@ -42,10 +52,10 @@
         <img class='grape' src="assets/img/grape01.png" alt="">
 
         <div class="nav__logo"> <!-- блок логотип-->
-            <img src="assets/img/logo_small.png" alt="wines of Georgia">
+            <img src="assets/img/logo.png" alt="wines of Georgia">
             <div class="nav__logo__text">
-                <span>World's Finest Wines</span>
-                <span>Wine is born, not made</span>
+                <!-- <span>World's Finest Wines</span>
+                <span>Wine is born, not made</span> -->
             </div>
         </div>
 
@@ -92,9 +102,10 @@
             $n = 0;
             foreach($main_content as $key=>$value) {
                 $attr = $value['id'] == '' ? "module{$n}" : "{$value['id']}";
+                $header = ($n == 0) ? 'h1' : 'h2';
                 echo "
                 <div class='main__module {$value['class']}' id='{$attr}'>
-                    <h1 class='main__module__header'>{$main_content[$n]['header']}</h1>
+                    <{$header} class='main__module__header'>{$main_content[$n]['header']}</{$header}>
                     <div class='main__module__text'>{$main_content[$n]['text']}</div>
                 </div>
                 ";
@@ -109,47 +120,6 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", ()=>{
-
-        let windAnimation = false;
-        function wind (maxX, maxY, delay){ // анімація картинки виноградна лоза
-            if (windAnimation) return;
-            windAnimation = true;
-            let fps = 30;
-            let dx, dy;
-            let iteration = delay / 1000 * fps;
-            dx = maxX / iteration;
-            dy = maxY / iteration;
-            let time = delay / fps;
-            let i = 0;
-            let x = 0;
-            let y = 0;
-            let el = document.querySelector('.frame_top');
-
-            let interval = setInterval(()=>{
-                i++;
-                if (i >= iteration) {
-                    clearInterval(interval);
-                    i = 0;
-                    interval = setInterval(()=>{
-                    i++;
-                    if (i >= iteration) {
-                        clearInterval(interval);
-                        windAnimation = false;
-                    }
-                    el.style.transform = `skew(${x}deg, ${y}deg)`;
-                    el.style.top = `${70+y*3}px`;
-                    x -= dx;
-                    y -= dy;
-                }, time);
-
-                }
-                el.style.transform = `skew(${x}deg, ${y}deg)`;
-                el.style.top = `${70+y*3}px`;
-                x += dx;
-                y += dy;
-            }, time);
-
-        }
 
         let nav = document.querySelector('nav');
         let main = document.querySelector('main');
@@ -236,13 +206,67 @@
             }
         });
 
-        homeArrow.addEventListener('click', ()=>{ // клік кнопки "додому" - повернення до 1-го ел-ту класу main__module
-        currentNavElement = document.querySelector('.nav__elem');
-            moduleView(document.querySelector('.main__module').getAttribute('id'), currentNavElement);
+        homeArrow.addEventListener('mouseenter', (event)=>{ // анімація кнопки "додому"
+            $(event.target).animate({top: '+=5'}, 100).animate({top: '-=5'}, 100);
         })
 
-        window.onscroll = ()=>{ 
-            wind(1, 3, 1000); // анімація картинки виноградна лоза
+        homeArrow.addEventListener('click', ()=>{ // клік кнопки "додому" - повернення до 1-го ел-ту класу main__module
+            currentNavElement.classList.remove('nav__elem_active');
+            currentNavElement = document.querySelector('.nav__elem');
+            moduleView(document.querySelector('.main__module').getAttribute('id'), currentNavElement);
+        })
+// ---------------------------------------------------------------------------------- шаблон
+let windAnimation = false;
+        function wind (maxX, maxY, delay){ // анімація картинки виноградна лоза
+            if (windAnimation) return;
+
+            let el = document.querySelector('.frame_top');
+            let startPosition = el.getBoundingClientRect().y;
+
+            windAnimation = true;
+            let fps = 30;
+            let dx, dy;
+            let iteration = delay / 1000 * fps;
+            dx = maxX / iteration;
+            dy = maxY / iteration;
+            let time = delay / fps;
+            let i = 0;
+            let x = 0;
+            let y = 0;
+
+            let interval = setInterval(()=>{
+                i++;
+                if (i >= iteration) {
+                    clearInterval(interval);
+                    i = 0;
+                    interval = setInterval(()=>{
+                    i++;
+                    if (i >= iteration) {
+                        clearInterval(interval);
+                        windAnimation = false;
+                    }
+                    el.style.transform = `skew(${x}deg, ${y}deg)`;
+                    el.style.top = `${startPosition+y*3}px`;
+                    x -= dx;
+                    y -= dy;
+                }, time);
+
+                }
+                el.style.transform = `skew(${x}deg, ${y}deg)`;
+                el.style.top = `${startPosition+y*3}px`;
+                x += dx;
+                y += dy;
+            }, time);
+
+        }
+
+let slider = document.createElement('div');
+document.querySelector('main').insertBefore(slider, document.querySelector('#gwines'));
+slider.setAttribute('id', 'slider');
+setSlider(5, 'assets/img/slider/', 'img', 3, 0.5, 'slider', 500, 300, ['','','','','']);
+
+window.onscroll = ()=>{ 
+            wind(1, 3, 800); // анімація картинки виноградна лоза
 
             if (window.pageYOffset > 300) {// показати/сховати кнопку "додому"
                 if (!homeArrowVisible) 

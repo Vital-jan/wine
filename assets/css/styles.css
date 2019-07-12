@@ -51,7 +51,7 @@ body {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   #home-arrow {
     right: 15px;
   }
@@ -62,7 +62,7 @@ nav {
   position: fixed;
   padding: 0 20px;
   top: 0;
-  height: 100px;
+  height: 150px;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -74,7 +74,6 @@ nav {
       -ms-flex-pack: justify;
           justify-content: space-between;
   background-color: #410505;
-  border-radius: 0 0 10px 10px;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
@@ -100,19 +99,18 @@ nav .nav__logo {
 
 @media (max-width: 1050px) {
   nav .nav__logo {
-    width: 45%;
+    width: 35%;
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   nav .nav__logo {
     width: 85%;
   }
 }
 
 nav .nav__logo img {
-  border-radius: 50%;
-  height: 90px;
+  height: 135px;
 }
 
 nav .nav__logo .nav__logo__text {
@@ -162,12 +160,12 @@ nav .nav__menu {
 
 @media (max-width: 1050px) {
   nav .nav__menu {
-    width: 55%;
+    width: 60%;
     margin: 0;
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   nav .nav__menu {
     width: 15%;
     margin: 0;
@@ -194,7 +192,7 @@ nav .nav__elem::before {
   content: "⋅ ";
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   nav .nav__elem {
     display: none;
   }
@@ -209,7 +207,7 @@ nav .nav__button {
   display: none;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   nav .nav__button {
     display: inline-block;
     position: absolute;
@@ -302,7 +300,7 @@ main {
   z-index: 0;
   height: 100%;
   width: 100%;
-  margin-top: 150px;
+  margin-top: 225px;
 }
 
 main .main__module {
@@ -324,7 +322,7 @@ main .main__module {
           align-items: flex-start;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   main .main__module {
     width: 90%;
     margin: 30px 3% 30px 7%;
@@ -388,12 +386,18 @@ h2 {
 
 .grape {
   position: fixed;
-  width: 160px;
-  right: -3px;
-  top: -7px;
+  width: 170px;
+  right: -13px;
+  top: -5px;
 }
 
 @media (max-width: 1050px) {
+  .grape {
+    display: block;
+  }
+}
+
+@media (max-width: 900px) {
   .grape {
     display: none;
   }
@@ -402,7 +406,7 @@ h2 {
 .frame_top {
   position: fixed;
   left: 0;
-  top: 70px;
+  top: 120px;
   z-index: -1;
   width: 430px;
 }
@@ -413,10 +417,29 @@ h2 {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .frame_top {
     width: 210px;
   }
+}
+
+.main__module__footer {
+  width: 100% !important;
+  margin: 0 !important;
+  background-color: #410505;
+}
+
+.main__module__footer h2 {
+  color: beige !important;
+}
+
+.main__module__footer .main__module__text {
+  width: 100%;
+}
+
+.main__module__footer .main__module__text h2 {
+  color: beige !important;
+  text-align: center !important;
 }
 
 .main__module__portfolio * {

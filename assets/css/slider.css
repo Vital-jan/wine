@@ -1,0 +1,94 @@
+.slider {
+  margin: auto;
+  position: relative;
+}
+
+.slider img {
+  opacity: 0;
+  height: 100%;
+  position: absolute;
+  height: auto;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.slider .circles {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  bottom: 10px;
+}
+
+.slider .circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: white;
+  border: 5px solid white;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 2px;
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+.slider .circle:hover {
+  opacity: 0.9;
+}
+
+.slider .arrow {
+  color: white;
+  border: 1px solid darkgray;
+  background-color: gray;
+  opacity: 0.5;
+  font-weight: bold;
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  font-size: 2rem;
+  line-height: 2rem;
+  margin: 0 5px;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.slider .arrow.no-active {
+  cursor: default;
+}
+
+.slider .arrow.no-active:hover {
+  opacity: 0.5;
+}
+
+.slider .arrow:hover {
+  opacity: 1;
+}
+
+.slider h3 {
+  font-weight: normal;
+  text-align: center;
+  font-size: 20px;
+  left: 0;
+  right: 0;
+  margin: 5px auto;
+  position: absolute;
+  bottom: -30px;
+  text-align: center;
+  height: 25px;
+  overflow: hidden;
+  opacity: 0;
+  font-family: sans-serif;
+}
+/*# sourceMappingURL=slider.css.map */
