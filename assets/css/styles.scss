@@ -1,0 +1,351 @@
+$body_bgc: beige;
+$nav_bgc : rgb(65, 5, 5);
+$nav_text : beige;
+$nav_active_text : rgb(192, 126, 126);
+$nav_selected_text : rgb(209, 174, 174);
+$nav_height: 100px;
+
+$smartphone_width: 768px;
+$tablet_width: 1050px;
+
+$smartmenu_color: white;
+$smartmenu_bgc: rgb(65, 5, 5);
+$smartmenu_border_color: rgb(200,200,200);
+$smartmenu_border_radius: 5px;
+
+$header_text: rgb(128,1,31);
+$normal_text: rgb(46, 66, 38);
+
+$module_border_color: rgb(192, 126, 126);
+$logo_text_color: white;
+$logo_text2_color :rgb(190, 209, 183);
+
+$read_more_height: 10.5rem;
+
+
+* {
+    box-sizing: border-box;
+}
+body {
+    background-color: $body_bgc;
+    background-image: url('../img/bg.jpg');
+    font-size: 20px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    color: $normal_text;
+}
+
+.hidden-elem {
+    display: none!important;
+}
+#home-arrow {
+    border-radius: 50%;
+    background-color: $header_text;
+    // background-image: radial-gradient(circle, white, $header_text, $nav_bgc);
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    line-height: 60px;
+    opacity: 0.5;
+    color: $nav_text;
+    position: fixed;
+    right: 60px;
+    bottom: 200px;
+    z-index: 1;
+    cursor: pointer;
+    transform: rotate(-90deg);
+    &:hover {
+        opacity: 0.8;
+    }
+    &::before {
+        content: "\27a4";
+        font-size: 40px;
+    }
+    @media (max-width: $tablet_width) {
+        right: 40px;
+    }
+    @media (max-width: $smartphone_width) {
+        right: 15px;
+    }
+}
+
+nav {
+    z-index: 1;
+    position: fixed;
+    padding: 0 20px;
+    top: 0;
+    height: $nav_height;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: $nav_bgc;
+    border-radius: 0 0 10px 10px;
+    user-select: none;
+    box-shadow: 0 0 20px 7px $nav_active_text;
+    font-family: 'Merienda';
+    .nav__logo {
+        z-index:2;
+        width: 30%;
+        @media (max-width: $tablet_width) {
+            width: 45%;
+        }
+        @media (max-width: $smartphone_width) {
+            width: 85%;
+        }
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        img {
+            border-radius: 50%;
+            height: $nav_height * 0.9;
+        }
+        .nav__logo__text {
+            display: flex;
+            flex-direction: column;
+            span {
+                margin-left: 5px;
+                font-family: 'barkentina_testregular';
+                font-style: italic;
+                font-weight: bold;
+                &:nth-child(1) {
+                    font-size: 1.1em;
+                    color: $logo_text_color;
+                }
+                &:nth-child(2) {
+                    color: $logo_text2_color;
+                    font-weight: normal;
+                    font-size: 0.8em;
+                }
+            }
+        }
+    }
+
+    .nav__menu {
+        z-index:2;
+        width: 70%;
+        margin-right: 20px;
+        @media (max-width: $tablet_width) {
+            width: 55%;
+            margin: 0;
+        }
+        @media (max-width: $smartphone_width) {
+            width: 15%;
+            margin: 0;
+        }
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        flex-wrap: wrap;
+    }
+    
+    %nav-elements {
+        display: inline-block;
+        font-weight: bold;
+        color:  $nav_text;
+        text-decoration: none;
+        cursor: pointer;
+        &:hover {
+            color: $nav_active_text;
+        }
+    }
+
+    .nav__elem {
+        @extend %nav-elements;
+        padding: 10px;
+        &::before {
+            content: "⋅ ";
+        }
+        @media (max-width: $smartphone_width) {
+            display: none;
+        }
+    }
+
+    .nav__elem_active {
+        color: $nav_selected_text;
+    }
+
+    .nav__button {
+        @extend %nav-elements;
+        font-size: 1.5em;
+        display: none;
+        @media (max-width: $smartphone_width) {
+            display: inline-block;
+            position: absolute;
+            right: 3%;
+        }
+    }
+    .nav__smartmenu {
+        ul {
+            padding: 0;
+            margin: 0;
+        }
+        width: 40%;
+        display: none;
+        @media(max-width: 600px) {
+            width: 60%;
+        }
+        position: fixed;
+        z-index: 2;
+        top: 5px;
+        right: 5px;
+        border-radius: 8px;
+        padding: 20px;
+        background-color: $smartmenu_bgc;
+        border: 1px solid $smartmenu_border_color;
+        border-radius: $smartmenu_border_radius;
+        &.nav__smartmenu_active {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+        .nav__smartmenu__elem {
+            color: $smartmenu_color;
+            font-weight: bold;
+            list-style-type: none;
+            cursor: pointer;
+        }
+        .nav__smartmenu__close {
+            text-align: right;
+            padding-right: 20px;
+            list-style-type: none;
+            color: $nav_text;
+            span {
+                cursor: pointer;
+            }
+        }
+    }
+} // nav
+
+.read-more {
+    max-height: $read_more_height;
+    overflow: hidden;
+    position: relative;
+}
+
+.read-more-button {
+    position: relative;
+    top: -10px;
+    background-color: $nav_bgc;
+    color: $nav_text;
+    padding: 10px;
+    border: 1px solid $smartmenu_border_color;
+    border-radius: 10px;
+    opacity: 0.7;
+    font-style: italic;
+    font-weight: bold;
+    margin-top: 20px;
+    cursor: pointer;
+    &::before {
+        content: "Read more ...";
+    }
+}
+
+
+main {
+    z-index: 0;
+    height: 100%;
+    width: 100%;
+    margin-top: $nav_height * 1.5;
+
+    .main__module {
+        position: relative;
+        min-height: 200px;
+        width: 85%;
+        margin: 50px 5% 50px 10%;
+        padding: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: flex-start;
+        @media (max-width: $smartphone_width) {
+            width: 90%;
+            margin: 30px 3% 30px 7%;
+        }
+
+        .main__module__slider {}
+
+        .main__module__header {
+            width: 100%;
+            color: $header_text;
+            font-size: 1.5rem;
+            font-family: merienda;
+        }
+
+        .main__module__img {
+            width: 30%;
+            img {
+                width: 100%;
+            }
+        }
+
+
+        .main__module__text {
+            li {
+                margin: 20px 0;
+            }
+            p {
+                text-align: justify;
+                text-indent: 5%;
+                &:first-of-type {
+                    text-indent: 0;
+                }
+            }
+        }
+
+        .main__module__footer {}
+    }
+} // main
+@import 'expand';
+
+
+$product_height: 400px;
+$product_width: 300px;
+.main__module__portfolio {
+    * {border: 1px solid black;}
+    .main__module__portfolio__bottom-text {
+        text-align: center!important;
+        font-family: 'barkentina_testregular';
+    }
+    .main__module_portfolio__content {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        .main__module_portfolio__content__arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: $header_text;
+            cursor: pointer;
+            opacity: 0.5;
+            &:hover {
+                opacity: 0.8;
+            }
+            &.left {
+                transform: rotate(180deg);
+            }
+            &::before {
+                content: '\27a4';
+            }
+        }
+        .main__module_portfolio__content__product {
+            width: 70%;
+            height: $product_height;
+            overflow: hidden;
+            .main__module_portfolio__content__product__item {
+                display: inline-block;
+                width: $product_width;
+                height: $product_height;
+                cursor: pointer;
+                opacity: 0.7;
+                &:hover {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}
