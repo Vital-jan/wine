@@ -260,12 +260,49 @@ let windAnimation = false;
 
         }
 
-let slider = document.createElement('div');
-document.querySelector('main').insertBefore(slider, document.querySelector('#gwines'));
+let slider = document.createElement('div'); // формуємо слайдер
+document.querySelector('main').insertBefore(slider, document.querySelector('#about'));
 slider.setAttribute('id', 'slider');
 setSlider(5, 'assets/img/slider/', 'img', 3, 0.5, 'slider', 500, 300, ['','','','','']);
 
-window.onscroll = ()=>{ 
+function productRefresh(parent, blockChain) {
+    let x = parent.getBoundingClientRect().width;
+    let w = blockChain[0].getBoundingClientRect().width;
+    let n = Math.floor(x / w);
+    let lm = x;
+    if (n > 0) lm = (x - w * n) / (n + 1) - n;
+    blockChain.forEach((i)=>{
+        i.style.marginLeft = lm+'px';
+    })
+}
+function productShift(parent, blockChain) {
+    let x = parent.getBoundingClientRect().width;
+    let w = blockChain[0].getBoundingClientRect().width;
+    let n = Math.floor(x / w);
+    let lm = x;
+    if (n > 0) lm = (x - w * n) / (n + 1) - n;
+    blockChain.forEach((i)=>{
+        $(i).animate({left: `-=${lm+w}`});
+        i.style.display='inline-block';
+        i.style.visibility='visible';
+        console.log(i.style)
+    });
+}
+
+document.querySelector('#product-right-arrow').addEventListener('click', (event)=>{
+    productShift(document.querySelector('.main__module_portfolio__content__product'),
+                document.querySelectorAll('.main__module_portfolio__content__product__item'));
+});
+
+productRefresh(document.querySelector('.main__module_portfolio__content__product'),
+                document.querySelectorAll('.main__module_portfolio__content__product__item'));
+
+window.onresize = ()=> {
+    productRefresh(document.querySelector('.main__module_portfolio__content__product'),
+                document.querySelectorAll('.main__module_portfolio__content__product__item'));
+}
+
+window.onscroll = ()=>{
             wind(1, 3, 800); // анімація картинки виноградна лоза
 
             if (window.pageYOffset > 300) {// показати/сховати кнопку "додому"

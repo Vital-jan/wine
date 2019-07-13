@@ -27,6 +27,10 @@ function setSlider(
   // ----------------------------------------------------
   // Подключить таблицу стилей. При необходимости, можно дополнительно стилизовать каждый слайдер по его идентификатору.
 
+  function parseIntBack(s) {
+    return parseInt(s.split('').reverse().join()).toString().split('').reverse().join();
+  }
+
   let slider = document.querySelector(`#${sliderId}`);
   if (slider == null) return;
 

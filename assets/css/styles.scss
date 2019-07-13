@@ -279,8 +279,9 @@ main {
 
 $product_height: 400px;
 $product_width: 300px;
+
 .main__module__portfolio {
-    * {border: 1px solid black;}
+    // * {border: 1px solid black;}
     .main__module__portfolio__bottom-text {
         text-align: center!important;
         font-family: 'barkentina_testregular';
@@ -313,8 +314,25 @@ $product_width: 300px;
             width: 70%;
             height: $product_height;
             overflow: hidden;
+            position: relative;
+            margin: 0;
+            padding: 0;
+            box-sizing: content-box;
             .main__module_portfolio__content__product__item {
+                img {
+                    max-height: 100%;
+                    max-width: 100%;
+                    margin: 0;
+                    box-sizing: border-box;
+                }
+                position: relative;
+                background-color: #fff;
+                box-sizing: border-box;
                 display: inline-block;
+                overflow: hidden;
+                text-align: center;
+                margin: 0;
+                padding: 0;
                 width: $product_width;
                 height: $product_height;
                 cursor: pointer;
