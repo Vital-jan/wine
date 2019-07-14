@@ -72,12 +72,30 @@ body {
   width: 100%;
 }
 
+.main__module__footer .main__module__text hr {
+  margin-top: 50px;
+}
+
+.main__module__footer .main__module__text img {
+  position: absolute;
+  top: 140px;
+  width: 50px;
+  margin: auto;
+  background-color: #410505;
+  padding: 0 30px;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+}
+
 .main__module__footer .main__module__text h2 {
   color: beige !important;
   text-align: center !important;
+  font-size: 1em;
+  text-align: center;
 }
 
 .main__module__footer .main__module__text h2.copyright {
+  margin-top: 30px;
   font-size: 0.7em;
   font-weight: normal;
 }

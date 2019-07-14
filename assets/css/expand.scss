@@ -60,10 +60,23 @@ body {
     }
     .main__module__text {
         width: 100%;
+        hr {margin-top: 50px;}
+        img {
+            position: absolute;
+            top: 140px;
+            width: 50px;
+            margin: auto;
+            background-color: $nav-bgc;
+            padding: 0 30px;
+            box-sizing: content-box;
+        }
         h2 {
             color: $nav_text!important;
             text-align: center!important;
+            font-size: 1em;
+            text-align: center;
             &.copyright {
+                margin-top: 30px;
                 font-size: 0.7em;
                 font-weight: normal;
             }

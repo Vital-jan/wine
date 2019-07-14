@@ -216,7 +216,8 @@
             moduleView(document.querySelector('.main__module').getAttribute('id'), currentNavElement);
         })
 // ---------------------------------------------------------------------------------- шаблон
-let windAnimation = false;
+let windAnimation = false; // чи відбувається анімація в реальному часі
+
         function wind (maxX, maxY, delay){ // анімація картинки виноградна лоза
             if (windAnimation) return;
 
@@ -265,39 +266,79 @@ document.querySelector('main').insertBefore(slider, document.querySelector('#abo
 slider.setAttribute('id', 'slider');
 setSlider(5, 'assets/img/slider/', 'img', 3, 0.5, 'slider', 500, 300, ['','','','','']);
 
-function productRefresh(parent, blockChain) {
+let currentProduct = 1; // поточний товар в слайдері товарів
+let maxProductNumber = document.querySelectorAll('.main__module_portfolio__content__product__item').length;
+
+function productRefresh(parent, blockChain, margin = 10) { // оновлення переліку товарів
+//parent - батьківський ел-т, який містить перелік товарів
+//blockChain - масив елементів-товарів
+//margin - сумарний лівий та правий маржин між товарами (дублюється в productShift)
     let x = parent.getBoundingClientRect().width;
-    let w = blockChain[0].getBoundingClientRect().width;
+    let w = blockChain[0].getBoundingClientRect().width + margin;
     let n = Math.floor(x / w);
     let lm = x;
-    if (n > 0) lm = (x - w * n) / (n + 1) - n;
+    if (n > 0) lm = (x - w * n) / (n + 1);
+    let left = lm;
     blockChain.forEach((i)=>{
-        i.style.marginLeft = lm+'px';
+        i.style.left = left+'px';
+        left += lm + w;
     })
 }
-function productShift(parent, blockChain) {
-    let x = parent.getBoundingClientRect().width;
-    let w = blockChain[0].getBoundingClientRect().width;
-    let n = Math.floor(x / w);
-    let lm = x;
-    if (n > 0) lm = (x - w * n) / (n + 1) - n;
-    blockChain.forEach((i)=>{
-        $(i).animate({left: `-=${lm+w}`});
-        i.style.display='inline-block';
-        i.style.visibility='visible';
-        console.log(i.style)
-    });
+
+function productShift(parent, blockChain, direction, margin = 10) { // зсув переліку товарів
+//parent - батьківський ел-т, який містить перелік товарів
+//blockChain - масив елементів-товарів
+//direction - напрямок зсуву анімації
+//margin - сумарний лівий та правий маржин між товарами (дублюється в productRefresh)
+if (currentProduct == 1 && direction == '+=') return;
+if (currentProduct == maxProductNumber && direction == '-=') return;
+currentProduct = direction == '+=' ? currentProduct - 1 : currentProduct + 1;
+let x = parent.getBoundingClientRect().width;
+let w = blockChain[0].getBoundingClientRect().width + margin;
+let n = Math.floor(x / w);
+let lm = x;
+if (n > 0) lm = (x - w * n) / (n + 1);
+blockChain.forEach((i)=>{
+    $(i).animate({left: `${direction}${lm+w}`});
+});
 }
 
-document.querySelector('#product-right-arrow').addEventListener('click', (event)=>{
+document.querySelector('#product-right-arrow').addEventListener('click', (event)=>{ // зсув переліку товарів по кліку стрілки
     productShift(document.querySelector('.main__module_portfolio__content__product'),
-                document.querySelectorAll('.main__module_portfolio__content__product__item'));
+                document.querySelectorAll('.main__module_portfolio__content__product__item'), '-=');
 });
 
-productRefresh(document.querySelector('.main__module_portfolio__content__product'),
+document.querySelector('#product-left-arrow').addEventListener('click', (event)=>{ // зсув переліку товарів по кліку стрілки
+    productShift(document.querySelector('.main__module_portfolio__content__product'),
+                document.querySelectorAll('.main__module_portfolio__content__product__item'), '+=');
+});
+
+document.querySelector('#product-right-arrow').addEventListener('mouseenter', (event)=>{ // анімація стрілки по наведенню
+    if (currentProduct < maxProductNumber) {
+        event.target.style.opacity = 1;
+        $(event.target).animate({top: '+=5'}, 100).animate({top: '-=5'}, 100);;
+    }
+});
+
+document.querySelector('#product-right-arrow').addEventListener('mouseleave', (event)=>{ // анімація стрілки по наведенню
+    event.target.style.opacity = 0.7;
+});
+
+document.querySelector('#product-left-arrow').addEventListener('mouseenter', (event)=>{ // анімація стрілки по наведенню
+    if (currentProduct > 1) {
+        event.target.style.opacity = 1;
+        $(event.target).animate({top: '+=5'}, 100).animate({top: '-=5'}, 100);;
+    }
+});
+
+document.querySelector('#product-left-arrow').addEventListener('mouseleave', (event)=>{ // анімація стрілки по наведенню
+    event.target.style.opacity = 0.7;
+});
+
+productRefresh(document.querySelector('.main__module_portfolio__content__product'), // вивід переліку товарів після завантаження сторінки
                 document.querySelectorAll('.main__module_portfolio__content__product__item'));
 
-window.onresize = ()=> {
+window.onresize = ()=> { // оновлення переліку товарів після зміни розміру екрану
     productRefresh(document.querySelector('.main__module_portfolio__content__product'),
                 document.querySelectorAll('.main__module_portfolio__content__product__item'));
 }
