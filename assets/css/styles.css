@@ -323,6 +323,16 @@ main .main__module {
           align-items: flex-start;
 }
 
+main .main__module.slider {
+  width: 100%;
+  margin: auto 0;
+  padding: 0;
+}
+
+main .main__module.slider h2 {
+  display: none;
+}
+
 @media (max-width: 900px) {
   main .main__module {
     width: 90%;
@@ -335,6 +345,10 @@ main .main__module .main__module__header {
   color: #80011f;
   font-size: 1.5rem;
   font-family: merienda;
+}
+
+main .main__module .main__module__content {
+  width: 100%;
 }
 
 main .main__module .main__module__content .main__module__content__img1, main .main__module .main__module__content .main__module__content__img2 {

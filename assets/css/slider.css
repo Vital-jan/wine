@@ -1,9 +1,12 @@
-.slider {
-  margin: 20px auto;
+.explorer-slider {
+  margin: 0 auto;
   position: relative;
+  width: 100%;
+  clear: both;
+  height: 550px;
 }
 
-.slider img {
+.explorer-slider img {
   opacity: 0;
   height: 100%;
   position: absolute;
@@ -12,9 +15,11 @@
   left: 0;
   right: 0;
   margin: auto;
+  max-width: 100%;
+  max-height: 100%;
 }
 
-.slider .circles {
+.explorer-slider .circles {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -26,9 +31,10 @@
           align-items: center;
   position: absolute;
   bottom: 10px;
+  width: 100%;
 }
 
-.slider .circle {
+.explorer-slider .circle {
   width: 20px;
   height: 20px;
   border-radius: 50%;
@@ -41,11 +47,11 @@
   cursor: pointer;
 }
 
-.slider .circle:hover {
+.explorer-slider .circle:hover {
   opacity: 0.9;
 }
 
-.slider .arrow {
+.explorer-slider .arrow {
   color: white;
   border: 1px solid darkgray;
   background-color: gray;
@@ -64,19 +70,19 @@
           user-select: none;
 }
 
-.slider .arrow.no-active {
+.explorer-slider .arrow.no-active {
   cursor: default;
 }
 
-.slider .arrow.no-active:hover {
+.explorer-slider .arrow.no-active:hover {
   opacity: 0.5;
 }
 
-.slider .arrow:hover {
+.explorer-slider .arrow:hover {
   opacity: 1;
 }
 
-.slider h3 {
+.explorer-slider h3 {
   font-weight: normal;
   text-align: center;
   font-size: 20px;

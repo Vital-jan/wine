@@ -41,6 +41,10 @@
         
         ', "img1"=>"", "img2"=>"assets/img/wineglass.jpg"),
 
+        array("menu_item"=>"", "id"=>"slider_module", "class"=>"slider", 
+        "header"=>"", 
+        "text"=>"<div id='slider'></div>", "img1"=>"", "img2"=>""),
+
         array("menu_item"=>"About us", "id"=>"about", "class"=>"", 
         "header"=>"Welcome to the wonderful world of Georgian wines! We have created our company “World’s Finest Wines” with the aim of publicizing delicious, elegant and genuinely unique wines from the country of Georgia.", 
         "text"=>$module_about, "img1"=>"", "img2"=>""),
@@ -78,6 +82,7 @@
                 foreach($main_content as $key=>$value) {
                     $id = ($value['id'] == '' ? "module{$n}" : "{$value["id"]}");
                     $n++;
+                    if ($value['menu_item'])
                     echo "
                     <span class='nav__elem' data-id='{$id}'>{$value['menu_item']}</span>
                     ";
@@ -92,6 +97,7 @@
                 foreach($main_content as $key=>$value) {
                     $id = ($value['id'] == '' ? "module{$n}" : "{$value["id"]}");
                     $n++;
+                    if ($value['menu_item'])
                     echo "
                     <li class='nav__smartmenu__elem' data-id='{$id}'>
                     {$value['menu_item']}<br><hr>
@@ -233,56 +239,56 @@
 // ---------------------------------------------------------------------------------- шаблон
 let windAnimation = false; // чи відбувається анімація в реальному часі
 
-        function wind (maxX, maxY, delay){ // анімація картинки виноградна лоза
-            if (windAnimation) return;
+function wind (maxX, maxY, delay){ // анімація картинки виноградна лоза
+    if (windAnimation) return;
 
-            let el = document.querySelector('.frame_top');
-            let startPosition = el.getBoundingClientRect().y;
+    let el = document.querySelector('.frame_top');
+    let startPosition = el.getBoundingClientRect().y;
 
-            windAnimation = true;
-            let fps = 30;
-            let dx, dy;
-            let iteration = delay / 1000 * fps;
-            dx = maxX / iteration;
-            dy = maxY / iteration;
-            let time = delay / fps;
-            let i = 0;
-            let x = 0;
-            let y = 0;
+    windAnimation = true;
+    let fps = 30;
+    let dx, dy;
+    let iteration = delay / 1000 * fps;
+    dx = maxX / iteration;
+    dy = maxY / iteration;
+    let time = delay / fps;
+    let i = 0;
+    let x = 0;
+    let y = 0;
 
-            let interval = setInterval(()=>{
-                i++;
-                if (i >= iteration) {
-                    clearInterval(interval);
-                    i = 0;
-                    interval = setInterval(()=>{
-                    i++;
-                    if (i >= iteration) {
-                        clearInterval(interval);
-                        windAnimation = false;
-                    }
-                    el.style.transform = `skew(${x}deg, ${y}deg)`;
-                    el.style.top = `${startPosition+y*3}px`;
-                    x -= dx;
-                    y -= dy;
-                }, time);
-
-                }
-                el.style.transform = `skew(${x}deg, ${y}deg)`;
-                el.style.top = `${startPosition+y*3}px`;
-                x += dx;
-                y += dy;
-            }, time);
+    let interval = setInterval(()=>{
+        i++;
+        if (i >= iteration) {
+            clearInterval(interval);
+            i = 0;
+            interval = setInterval(()=>{
+            i++;
+            if (i >= iteration) {
+                clearInterval(interval);
+                windAnimation = false;
+            }
+            el.style.transform = `skew(${x}deg, ${y}deg)`;
+            el.style.top = `${startPosition+y*3}px`;
+            x -= dx;
+            y -= dy;
+        }, time);
 
         }
+        el.style.transform = `skew(${x}deg, ${y}deg)`;
+        el.style.top = `${startPosition+y*3}px`;
+        x += dx;
+        y += dy;
+    }, time);
+}
 
-let slider = document.createElement('div'); // формуємо слайдер
-document.querySelector('main').insertBefore(slider, document.querySelector('#about'));
-slider.setAttribute('id', 'slider');
-let screenWidth = slider.parentElement.getBoundingClientRect().width;
-if (screenWidth > 768)
-    {setSlider(6, 'assets/img/slider/', 'img', 3, 0.5, 'slider',  screenWidth * 0.7, screenWidth * 0.3, ['','','','','','']);}
-    else setSlider(6, 'assets/img/slider/', 'img', 3, 0.5, 'slider',  screenWidth, screenWidth * 0.5, ['','','','','','']);
+// let slider = document.createElement('div'); // формуємо слайдер
+// document.querySelector('main').insertBefore(slider, document.querySelector('#about'));
+// slider.setAttribute('id', 'slider');
+// let screenWidth = slider.parentElement.getBoundingClientRect().width;
+// if (screenWidth > 768)
+//     {setSlider(6, 'assets/img/slider/', 'img', 3, 0.5, 'slider',  screenWidth * 0.7, screenWidth * 0.3, ['','','','','','']);}
+//     else setSlider(6, 'assets/img/slider/', 'img', 3, 0.5, 'slider',  screenWidth, screenWidth * 0.5, ['','','','','','']);
+setSlider(4, 'assets/img/slider/', 'img', 3, 0.5, 'slider', [], false, false);
 
 let currentProduct = 1; // поточний товар в слайдері товарів
 let maxProductNumber = document.querySelectorAll('.main__module_portfolio__content__product__item').length;

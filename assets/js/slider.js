@@ -7,21 +7,21 @@ function setSlider(
   delay,
   fade,
   sliderId,
-  sliderWidth,
-  sliderHeight,
   title = [],
   arrowsVisible = true,
   circlesVisible = true
 ) {
   // аргументы: ==========================================================
+  // использует стиль explorer-slider.
+  // в этом стиле описана высота слайдера.
+  // ширина слайдера - 100%
+  // Пример: setSlider(4, 'assets/img/slider/', 'img', 3, 0.5, 'slider');
   // --------------------------------------------
   // max - максимальный индекс рисунка (к-во изображений)
   // prefix - префикс имени файла изображения
   // delay - время показа изображения в секундах
-  // fade - время набора 100% непрозрачности в % от delay
+  // fade - время набора 100% непрозрачности (от 0 до 1 delay)
   // sliderId - идентификатор элемента-родителя;
-  // sliderWidth - ширина слайдера в px
-  // sliderHeight - ширина слайдера в px
   // title - подписи к картинкам (массив). если значение не указано, не отображается.
   // arrowsVisible, circlesVisible - видимость стрелок и кружочков
   // ----------------------------------------------------
@@ -42,36 +42,36 @@ function setSlider(
   let paused = false;
 
   // стили для slider
-  slider.classList.add("slider");
-  slider.style.width = `${sliderWidth}px`;
-  slider.style.height = `${sliderHeight}px`;
-  slider.style.position = 'relative';
-
-  // обработчики для slider (пауза в прокрутке)
-  slider.onmouseenter = () => {
-    paused = true;
-  };
-  slider.onmouseleave = () => {
-    paused = false;
-  };
+  slider.classList.add("explorer-slider");
 
   // создаем и стилизуем графический контент
   let img = document.createElement('img');
   slider.appendChild(img);
-  img.style.maxWidth = `${sliderWidth}px`;
-  img.style.maxHeight = `${sliderHeight}px`;
+
+  // обработчики для img (пауза в прокрутке)
+  img.onmouseenter = () => {
+    paused = true;
+  };  
+  img.onmouseleave = () => {
+    paused = false;
+  };  
+
+  let sliderWidth = slider.getBoundingClientRect().width;
 
   // создаем и стилизуем контейнер для элементов-кружочков
   let circles = document.createElement('div');
   circles.classList = 'circles';
   slider.appendChild(circles);
   if (!circlesVisible) circles.style.visibility = 'hidden';
-  circles.style.width = `${sliderWidth}px`;
+  circles.style.width = sliderWidth;
   circles.id = `${sliderId}-circles`;
+
   circles.addEventListener('click', function(event) {
     if (!isNaN(parseIntBack(event.target.id))) {
       prevCounter = counter;
       counter = parseIntBack(event.target.id);
+      refresh();
+      timeNext = 0;
     }
   });
 
@@ -96,17 +96,21 @@ function setSlider(
     if (counter > 1) {
       prevCounter = counter;
       counter--;
+      timeNext = 0;
+      refresh();
     }
   });
   arrow[1].addEventListener('click', function() {
     if (counter < max) {
       prevCounter = counter;
       counter++;
+      timeNext = 0;
+      refresh();
     }
   });
 
-  var s = (sliderWidth / max) * 0.4; // вычисляем размер кружочка
-  s = s > (sliderHeight / max) * 0.4 ? (sliderHeight / max) * 0.4 : s;
+  var s = (sliderWidth / max) * 0.05; // вычисляем размер кружочка
+  // s = s > (sliderHeight / max) * 0.4 ? (sliderHeight / max) * 0.4 : s;
 
   // создаем, добавляем и стилизуем элементы-кружочки
   for (var n = 1; n <= max; n++) {
@@ -119,24 +123,10 @@ function setSlider(
     el.style.borderWidth = `${Math.round(s / 4)}px`;
   }
 
-  // таймер
-  let interval = setInterval(function() {
-    slider = document.querySelector(`#${sliderId}`); // проверяем наличие элемента slider в DOM
-    if (!slider) {clearInterval(interval); return;};
+  function refresh(){
 
-    // активируем/деактивируем стрелки влево/право
-    
-    if (counter == max) {
-      arrow[1].classList.add('no-active');
-    } else {
-      arrow[1].classList.remove('no-active');
-    }
-    if (counter == 1) {
-      arrow[0].classList.add('no-active');
-    } else {
-      arrow[0].classList.remove('no-active');
-    }
-    img.src = `${path}${prefix}${counter}.jpg`; // отрисовка изображения
+    img.setAttribute('src', `${path}${prefix}${counter}.jpg`); // отрисовка изображения
+
     if (title[counter - 1] !== undefined) {
       ttl.innerHTML = title[counter - 1];
     } else {
@@ -151,13 +141,38 @@ function setSlider(
     elem = document.querySelector(`#${sliderId}-circle${counter}`); // рисуем текущий кружочек
     elem.style.backgroundColor = 'black';
 
-    if (timeNext >= fps * delay) {
-      // при достижении времени смены изображения:
+    if (counter == max) {// активируем/деактивируем стрелки влево/право
+      arrow[1].classList.add('no-active');
+    } else {
+      arrow[1].classList.remove('no-active');
+    }
+    if (counter == 1) {
+      arrow[0].classList.add('no-active');
+    } else {
+      arrow[0].classList.remove('no-active');
+    }
+    
+
+  }
+
+  refresh();
+
+  // таймер
+  let interval = setInterval(function() {
+
+    if (!slider) {// проверяем наличие элемента slider в DOM
+      clearInterval(interval);
+      return;
+    }
+    
+    if (timeNext >= fps * delay) { // при достижении времени смены изображения:
+      
       timeNext = 0;
       opacity = 0;
       prevCounter = counter;
-      counter = counter < max ? counter + 1 : 1;
+      counter = counter < max ? Number(counter) + 1 : 1;
       img.setAttribute('src',`${path}${prefix}${counter}.jpg`);
+      refresh(); // перерисовка
     }
 
     if (!paused) timeNext++; // если не наведен курсор - инкрементируем счетчик времени

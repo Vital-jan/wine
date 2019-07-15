@@ -262,6 +262,12 @@ main {
         flex-wrap: wrap;
         justify-content: space-between;
         align-items: flex-start;
+        &.slider {
+            width: 100%;
+            margin: auto 0;
+            padding: 0;
+            h2 {display: none;}
+        }
         @media (max-width: $smartphone_width) {
             width: 90%;
             margin: 30px 3% 30px 7%;
@@ -276,7 +282,7 @@ main {
 
         
         .main__module__content {
-
+            width: 100%;
             %content-img {
                 width: 30%;
                 height: auto;
