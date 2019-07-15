@@ -1,6 +1,5 @@
 <?
 $module_about = "
-<div class='main__module__text read-more'>
 
     <p>Our mission at World’s Finest Wines is to introduce the world’s oldest/newest wines to the American wine lover and bring truly old world flavors to new pallets.</p>
 
@@ -10,6 +9,5 @@ $module_about = "
 
     <p>These Georgian wines have become a must-have for the world’s best restaurants and wine merchants. Georgian wines are now among the trendiest in the world. Gradually, Georgian wine is becoming more popular in the U.S. Take advantage and drink these wines. Be adventures with your palate. Drink different!  Are you ready for it?</p>
 
-</div>
 ";
 ?>

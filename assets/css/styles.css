@@ -301,6 +301,7 @@ main {
   height: 100%;
   width: 100%;
   margin-top: 225px;
+  position: relative;
 }
 
 main .main__module {
@@ -336,25 +337,200 @@ main .main__module .main__module__header {
   font-family: merienda;
 }
 
-main .main__module .main__module__img {
+main .main__module .main__module__content .main__module__content__img1, main .main__module .main__module__content .main__module__content__img2 {
   width: 30%;
+  height: auto;
+  margin: 20px 0 10px;
 }
 
-main .main__module .main__module__img img {
+main .main__module .main__module__content .main__module__content__img1 img, main .main__module .main__module__content .main__module__content__img2 img {
   width: 100%;
 }
 
-main .main__module .main__module__text li {
+main .main__module .main__module__content .main__module__content__img1 {
+  float: left;
+  margin-right: 20px;
+}
+
+main .main__module .main__module__content .main__module__content__img2 {
+  float: right;
+  margin-left: 20px;
+}
+
+main .main__module .main__module__content li {
   margin: 20px 0;
 }
 
-main .main__module .main__module__text p {
+main .main__module .main__module__content p {
   text-align: justify;
-  text-indent: 5%;
+  text-indent: 3%;
 }
 
-main .main__module .main__module__text p:first-of-type {
+main .main__module .main__module__content p:first-of-type {
   text-indent: 0;
+}
+
+main .main__module .main__module__footer {
+  width: 100% !important;
+  margin: 0 !important;
+  background-color: #410505;
+  color: beige;
+}
+
+main .main__module .main__module__footer .main__module__text {
+  width: 100%;
+  text-align: left;
+}
+
+main .main__module .main__module__footer .main__module__text hr {
+  margin-top: 50px;
+}
+
+main .main__module .main__module__footer .main__module__text h2.copyright img {
+  text-align: center !important;
+  font-size: 1em;
+  text-align: center;
+  margin-top: 30px;
+  font-size: 0.7em;
+  font-weight: normal;
+  position: absolute;
+  top: 140px;
+  width: 50px;
+  margin: auto;
+  background-color: #410505;
+  padding: 0 30px;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+}
+
+main .main__module__portfolio .main__module__portfolio__bottom-text {
+  text-align: center !important;
+  font-family: 'barkentina_testregular';
+}
+
+main .main__module__portfolio .main__module_portfolio__content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main .main__module__portfolio .main__module_portfolio__content .main__module_portfolio__content__arrow {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #80011f;
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+main .main__module__portfolio .main__module_portfolio__content .main__module_portfolio__content__arrow.left {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+main .main__module__portfolio .main__module_portfolio__content .main__module_portfolio__content__arrow::before {
+  content: '\27a4';
+}
+
+main .main__module__portfolio .main__module_portfolio__content .main__module_portfolio__content__product {
+  width: 80%;
+  height: 400px;
+  overflow: hidden;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+}
+
+main .main__module__portfolio .main__module_portfolio__content .main__module_portfolio__content__product .main__module_portfolio__content__product__item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: inline-block;
+  overflow: hidden;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  width: 300px;
+  height: 400px;
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+main .main__module__portfolio .main__module_portfolio__content .main__module_portfolio__content__product .main__module_portfolio__content__product__item:hover {
+  opacity: 1;
+}
+
+main .main__module__portfolio .main__module_portfolio__content .main__module_portfolio__content__product .main__module_portfolio__content__product__item img {
+  max-height: 100%;
+  max-width: 100%;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+main .main__module__footer {
+  width: 100% !important;
+  margin: 0 !important;
+  background-color: #410505;
+}
+
+main .main__module__footer h2 {
+  color: beige !important;
+}
+
+main .main__module__footer .main__module__text {
+  width: 100%;
+  color: beige !important;
+}
+
+main .main__module__footer .main__module__text hr {
+  margin-top: 50px;
+}
+
+main .main__module__footer .main__module__text img {
+  position: absolute;
+  top: 120px;
+  left: 0;
+  right: 0;
+  width: 50px;
+  margin: auto;
+  background-color: #410505;
+  padding: 0 30px;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+}
+
+main .main__module__footer .main__module__text h2 {
+  color: beige !important;
+  text-align: center !important;
+  font-size: 1em;
+  text-align: center;
+}
+
+main .main__module__footer .main__module__text h2.copyright {
+  margin-top: 30px;
+  font-size: 0.8em;
+  font-weight: normal;
 }
 
 @font-face {
@@ -401,7 +577,7 @@ body {
   position: fixed;
   left: 0;
   top: 120px;
-  z-index: -1;
+  z-index: 1;
   width: 430px;
 }
 
@@ -415,114 +591,5 @@ body {
   .frame_top {
     width: 210px;
   }
-}
-
-.main__module__footer {
-  width: 100% !important;
-  margin: 0 !important;
-  background-color: #410505;
-}
-
-.main__module__footer h2 {
-  color: beige !important;
-}
-
-.main__module__footer .main__module__text {
-  width: 100%;
-}
-
-.main__module__footer .main__module__text h2 {
-  color: beige !important;
-  text-align: center !important;
-}
-
-.main__module__footer .main__module__text h2.copyright {
-  font-size: 0.7em;
-  font-weight: normal;
-}
-
-.main__module__portfolio .main__module__portfolio__bottom-text {
-  text-align: center !important;
-  font-family: 'barkentina_testregular';
-}
-
-.main__module__portfolio .main__module_portfolio__content {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.main__module__portfolio .main__module_portfolio__content .main__module_portfolio__content__arrow {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  position: relative;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background-color: #80011f;
-  cursor: pointer;
-  opacity: 0.5;
-}
-
-.main__module__portfolio .main__module_portfolio__content .main__module_portfolio__content__arrow.left {
-  -webkit-transform: rotate(180deg);
-          transform: rotate(180deg);
-}
-
-.main__module__portfolio .main__module_portfolio__content .main__module_portfolio__content__arrow::before {
-  content: '\27a4';
-}
-
-.main__module__portfolio .main__module_portfolio__content .main__module_portfolio__content__product {
-  width: 80%;
-  height: 400px;
-  overflow: hidden;
-  position: relative;
-  margin: 0;
-  padding: 0;
-  -webkit-box-sizing: content-box;
-          box-sizing: content-box;
-}
-
-.main__module__portfolio .main__module_portfolio__content .main__module_portfolio__content__product .main__module_portfolio__content__product__item {
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: #fff;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  display: inline-block;
-  overflow: hidden;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-  width: 300px;
-  height: 400px;
-  cursor: pointer;
-  opacity: 0.7;
-}
-
-.main__module__portfolio .main__module_portfolio__content .main__module_portfolio__content__product .main__module_portfolio__content__product__item:hover {
-  opacity: 1;
-}
-
-.main__module__portfolio .main__module_portfolio__content .main__module_portfolio__content__product .main__module_portfolio__content__product__item img {
-  max-height: 100%;
-  max-width: 100%;
-  margin: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
 }
 /*# sourceMappingURL=styles.css.map */
