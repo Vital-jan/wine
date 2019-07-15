@@ -6,6 +6,12 @@
   height: 550px;
 }
 
+@media (max-width: 600px) {
+  .explorer-slider {
+    height: 400px;
+  }
+}
+
 .explorer-slider img {
   opacity: 0;
   height: 100%;

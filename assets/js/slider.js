@@ -48,15 +48,16 @@ function setSlider(
   let img = document.createElement('img');
   slider.appendChild(img);
 
+  let sliderWidth = slider.getBoundingClientRect().width;
+  let sliderHeight = img.getBoundingClientRect().height;
+
   // обработчики для img (пауза в прокрутке)
   img.onmouseenter = () => {
     paused = true;
-  };  
+  };    
   img.onmouseleave = () => {
     paused = false;
-  };  
-
-  let sliderWidth = slider.getBoundingClientRect().width;
+  };    
 
   // создаем и стилизуем контейнер для элементов-кружочков
   let circles = document.createElement('div');

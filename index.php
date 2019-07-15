@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1.0, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta http-equiv="pragma" content="no-cache">
-    <meta http-equiv="cache-control" content="no-cache">
+    <!-- <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache"> -->
     <meta name="description" content="World’s Finest Wines - importer/wholesaler of Georgian wines.">
     <meta name='author' content='Vitalii Kolomiiets, Kyiv, Ukraine, vitaljan@gmail.com viber:+380632209770'>
     <title>World's Finest Wines</title>
@@ -41,23 +41,23 @@
         
         ', "img1"=>"", "img2"=>"assets/img/wineglass.jpg"),
 
-        array("menu_item"=>"", "id"=>"slider_module", "class"=>"slider", 
+        array("menu_item"=>"", "id"=>"slider_module", "class"=>"main__module__slider", 
         "header"=>"", 
         "text"=>"<div id='slider'></div>", "img1"=>"", "img2"=>""),
 
         array("menu_item"=>"About us", "id"=>"about", "class"=>"", 
         "header"=>"Welcome to the wonderful world of Georgian wines! We have created our company “World’s Finest Wines” with the aim of publicizing delicious, elegant and genuinely unique wines from the country of Georgia.", 
-        "text"=>$module_about, "img1"=>"", "img2"=>""),
+        "text"=>$module_about, "img1"=>"assets/img/tost.jpg", "img2"=>""),
 
         array("menu_item"=>"Georgian Winemaking", "id"=>"gwines", "class"=>"", 
         "header"=>"Georgian Winemaking",
-        "text"=>$module_wines, "img1"=>"", "img2"=>""),
+        "text"=>$module_wines, "img1"=>"assets/img/marani.jpg", "img2"=>""),
 
         array("menu_item"=>"Our portfolio", "id"=>"products", "class"=>"main__module__portfolio",
-        "header"=>"Our portfolio",
+        "header"=>"Explore our wines",
         "text"=>$portfolio, "img1"=>"", "img2"=>""),
 
-        array("menu_item"=>"Contact us", "id"=>"contacts", "class"=>"main__module__footer",
+        array("menu_item"=>"Contact us", "id"=>"contacts", "class"=>"main__module_footer",
         "header"=>"Our contacts:",
         "text"=>$footer, "img1"=>"", "img2"=>"")
     );
@@ -120,12 +120,14 @@
             $n = 0;
             foreach($main_content as $key=>$value) {
                 $attr = $value['id'] == '' ? "module{$n}" : "{$value['id']}";
-                $header = ($n == 0) ? 'h1' : 'h2';
+                $h12 = ($n == 0) ? 'h1' : 'h2';
+                $sub = $value['menu_item'] ? '' : 'sub-';
+                $header = $value['header'] ? "<{$h12} class='main__module__{$sub}header'>{$value['header']}</{$h12}>" : "";
                 $img1 = $value['img1'] ? "<div class='main__module__content__img1'><img src='{$value['img1']}'></div>" : '';
                 $img2 = $value['img2'] ? "<div class='main__module__content__img2'><img src='{$value['img2']}'></div>" : '';
                 echo "
                 <div class='main__module {$value['class']}' id='{$attr}'>
-                    <{$header} class='main__module__header'>{$main_content[$n]['header']}</{$header}>
+                    {$header}
                     <div class='main__module__content'>
                         {$img1}
                         {$img2}
@@ -157,7 +159,7 @@
             btn.setAttribute('data-readmore','true');
         })
 
-        document.addEventListener('click', (event)=>{
+        document.addEventListener('click', (event)=>{ // клік по Read more - розгортання
             if (event.target.dataset.readmore) {
                 $(event.target.previousElementSibling).animate({maxHeight: 10000}, 1000);
                 event.target.style.display = 'none';
@@ -281,13 +283,6 @@ function wind (maxX, maxY, delay){ // анімація картинки вино
     }, time);
 }
 
-// let slider = document.createElement('div'); // формуємо слайдер
-// document.querySelector('main').insertBefore(slider, document.querySelector('#about'));
-// slider.setAttribute('id', 'slider');
-// let screenWidth = slider.parentElement.getBoundingClientRect().width;
-// if (screenWidth > 768)
-//     {setSlider(6, 'assets/img/slider/', 'img', 3, 0.5, 'slider',  screenWidth * 0.7, screenWidth * 0.3, ['','','','','','']);}
-//     else setSlider(6, 'assets/img/slider/', 'img', 3, 0.5, 'slider',  screenWidth, screenWidth * 0.5, ['','','','','','']);
 setSlider(4, 'assets/img/slider/', 'img', 3, 0.5, 'slider', [], false, false);
 
 let currentProduct = 1; // поточний товар в слайдері товарів
@@ -377,7 +372,7 @@ window.onscroll = ()=>{
                     homeArrowVisible = true;
                     homeArrow.classList.remove('hidden-elem')
                     homeArrow.style.bottom = homeArrowY + 'px';
-                    $(homeArrow).animate({bottom: 40}, 1000);
+                    $(homeArrow).animate({bottom: 25}, 1000);
                 }
             } 
             else 

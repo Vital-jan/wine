@@ -5,6 +5,8 @@
 }
 
 body {
+  font-family: 'Source Sans Pro';
+  z-index: -1;
   background-color: beige;
   background-image: url("../img/bg.jpg");
   font-size: 20px;
@@ -28,7 +30,7 @@ body {
   opacity: 0.5;
   color: beige;
   position: fixed;
-  right: 60px;
+  right: 30px;
   bottom: 200px;
   z-index: 1;
   cursor: pointer;
@@ -47,7 +49,7 @@ body {
 
 @media (max-width: 1050px) {
   #home-arrow {
-    right: 40px;
+    right: 20px;
   }
 }
 
@@ -73,7 +75,8 @@ nav {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  background-color: #410505;
+  background: -webkit-gradient(linear, left top, right top, from(#410505), to(#270303));
+  background: linear-gradient(to right, #410505, #270303);
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
@@ -105,12 +108,20 @@ nav .nav__logo {
 
 @media (max-width: 900px) {
   nav .nav__logo {
-    width: 85%;
+    width: 60%;
+  }
+}
+
+@media (max-width: 700px) {
+  nav .nav__logo {
+    width: 80%;
   }
 }
 
 nav .nav__logo img {
-  height: 135px;
+  max-height: 135px;
+  max-width: 100%;
+  height: auto;
 }
 
 nav .nav__logo .nav__logo__text {
@@ -272,7 +283,7 @@ nav .nav__smartmenu .nav__smartmenu__close span {
 }
 
 .read-more {
-  max-height: 10.5rem;
+  max-height: 0;
   overflow: hidden;
   position: relative;
 }
@@ -323,20 +334,10 @@ main .main__module {
           align-items: flex-start;
 }
 
-main .main__module.slider {
-  width: 100%;
-  margin: auto 0;
-  padding: 0;
-}
-
-main .main__module.slider h2 {
-  display: none;
-}
-
 @media (max-width: 900px) {
   main .main__module {
     width: 90%;
-    margin: 30px 3% 30px 7%;
+    margin: 20px 3% 20px 7%;
   }
 }
 
@@ -344,31 +345,62 @@ main .main__module .main__module__header {
   width: 100%;
   color: #80011f;
   font-size: 1.5rem;
-  font-family: merienda;
+  font-family: 'merienda';
+}
+
+main .main__module .main__module__sub-header, main .main__module .main__module__content h1, main .main__module .main__module__content h2, main .main__module .main__module__content h3, main .main__module .main__module__content h4, main .main__module .main__module__content h5, main .main__module .main__module__content h6 {
+  width: 100%;
+  color: #2e4226;
+  font-size: 1.4rem;
+  font-family: 'Source Sans Pro';
+  font-weight: bold;
 }
 
 main .main__module .main__module__content {
   width: 100%;
+  position: relative;
 }
 
-main .main__module .main__module__content .main__module__content__img1, main .main__module .main__module__content .main__module__content__img2 {
+main .main__module .main__module__content img.img-right, main .main__module .main__module__content img.img-left, main .main__module .main__module__content .main__module__content__img1, main .main__module .main__module__content .main__module__content__img2 {
   width: 30%;
   height: auto;
   margin: 20px 0 10px;
 }
 
-main .main__module .main__module__content .main__module__content__img1 img, main .main__module .main__module__content .main__module__content__img2 img {
-  width: 100%;
+main .main__module .main__module__content img {
+  max-width: 100%;
+  position: relative;
+  margin: 0;
+}
+
+main .main__module .main__module__content img.img-right {
+  float: right;
+  margin: 0;
+  margin-left: 20px;
+  padding: 0;
+  text-align: right;
+}
+
+main .main__module .main__module__content img.img-left {
+  float: left;
+  margin: 0;
+  margin-right: 20px;
+  padding: 0;
+  text-align: left;
 }
 
 main .main__module .main__module__content .main__module__content__img1 {
   float: left;
   margin-right: 20px;
+  padding: 0;
+  text-align: left;
 }
 
 main .main__module .main__module__content .main__module__content__img2 {
   float: right;
   margin-left: 20px;
+  padding: 0;
+  text-align: right;
 }
 
 main .main__module .main__module__content li {
@@ -384,35 +416,70 @@ main .main__module .main__module__content p:first-of-type {
   text-indent: 0;
 }
 
-main .main__module .main__module__footer {
-  width: 100% !important;
-  margin: 0 !important;
+main .main__module.main__module_full-width {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+main .main__module.main__module_slider {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+main .main__module.main__module_footer {
+  width: 100%;
+  margin: 0;
   background-color: #410505;
+  position: relative;
+}
+
+main .main__module.main__module_footer .main__module__header {
+  color: beige;
+  padding-left: 100px;
+}
+
+main .main__module.main__module_footer img {
+  position: absolute;
+  right: -10px;
+  top: -83px;
+}
+
+main .main__module.main__module_footer .main__module__content {
+  text-align: left;
   color: beige;
 }
 
-main .main__module .main__module__footer .main__module__text {
-  width: 100%;
-  text-align: left;
-}
-
-main .main__module .main__module__footer .main__module__text hr {
+main .main__module.main__module_footer .main__module__content hr {
   margin-top: 50px;
 }
 
-main .main__module .main__module__footer .main__module__text h2.copyright img {
-  text-align: center !important;
+main .main__module.main__module_footer .main__module__content p {
+  padding-left: 120px;
+}
+
+main .main__module.main__module_footer .main__module__content h2 {
+  padding-left: 120px;
+  position: relative;
+}
+
+main .main__module.main__module_footer .main__module__content h2.copyright {
   font-size: 1em;
-  text-align: center;
-  margin-top: 30px;
-  font-size: 0.7em;
   font-weight: normal;
+  text-align: center;
+  width: 100%;
+  padding-left: 0;
+}
+
+main .main__module.main__module_footer .main__module__content h2.copyright img {
   position: absolute;
-  top: 140px;
-  width: 50px;
+  left: 0;
+  right: 0;
   margin: auto;
+  top: -60px;
+  width: 50px;
   background-color: #410505;
-  padding: 0 30px;
   -webkit-box-sizing: content-box;
           box-sizing: content-box;
 }
@@ -502,62 +569,12 @@ main .main__module__portfolio .main__module_portfolio__content .main__module_por
           box-sizing: border-box;
 }
 
-main .main__module__footer {
-  width: 100% !important;
-  margin: 0 !important;
-  background-color: #410505;
-}
-
-main .main__module__footer h2 {
-  color: beige !important;
-}
-
-main .main__module__footer .main__module__text {
-  width: 100%;
-  color: beige !important;
-}
-
-main .main__module__footer .main__module__text hr {
-  margin-top: 50px;
-}
-
-main .main__module__footer .main__module__text img {
-  position: absolute;
-  top: 120px;
-  left: 0;
-  right: 0;
-  width: 50px;
-  margin: auto;
-  background-color: #410505;
-  padding: 0 30px;
-  -webkit-box-sizing: content-box;
-          box-sizing: content-box;
-}
-
-main .main__module__footer .main__module__text h2 {
-  color: beige !important;
-  text-align: center !important;
-  font-size: 1em;
-  text-align: center;
-}
-
-main .main__module__footer .main__module__text h2.copyright {
-  margin-top: 30px;
-  font-size: 0.8em;
-  font-weight: normal;
-}
-
 @font-face {
   font-family: 'barkentina_testregular';
   src: url("../font/8735-webfont.eot");
   src: url("../font/8735-webfont.eot?#iefix") format("embedded-opentype"), url("../font/8735-webfont.woff2") format("woff2"), url("../font/8735-webfont.woff") format("woff"), url("../font/8735-webfont.ttf") format("truetype"), url("../font/8735-webfont.svg#barkentina_testregular") format("svg");
   font-weight: normal;
   font-style: normal;
-}
-
-body {
-  font-family: 'Source Sans Pro';
-  z-index: -5;
 }
 
 .main__module_wine {
@@ -571,8 +588,8 @@ body {
 .grape {
   position: fixed;
   width: 170px;
-  right: -13px;
-  top: -5px;
+  right: -10px;
+  top: 0;
 }
 
 @media (max-width: 1050px) {

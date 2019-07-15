@@ -5,6 +5,9 @@
     width: 100%;
     clear: both;
     height: 550px;
+    @media (max-width: 600px) {
+        height: 400px;
+    }
     img {
         opacity:0;
         height: 100%;
