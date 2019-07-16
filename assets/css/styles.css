@@ -6,7 +6,6 @@
 
 body {
   font-family: 'Source Sans Pro';
-  z-index: -1;
   background-color: beige;
   background-image: url("../img/bg.jpg");
   font-size: 20px;
@@ -60,7 +59,7 @@ body {
 }
 
 nav {
-  z-index: 1;
+  z-index: 2;
   position: fixed;
   padding: 0 20px;
   top: 0;
@@ -286,10 +285,13 @@ nav .nav__smartmenu .nav__smartmenu__close span {
   max-height: 0;
   overflow: hidden;
   position: relative;
+  z-index: 1;
 }
 
 .read-more-button {
   position: relative;
+  display: block;
+  z-index: 1;
   top: -10px;
   background-color: #410505;
   color: beige;
@@ -304,11 +306,12 @@ nav .nav__smartmenu .nav__smartmenu__close span {
 }
 
 .read-more-button::before {
+  position: relative;
   content: "Read more ...";
+  z-index: 1;
 }
 
 main {
-  z-index: 0;
   height: 100%;
   width: 100%;
   margin-top: 225px;
@@ -371,6 +374,7 @@ main .main__module .main__module__content img {
   max-width: 100%;
   position: relative;
   margin: 0;
+  height: auto;
 }
 
 main .main__module .main__module__content img.img-right {
@@ -407,8 +411,13 @@ main .main__module .main__module__content li {
   margin: 20px 0;
 }
 
+main .main__module .main__module__content div {
+  width: 100%;
+}
+
 main .main__module .main__module__content p {
   text-align: justify;
+  width: 100%;
   text-indent: 3%;
 }
 
@@ -505,6 +514,7 @@ main .main__module__portfolio .main__module_portfolio__content .main__module_por
   display: -ms-flexbox;
   display: flex;
   position: relative;
+  z-index: 1;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;

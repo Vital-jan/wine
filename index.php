@@ -161,7 +161,7 @@
 
         document.addEventListener('click', (event)=>{ // клік по Read more - розгортання
             if (event.target.dataset.readmore) {
-                $(event.target.previousElementSibling).animate({maxHeight: 10000}, 1000);
+                $(event.target.previousElementSibling).animate({maxHeight: 100000}, 1000);
                 event.target.style.display = 'none';
             }
         })
@@ -177,6 +177,9 @@
             smartMenu.classList.add('nav__smartmenu_active');
             })
 
+window.onmousemove=(event)=>{
+    console.log(event.target)
+}
         function moduleView(id, navItem) { // скролить вікно та показує обраний в меню модуль сайту
             let target = document.querySelector(`#${id}`);
             let y1 = target.getBoundingClientRect().y;
