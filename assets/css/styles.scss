@@ -1,10 +1,11 @@
 $body_bgc: beige;
 $nav_bgc : rgb(65, 5, 5);
-$nav_bgc2 : rgb(39, 3, 3);
+$nav_bgc2 : rgb(29, 12, 1);
 $nav_text : beige;
 $nav_active_text : rgb(192, 126, 126);
 $nav_selected_text : rgb(209, 174, 174);
 $nav_height: 150px;
+$nav_smartphone_height: 100px;
 
 $smartphone_width: 900px;
 $tablet_width: 1050px;
@@ -26,12 +27,15 @@ $read_more_height: 10.5rem;
 $product_height: 400px;
 $product_width: 300px;
 
+$body_min_width: 350px;
+
 * {
     box-sizing: border-box;
 }
 
 
 body {
+    min-width: $body_min_width;
     font-family: 'Source Sans Pro';
     background-color: $body_bgc;
     background-image: url('../img/bg.jpg');
@@ -46,6 +50,10 @@ body {
     display: none!important;
 }
 
+.center {
+    text-align: center;
+}
+
 #home-arrow {
     border-radius: 50%;
     background-color: $header_text;
@@ -56,7 +64,7 @@ body {
     opacity: 0.5;
     color: $nav_text;
     position: fixed;
-    right: 30px;
+    right: 10px;
     bottom: 200px;
     z-index: 1;
     cursor: pointer;
@@ -90,9 +98,14 @@ nav {
     user-select: none;
     box-shadow: 0 0 20px 7px $nav_active_text;
     font-family: 'Merienda';
+    @media (max-width: $smartphone_width) {
+        height: $nav_smartphone_height;
+    }
     .nav__logo {
+        display: block;
         z-index:2;
         width: 30%;
+        height: inherit;
         @media (max-width: $tablet_width) {
             width: 35%;
         }
@@ -100,15 +113,14 @@ nav {
             width: 60%;
         }
         @media (max-width: $smartphone_width - 200) {
-            width: 80%;
+            width: 70%;
         }
         display: flex;
         align-items: center;
         justify-content: flex-start;
         img {
-            max-height: $nav_height * 0.9;
+            max-height: 90%;
             max-width: 100%;
-            height: auto;
         }
         .nav__logo__text {
             display: flex;
@@ -177,7 +189,7 @@ nav {
 
     .nav__button {
         @extend %nav-elements;
-        font-size: 1.5em;
+        font-size: 2.5rem;
         display: none;
         @media (max-width: $smartphone_width) {
             display: inline-block;
@@ -265,7 +277,7 @@ main {
 
     .main__module {
         position: relative;
-        min-height: 200px;
+        // min-height: 200px;
         width: 85%;
         margin: 50px 5% 50px 10%;
         padding: 10px;
@@ -305,7 +317,7 @@ main {
             %content-img {
                 width: 30%;
                 height: auto;
-                margin: 20px 0 10px;
+                // margin: 20px 0 10px;
             }
                 img {
                     max-width: 100%;
@@ -319,6 +331,10 @@ main {
                         margin-left: 20px;
                         padding: 0;
                         text-align: right;
+                        @media (max-width: $smartphone_width) {
+                            margin-left: 10px;
+                            width: 50%;
+                        }
                     }
                     &.img-left {
                         @extend %content-img;
@@ -327,6 +343,10 @@ main {
                         margin-right: 20px;
                         padding: 0;
                         text-align: left;
+                        @media (max-width: $smartphone_width) {
+                            margin-right: 10px;
+                            width: 50%;
+                        }
                     }
                 }
 
@@ -336,6 +356,11 @@ main {
                 margin-right: 20px;
                 padding: 0;
                 text-align: left;
+                @media (max-width: $smartphone_width) {
+                    margin-right: 10px;
+                    width: 50%;
+                }
+
             }
             
             .main__module__content__img2 {
@@ -344,6 +369,11 @@ main {
                 margin-left: 20px;
                 padding: 0;
                 text-align: right;
+                @media (max-width: $smartphone_width) {
+                    margin-left: 10px;
+                    width: 50%;
+                }
+
             }
             
             h1, h2, h3, h4, h5, h6 {
@@ -362,6 +392,8 @@ main {
                 text-align: justify;
                 width: 100%;
                 text-indent: 3%;
+                margin: 0;
+                margin-bottom: 20px;
                 &:first-of-type {
                     text-indent: 0;
                 }
@@ -375,6 +407,7 @@ main {
         
         &.main__module_slider {
             width: 100%;
+            text-align: center;
             margin: 0;
             padding: 0;
         }
@@ -388,11 +421,19 @@ main {
             .main__module__header {
                 color: $nav_text;
                 padding-left: 100px;
+                @media (max-width: $smartphone_width) {
+                    padding-left: 20px;
+                }
             }
             img {
                 position: absolute;
                 right: -10px;
                 top: -83px;
+                height: 90%;
+                @media (max-width: $smartphone_width) {
+                    display: none;
+                }
+
             }
             .main__module__content {
                 text-align: left;
@@ -400,13 +441,21 @@ main {
                 hr {margin-top: 50px;}
                 p {
                     padding-left: 120px;
+                    @media (max-width: $smartphone_width) {
+                        padding-left: 40px;
+                    }
                 }
 
                 h2 {
                     padding-left: 120px;
+                    @media (max-width: $smartphone_width) {
+                        padding-left: 40px;
+                    }
                     position: relative;
+
                     &.copyright{
                         font-size: 1em;
+                        color: $nav_text;
                         font-weight: normal;
                         text-align: center;
                         width: 100%;
@@ -429,10 +478,14 @@ main {
     }
 
     .main__module__portfolio {
-        .main__module__portfolio__bottom-text {
-            text-align: center!important;
-            font-family: 'barkentina_testregular';
-        }
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+        // .main__module__portfolio__bottom-text {
+        //     text-align: center!important;
+        //     font-family: 'barkentina_testregular';
+        //     margin-top: 20px!important;
+        // }
         .main__module_portfolio__content {
             display: flex;
             justify-content: space-around;
@@ -479,6 +532,9 @@ main {
                     margin: 0;
                     padding: 0;
                     width: $product_width;
+                    @media (max-width: $smartphone_width - 300) {
+                        width: $product_width * 0.7;
+                    }
                     height: $product_height;
                     cursor: pointer;
                     opacity: 0.7;
@@ -510,7 +566,7 @@ main {
     font-style: normal;
 }
 
-.main__module_wine {
+.main__module__content_wine {
     font-family: 'barkentina_testregular';
     color: $header_text;
     font-style: italic;
@@ -539,9 +595,12 @@ main {
     width: 430px;
     @media (max-width: $tablet_width) {
         width: 330px;
+        top: $nav_height * 0.8;
     }
     @media (max-width: $smartphone_width) {
         width: 210px;
+        left: -25px;
+        top: $nav_smartphone_height * 0.8;
     }
 }
 

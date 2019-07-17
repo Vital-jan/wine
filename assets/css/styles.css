@@ -5,6 +5,7 @@
 }
 
 body {
+  min-width: 350px;
   font-family: 'Source Sans Pro';
   background-color: beige;
   background-image: url("../img/bg.jpg");
@@ -19,6 +20,10 @@ body {
   display: none !important;
 }
 
+.center {
+  text-align: center;
+}
+
 #home-arrow {
   border-radius: 50%;
   background-color: #80011f;
@@ -29,7 +34,7 @@ body {
   opacity: 0.5;
   color: beige;
   position: fixed;
-  right: 30px;
+  right: 10px;
   bottom: 200px;
   z-index: 1;
   cursor: pointer;
@@ -74,8 +79,8 @@ nav {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  background: -webkit-gradient(linear, left top, right top, from(#410505), to(#270303));
-  background: linear-gradient(to right, #410505, #270303);
+  background: -webkit-gradient(linear, left top, right top, from(#410505), to(#1d0c01));
+  background: linear-gradient(to right, #410505, #1d0c01);
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
@@ -85,9 +90,17 @@ nav {
   font-family: 'Merienda';
 }
 
+@media (max-width: 900px) {
+  nav {
+    height: 100px;
+  }
+}
+
 nav .nav__logo {
+  display: block;
   z-index: 2;
   width: 30%;
+  height: inherit;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -113,14 +126,13 @@ nav .nav__logo {
 
 @media (max-width: 700px) {
   nav .nav__logo {
-    width: 80%;
+    width: 70%;
   }
 }
 
 nav .nav__logo img {
-  max-height: 135px;
+  max-height: 90%;
   max-width: 100%;
-  height: auto;
 }
 
 nav .nav__logo .nav__logo__text {
@@ -213,7 +225,7 @@ nav .nav__elem_active {
 }
 
 nav .nav__button {
-  font-size: 1.5em;
+  font-size: 2.5rem;
   display: none;
 }
 
@@ -320,7 +332,6 @@ main {
 
 main .main__module {
   position: relative;
-  min-height: 200px;
   width: 85%;
   margin: 50px 5% 50px 10%;
   padding: 10px;
@@ -367,7 +378,6 @@ main .main__module .main__module__content {
 main .main__module .main__module__content img.img-right, main .main__module .main__module__content img.img-left, main .main__module .main__module__content .main__module__content__img1, main .main__module .main__module__content .main__module__content__img2 {
   width: 30%;
   height: auto;
-  margin: 20px 0 10px;
 }
 
 main .main__module .main__module__content img {
@@ -385,12 +395,26 @@ main .main__module .main__module__content img.img-right {
   text-align: right;
 }
 
+@media (max-width: 900px) {
+  main .main__module .main__module__content img.img-right {
+    margin-left: 10px;
+    width: 50%;
+  }
+}
+
 main .main__module .main__module__content img.img-left {
   float: left;
   margin: 0;
   margin-right: 20px;
   padding: 0;
   text-align: left;
+}
+
+@media (max-width: 900px) {
+  main .main__module .main__module__content img.img-left {
+    margin-right: 10px;
+    width: 50%;
+  }
 }
 
 main .main__module .main__module__content .main__module__content__img1 {
@@ -400,11 +424,25 @@ main .main__module .main__module__content .main__module__content__img1 {
   text-align: left;
 }
 
+@media (max-width: 900px) {
+  main .main__module .main__module__content .main__module__content__img1 {
+    margin-right: 10px;
+    width: 50%;
+  }
+}
+
 main .main__module .main__module__content .main__module__content__img2 {
   float: right;
   margin-left: 20px;
   padding: 0;
   text-align: right;
+}
+
+@media (max-width: 900px) {
+  main .main__module .main__module__content .main__module__content__img2 {
+    margin-left: 10px;
+    width: 50%;
+  }
 }
 
 main .main__module .main__module__content li {
@@ -419,6 +457,8 @@ main .main__module .main__module__content p {
   text-align: justify;
   width: 100%;
   text-indent: 3%;
+  margin: 0;
+  margin-bottom: 20px;
 }
 
 main .main__module .main__module__content p:first-of-type {
@@ -433,6 +473,7 @@ main .main__module.main__module_full-width {
 
 main .main__module.main__module_slider {
   width: 100%;
+  text-align: center;
   margin: 0;
   padding: 0;
 }
@@ -449,10 +490,23 @@ main .main__module.main__module_footer .main__module__header {
   padding-left: 100px;
 }
 
+@media (max-width: 900px) {
+  main .main__module.main__module_footer .main__module__header {
+    padding-left: 20px;
+  }
+}
+
 main .main__module.main__module_footer img {
   position: absolute;
   right: -10px;
   top: -83px;
+  height: 90%;
+}
+
+@media (max-width: 900px) {
+  main .main__module.main__module_footer img {
+    display: none;
+  }
 }
 
 main .main__module.main__module_footer .main__module__content {
@@ -468,13 +522,26 @@ main .main__module.main__module_footer .main__module__content p {
   padding-left: 120px;
 }
 
+@media (max-width: 900px) {
+  main .main__module.main__module_footer .main__module__content p {
+    padding-left: 40px;
+  }
+}
+
 main .main__module.main__module_footer .main__module__content h2 {
   padding-left: 120px;
   position: relative;
 }
 
+@media (max-width: 900px) {
+  main .main__module.main__module_footer .main__module__content h2 {
+    padding-left: 40px;
+  }
+}
+
 main .main__module.main__module_footer .main__module__content h2.copyright {
   font-size: 1em;
+  color: beige;
   font-weight: normal;
   text-align: center;
   width: 100%;
@@ -493,9 +560,10 @@ main .main__module.main__module_footer .main__module__content h2.copyright img {
           box-sizing: content-box;
 }
 
-main .main__module__portfolio .main__module__portfolio__bottom-text {
-  text-align: center !important;
-  font-family: 'barkentina_testregular';
+main .main__module__portfolio {
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 main .main__module__portfolio .main__module_portfolio__content {
@@ -567,6 +635,12 @@ main .main__module__portfolio .main__module_portfolio__content .main__module_por
   opacity: 0.7;
 }
 
+@media (max-width: 600px) {
+  main .main__module__portfolio .main__module_portfolio__content .main__module_portfolio__content__product .main__module_portfolio__content__product__item {
+    width: 210px;
+  }
+}
+
 main .main__module__portfolio .main__module_portfolio__content .main__module_portfolio__content__product .main__module_portfolio__content__product__item:hover {
   opacity: 1;
 }
@@ -587,7 +661,7 @@ main .main__module__portfolio .main__module_portfolio__content .main__module_por
   font-style: normal;
 }
 
-.main__module_wine {
+.main__module__content_wine {
   font-family: 'barkentina_testregular';
   color: #80011f;
   font-style: italic;
@@ -625,12 +699,15 @@ main .main__module__portfolio .main__module_portfolio__content .main__module_por
 @media (max-width: 1050px) {
   .frame_top {
     width: 330px;
+    top: 120px;
   }
 }
 
 @media (max-width: 900px) {
   .frame_top {
     width: 210px;
+    left: -25px;
+    top: 80px;
   }
 }
 /*# sourceMappingURL=styles.css.map */

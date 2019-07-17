@@ -27,34 +27,42 @@
     require_once "footer.php";
 
     $main_content = array ( // контент сайту
-        array("menu_item"=>"Home", "id"=>"home", "class"=>"", 
-        "header"=>"Welcome to the wonderful world of wines from the county of Georgia!
+        array("menu_item"=>"Home", "id"=>"home", "class"=>"main__module_full-width center", 
+        "header"=>"Welcome to the wonderful world of wines from the county of Georgia!", 
+        "text"=>'', "img1"=>"", "img2"=>""),
 
-        ", 
+        array("menu_item"=>"", "id"=>"slider_module", "class"=>"main__module_slider", 
+        "header"=>"", 
+        "text"=>"<div id='slider'></div>", "img1"=>"", "img2"=>""),
+
+        array("menu_item"=>"", "id"=>"home-text", "class"=>"", 
+        "header"=>"", 
         "text"=>'<p>Georgian wines have become a must-have for the world’s best restaurants and wine merchants. Georgian wines are now among the trendiest in the world.</p>
-
+        <div class="read-more">
         <p>Georgia is the “Cradle of Wine” and is one of the oldest wine regions of the world. In Georgia there is evidence that wine has been made for more than 8,000 years. Georgia has some of the oldest and most distinct grape-growing terroirs on the planet, where they have cultivated not just vines, but a world-class wine culture. Georgia produces wines that are unlike anywhere else. Georgian grapes are unique, indigenous that often cannot be found elsewhere.   They present both unique flavors and aromas. Acid is a lot mellower and not as aggressive. Georgia boasts more than 500 varieties of indigenous grapes—nearly one-sixth of the world’s grape varieties—including endangered vines found nowhere else on Earth.</p>
         
         <p>Georgia is a small mountainous country in the area where Europe and Asia meet. Georgia is on the same latitude as Tuscany and has similar territorial conditions perfect for wine production.  A rich diversity of soil, climate, the angle at which the sun falls on the vineyards and the many indigenous grape varieties creates a huge variety of wine tastes and aromas.</p>
         
         <p>Gradually, Georgian wine is becoming more popular in the U.S. Take advantage and drink these wines. Be adventures with your palate. Drink different!  Are you ready for it?</p>
-        
-        ', "img1"=>"", "img2"=>"assets/img/wineglass.jpg"),
-
-        array("menu_item"=>"", "id"=>"slider_module", "class"=>"main__module__slider", 
-        "header"=>"", 
-        "text"=>"<div id='slider'></div>", "img1"=>"", "img2"=>""),
+        </div>
+        ', "img1"=>"", "img2"=>""),
 
         array("menu_item"=>"About us", "id"=>"about", "class"=>"", 
-        "header"=>"Welcome to the wonderful world of Georgian wines! We have created our company “World’s Finest Wines” with the aim of publicizing delicious, elegant and genuinely unique wines from the country of Georgia.", 
+        "header"=>"We have created our company “World’s Finest Wines” with the aim of publicizing delicious, elegant and genuinely unique wines from the country of Georgia.", 
         "text"=>$module_about, "img1"=>"assets/img/tost.jpg", "img2"=>""),
 
         array("menu_item"=>"Georgian Winemaking", "id"=>"gwines", "class"=>"", 
         "header"=>"Georgian Winemaking",
-        "text"=>$module_wines, "img1"=>"assets/img/marani.jpg", "img2"=>""),
+        "text"=>$module_wines, "img1"=>"assets/img/barrel.jpg", "img2"=>""),
+
+        array("menu_item"=>"Our portfolio", "id"=>"products", "class"=>"",
+        "header"=>"Explore our wines",
+        "text"=>"All of our wines are natural and organic.
+
+        The rich, intriguing and seductive flavors of Georgian wines will impress even the most sophisticated wine lovers. Try our wine and let the quality and character of the Georgian grapes speak for themselves", "img1"=>"", "img2"=>""),
 
         array("menu_item"=>"Our portfolio", "id"=>"products", "class"=>"main__module__portfolio",
-        "header"=>"Explore our wines",
+        "header"=>"",
         "text"=>$portfolio, "img1"=>"", "img2"=>""),
 
         array("menu_item"=>"Contact us", "id"=>"contacts", "class"=>"main__module_footer",
@@ -286,7 +294,7 @@ function wind (maxX, maxY, delay){ // анімація картинки вино
     }, time);
 }
 
-setSlider(4, 'assets/img/slider/', 'img', 3, 0.5, 'slider', [], false, false);
+setSlider(3, 'assets/img/slider/', 'img', 3, 0.5, 'slider', [], false, false);
 
 let currentProduct = 1; // поточний товар в слайдері товарів
 let maxProductNumber = document.querySelectorAll('.main__module_portfolio__content__product__item').length;
