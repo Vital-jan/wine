@@ -1,4 +1,12 @@
 @charset "UTF-8";
+@font-face {
+  font-family: 'barkentina_testregular';
+  src: url("../font/8735-webfont.eot");
+  src: url("../font/8735-webfont.eot?#iefix") format("embedded-opentype"), url("../font/8735-webfont.woff2") format("woff2"), url("../font/8735-webfont.woff") format("woff"), url("../font/8735-webfont.ttf") format("truetype"), url("../font/8735-webfont.svg#barkentina_testregular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -36,7 +44,7 @@ body {
   position: fixed;
   right: 10px;
   bottom: 200px;
-  z-index: 1;
+  z-index: 2;
   cursor: pointer;
   -webkit-transform: rotate(-90deg);
           transform: rotate(-90deg);
@@ -146,21 +154,11 @@ nav .nav__logo .nav__logo__text {
 }
 
 nav .nav__logo .nav__logo__text span {
+  color: beige;
   margin-left: 5px;
   font-family: 'barkentina_testregular';
   font-style: italic;
   font-weight: bold;
-}
-
-nav .nav__logo .nav__logo__text span:nth-child(1) {
-  font-size: 1.1em;
-  color: white;
-}
-
-nav .nav__logo .nav__logo__text span:nth-child(2) {
-  color: #bed1b7;
-  font-weight: normal;
-  font-size: 0.8em;
 }
 
 nav .nav__menu {
@@ -297,7 +295,6 @@ nav .nav__smartmenu .nav__smartmenu__close span {
   max-height: 0;
   overflow: hidden;
   position: relative;
-  z-index: 1;
 }
 
 .read-more-button {
@@ -467,14 +464,8 @@ main .main__module .main__module__content p:first-of-type {
 
 main .main__module.main__module_full-width {
   width: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-main .main__module.main__module_slider {
-  width: 100%;
-  text-align: center;
-  margin: 0;
+  margin-left: 0;
+  margin-right: 0;
   padding: 0;
 }
 
@@ -560,107 +551,6 @@ main .main__module.main__module_footer .main__module__content h2.copyright img {
           box-sizing: content-box;
 }
 
-main .main__module__portfolio {
-  width: 100%;
-  margin-left: 0;
-  margin-right: 0;
-}
-
-main .main__module__portfolio .main__module_portfolio__content {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-main .main__module__portfolio .main__module_portfolio__content .main__module_portfolio__content__arrow {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  position: relative;
-  z-index: 1;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background-color: #80011f;
-  cursor: pointer;
-  opacity: 0.5;
-}
-
-main .main__module__portfolio .main__module_portfolio__content .main__module_portfolio__content__arrow.left {
-  -webkit-transform: rotate(180deg);
-          transform: rotate(180deg);
-}
-
-main .main__module__portfolio .main__module_portfolio__content .main__module_portfolio__content__arrow::before {
-  content: '\27a4';
-}
-
-main .main__module__portfolio .main__module_portfolio__content .main__module_portfolio__content__product {
-  width: 80%;
-  height: 400px;
-  overflow: hidden;
-  position: relative;
-  margin: 0;
-  padding: 0;
-  -webkit-box-sizing: content-box;
-          box-sizing: content-box;
-}
-
-main .main__module__portfolio .main__module_portfolio__content .main__module_portfolio__content__product .main__module_portfolio__content__product__item {
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: #fff;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  display: inline-block;
-  overflow: hidden;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-  width: 300px;
-  height: 400px;
-  cursor: pointer;
-  opacity: 0.7;
-}
-
-@media (max-width: 600px) {
-  main .main__module__portfolio .main__module_portfolio__content .main__module_portfolio__content__product .main__module_portfolio__content__product__item {
-    width: 210px;
-  }
-}
-
-main .main__module__portfolio .main__module_portfolio__content .main__module_portfolio__content__product .main__module_portfolio__content__product__item:hover {
-  opacity: 1;
-}
-
-main .main__module__portfolio .main__module_portfolio__content .main__module_portfolio__content__product .main__module_portfolio__content__product__item img {
-  max-height: 100%;
-  max-width: 100%;
-  margin: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
-@font-face {
-  font-family: 'barkentina_testregular';
-  src: url("../font/8735-webfont.eot");
-  src: url("../font/8735-webfont.eot?#iefix") format("embedded-opentype"), url("../font/8735-webfont.woff2") format("woff2"), url("../font/8735-webfont.woff") format("woff"), url("../font/8735-webfont.ttf") format("truetype"), url("../font/8735-webfont.svg#barkentina_testregular") format("svg");
-  font-weight: normal;
-  font-style: normal;
-}
-
 .main__module__content_wine {
   font-family: 'barkentina_testregular';
   color: #80011f;
@@ -707,7 +597,7 @@ main .main__module__portfolio .main__module_portfolio__content .main__module_por
   .frame_top {
     width: 210px;
     left: -25px;
-    top: 80px;
+    top: 100px;
   }
 }
 /*# sourceMappingURL=styles.css.map */

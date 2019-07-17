@@ -30,16 +30,16 @@
         ),
     );
     $portfolio="
-        <div class='main__module_portfolio__content'>
-            <div id='product-left-arrow' class='main__module_portfolio__content__arrow left'></div>
-            <div class='main__module_portfolio__content__product'>
-                <div class='main__module_portfolio__content__product__item'><img src='assets/img/product/wine1.png'></div>
-                <div class='main__module_portfolio__content__product__item'><img src='assets/img/product/wine2.jpg'></div>
-                <div class='main__module_portfolio__content__product__item'><img src='assets/img/product/wine3.jpg'></div>
-                <div class='main__module_portfolio__content__product__item'><img src='assets/img/product/wine4.jpg'></div>
-                <div class='main__module_portfolio__content__product__item'><img src='assets/img/product/wine5.jpg'></div>
-            </div>
-            <div id='product-right-arrow' class='main__module_portfolio__content__arrow'></div>
-        </div>
+    <div class='explorer-portfolio' id='portfolio'>
+    <div class='explorer-portfolio__arrow left'></div>
+    <div class='explorer-portfolio__product-list'>
+      <div class='explorer-portfolio__product-list__item'>a<img src='assets/img/product/wine1.png'></div>
+      <div class='explorer-portfolio__product-list__item'>b<img src='assets/img/product/wine2.jpg'></div>
+      <div class='explorer-portfolio__product-list__item'>c<img src='assets/img/product/wine3.jpg'></div>
+      <div class='explorer-portfolio__product-list__item'>d<img src='assets/img/product/wine4.jpg'></div>
+      <div class='explorer-portfolio__product-list__item'>e<img src='assets/img/product/wine5.jpg'></div>
+    </div>
+    <div class='explorer-portfolio__arrow right'></div>
+    </div>
     ";
     ?>

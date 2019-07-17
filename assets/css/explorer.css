@@ -1,0 +1,193 @@
+.explorer-slider {
+  margin: 0 auto;
+  position: relative;
+  width: 100%;
+  clear: both;
+  text-align: center;
+  height: 550px;
+}
+
+.explorer-slider img {
+  opacity: 0;
+  height: 100%;
+  position: absolute;
+  height: auto;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.explorer-slider .circles {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+}
+
+.explorer-slider .circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: white;
+  border: 5px solid white;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 2px;
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+.explorer-slider .circle:hover {
+  opacity: 0.9;
+}
+
+.explorer-slider .arrow {
+  color: white;
+  border: 1px solid darkgray;
+  background-color: gray;
+  opacity: 0.5;
+  font-weight: bold;
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  font-size: 2rem;
+  line-height: 2rem;
+  margin: 0 5px;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.explorer-slider .arrow.no-active {
+  cursor: default;
+}
+
+.explorer-slider .arrow.no-active:hover {
+  opacity: 0.5;
+}
+
+.explorer-slider .arrow:hover {
+  opacity: 1;
+}
+
+.explorer-slider h3 {
+  font-weight: normal;
+  text-align: center;
+  font-size: 20px;
+  left: 0;
+  right: 0;
+  margin: 5px auto;
+  position: absolute;
+  bottom: -30px;
+  text-align: center;
+  height: 25px;
+  overflow: hidden;
+  opacity: 0;
+  font-family: sans-serif;
+}
+
+.explorer-portfolio {
+  width: 100%;
+  margin: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.explorer-portfolio .explorer-portfolio__arrow {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  z-index: 1;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 50px !important;
+  height: 50px;
+  border-radius: 50%;
+  background-color: red;
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+.explorer-portfolio .explorer-portfolio__arrow.left {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+  margin-left: 10px;
+}
+
+.explorer-portfolio .explorer-portfolio__arrow.left {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+  margin-right: 10px;
+}
+
+.explorer-portfolio .explorer-portfolio__arrow::before {
+  content: '\27a4';
+  position: relative;
+  top: -2px;
+}
+
+.explorer-portfolio .explorer-portfolio__product-list {
+  width: 80%;
+  height: 400px;
+  overflow: hidden;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+}
+
+.explorer-portfolio .explorer-portfolio__product-list .explorer-portfolio__product-list__item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: white;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: inline-block;
+  overflow: hidden;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  width: 300px;
+  height: 400px;
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.explorer-portfolio .explorer-portfolio__product-list .explorer-portfolio__product-list__item:hover {
+  opacity: 1;
+}
+
+.explorer-portfolio .explorer-portfolio__product-list .explorer-portfolio__product-list__item img {
+  max-height: 100%;
+  max-width: 100%;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+/*# sourceMappingURL=explorer.css.map */

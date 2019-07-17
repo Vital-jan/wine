@@ -10,10 +10,10 @@
     <meta name='author' content='Vitalii Kolomiiets, Kyiv, Ukraine, vitaljan@gmail.com viber:+380632209770'>
     <title>World's Finest Wines</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="assets/js/slider.js"></script>
+    <script src="assets/js/explorer.js"></script>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="stylesheet" href="assets/css/slider.css">
+    <link rel="stylesheet" href="assets/css/explorer.css">
     <link href="https://fonts.googleapis.com/css?family=Merienda|Source+Sans+Pro&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- font-family: 'Merienda', cursive;
@@ -27,11 +27,11 @@
     require_once "footer.php";
 
     $main_content = array ( // контент сайту
-        array("menu_item"=>"Home", "id"=>"home", "class"=>"main__module_full-width center", 
+        array("menu_item"=>"Home", "id"=>"home", "class"=>"main__module_full-width center", // блок полной ширины с центрированным текстом
         "header"=>"Welcome to the wonderful world of wines from the county of Georgia!", 
         "text"=>'', "img1"=>"", "img2"=>""),
 
-        array("menu_item"=>"", "id"=>"slider_module", "class"=>"main__module_slider", 
+        array("menu_item"=>"", "id"=>"slider_module", "class"=>"main__module_full-width", // блок полной ширины для слайдера
         "header"=>"", 
         "text"=>"<div id='slider'></div>", "img1"=>"", "img2"=>""),
 
@@ -48,20 +48,20 @@
         ', "img1"=>"", "img2"=>""),
 
         array("menu_item"=>"About us", "id"=>"about", "class"=>"", 
-        "header"=>"We have created our company “World’s Finest Wines” with the aim of publicizing delicious, elegant and genuinely unique wines from the country of Georgia.", 
+        "header"=>"About us", 
         "text"=>$module_about, "img1"=>"assets/img/tost.jpg", "img2"=>""),
 
         array("menu_item"=>"Georgian Winemaking", "id"=>"gwines", "class"=>"", 
         "header"=>"Georgian Winemaking",
         "text"=>$module_wines, "img1"=>"assets/img/barrel.jpg", "img2"=>""),
 
-        array("menu_item"=>"Our portfolio", "id"=>"products", "class"=>"",
+        array("menu_item"=>"Explore our wines", "id"=>"products", "class"=>"",
         "header"=>"Explore our wines",
-        "text"=>"All of our wines are natural and organic.
+        "text"=>"All our wines are natural and organic.
 
         The rich, intriguing and seductive flavors of Georgian wines will impress even the most sophisticated wine lovers. Try our wine and let the quality and character of the Georgian grapes speak for themselves", "img1"=>"", "img2"=>""),
 
-        array("menu_item"=>"Our portfolio", "id"=>"products", "class"=>"main__module__portfolio",
+        array("menu_item"=>"", "id"=>"", "class"=>"main__module_full-width", // блок полной ширины для портфолио
         "header"=>"",
         "text"=>$portfolio, "img1"=>"", "img2"=>""),
 
@@ -160,7 +160,7 @@
         let homeArrowVisible = false;
         let currentNavElement = document.querySelector('.nav__elem');
 
-        document.querySelectorAll('.read-more').forEach((i)=>{ // створюємо кнопки "Read more" після всіх елементів з відповідним класом
+        document.querySelectorAll('.read-more').forEach((i)=>{ // створюємо кнопки "Read more" для всіх елементів з відповідним класом
             let btn = document.createElement('button');
             $(btn).insertAfter(i);
             btn.classList.add('read-more-button');
@@ -185,9 +185,6 @@
             smartMenu.classList.add('nav__smartmenu_active');
             })
 
-window.onmousemove=(event)=>{
-    console.log(event.target)
-}
         function moduleView(id, navItem) { // скролить вікно та показує обраний в меню модуль сайту
             let target = document.querySelector(`#${id}`);
             let y1 = target.getBoundingClientRect().y;
@@ -249,7 +246,9 @@ window.onmousemove=(event)=>{
             currentNavElement = document.querySelector('.nav__elem');
             moduleView(document.querySelector('.main__module').getAttribute('id'), currentNavElement);
         })
-// ---------------------------------------------------------------------------------- шаблон
+
+// ---------------------------------------------------------------------------------- кінець шаблону сайту
+
 let windAnimation = false; // чи відбувається анімація в реальному часі
 
 function wind (maxX, maxY, delay){ // анімація картинки виноградна лоза
@@ -296,83 +295,9 @@ function wind (maxX, maxY, delay){ // анімація картинки вино
 
 setSlider(3, 'assets/img/slider/', 'img', 3, 0.5, 'slider', [], false, false);
 
-let currentProduct = 1; // поточний товар в слайдері товарів
-let maxProductNumber = document.querySelectorAll('.main__module_portfolio__content__product__item').length;
+setPortfolio('portfolio', getComputedStyle(document.querySelector('nav')).color, 'rgb(65, 5, 5)');
+// --------------------------------------------------------------
 
-function productRefresh(parent, blockChain, margin = 10) { // оновлення переліку товарів
-//parent - батьківський ел-т, який містить перелік товарів
-//blockChain - масив елементів-товарів
-//margin - сумарний лівий та правий маржин між товарами (дублюється в productShift)
-    currentProduct = 1;
-    let x = parent.getBoundingClientRect().width;
-    let w = blockChain[0].getBoundingClientRect().width + margin;
-    let n = Math.floor(x / w);
-    let lm = x;
-    if (n > 0) lm = (x - w * n) / (n + 1);
-    let left = lm;
-    blockChain.forEach((i)=>{
-        i.style.left = left+'px';
-        left += lm + w;
-    })
-}
-
-function productShift(parent, blockChain, direction, margin = 10) { // зсув переліку товарів
-//parent - батьківський ел-т, який містить перелік товарів
-//blockChain - масив елементів-товарів
-//direction - напрямок зсуву анімації
-//margin - сумарний лівий та правий маржин між товарами (дублюється в productRefresh)
-if (currentProduct == 1 && direction == '+=') return;
-if (currentProduct == maxProductNumber && direction == '-=') return;
-currentProduct = direction == '+=' ? currentProduct - 1 : currentProduct + 1;
-let x = parent.getBoundingClientRect().width;
-let w = blockChain[0].getBoundingClientRect().width + margin;
-let n = Math.floor(x / w);
-let lm = x;
-if (n > 0) lm = (x - w * n) / (n + 1);
-blockChain.forEach((i)=>{
-    $(i).animate({left: `${direction}${lm+w}`});
-});
-}
-
-document.querySelector('#product-right-arrow').addEventListener('click', (event)=>{ // зсув переліку товарів по кліку стрілки
-    productShift(document.querySelector('.main__module_portfolio__content__product'),
-                document.querySelectorAll('.main__module_portfolio__content__product__item'), '-=');
-});
-
-document.querySelector('#product-left-arrow').addEventListener('click', (event)=>{ // зсув переліку товарів по кліку стрілки
-    productShift(document.querySelector('.main__module_portfolio__content__product'),
-                document.querySelectorAll('.main__module_portfolio__content__product__item'), '+=');
-});
-
-document.querySelector('#product-right-arrow').addEventListener('mouseenter', (event)=>{ // анімація стрілки по наведенню
-    if (currentProduct < maxProductNumber) {
-        event.target.style.opacity = 1;
-        $(event.target).animate({top: '+=5'}, 100).animate({top: '-=5'}, 100);;
-    }
-});
-
-document.querySelector('#product-right-arrow').addEventListener('mouseleave', (event)=>{ // анімація стрілки по наведенню
-    event.target.style.opacity = 0.7;
-});
-
-document.querySelector('#product-left-arrow').addEventListener('mouseenter', (event)=>{ // анімація стрілки по наведенню
-    if (currentProduct > 1) {
-        event.target.style.opacity = 1;
-        $(event.target).animate({top: '+=5'}, 100).animate({top: '-=5'}, 100);;
-    }
-});
-
-document.querySelector('#product-left-arrow').addEventListener('mouseleave', (event)=>{ // анімація стрілки по наведенню
-    event.target.style.opacity = 0.7;
-});
-
-productRefresh(document.querySelector('.main__module_portfolio__content__product'), // вивід переліку товарів після завантаження сторінки
-                document.querySelectorAll('.main__module_portfolio__content__product__item'));
-
-window.onresize = ()=> { // оновлення переліку товарів після зміни розміру екрану
-    productRefresh(document.querySelector('.main__module_portfolio__content__product'),
-                document.querySelectorAll('.main__module_portfolio__content__product__item'));
-}
 
 window.onscroll = ()=>{
             wind(1, 3, 800); // анімація картинки виноградна лоза

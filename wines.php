@@ -2,7 +2,7 @@
 $module_wines = "
     <div>
 
-        <p>The process of winemaking is one of a kind.
+        <p>The process of Georgian winemaking is one of a kind.
 
         Now days, the process of winemaking in Georgia uses a wide range of techniques—from the traditional Georgian method of fermenting the wine in clay Qvevri’s, to the European process using modern equipment and techniques, like stainless steel tanks and oak barrels.  Wine made today in the traditional Georgian method follows the same process Georgians have developed to make wine more than 8,000 years. The process of winemaking is one of a kind.
         
