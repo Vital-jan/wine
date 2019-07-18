@@ -18,6 +18,10 @@ $smartmenu_border_radius: 5px;
 $header_text: rgb(128,1,31);
 $normal_text: rgb(46, 66, 38);
 
+$font_normal: 'Source Sans Pro';
+$font_header: 'merienda';
+$font_logo: 'barkentina_testregular';
+
 $body_min_width: 350px;
 
 // Главное меню (шапка) - z-index: 2;
@@ -37,10 +41,13 @@ $body_min_width: 350px;
 
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    position: relative;
 }
 
-
 body {
+    position: relative;
     min-width: $body_min_width;
     font-family: 'Source Sans Pro';
     background-color: $body_bgc;
@@ -57,8 +64,17 @@ body {
 }
 
 .center {
-    text-align: center;
+    text-align: center!important;
 }
+
+.layer1 {
+    z-index: 1!important;
+}
+
+.layer2 {
+    z-index: 2!important;
+}
+
 
 #home-arrow {
     border-radius: 50%;
@@ -103,7 +119,7 @@ nav {
     background: linear-gradient(to right, $nav_bgc, $nav_bgc2);
     user-select: none;
     box-shadow: 0 0 20px 7px $nav_active_text;
-    font-family: 'Merienda';
+    font-family: $font_header;
     @media (max-width: $smartphone_width) {
         height: $nav_smartphone_height;
     }
@@ -134,7 +150,7 @@ nav {
             span {
                 color: $nav_text;
                 margin-left: 5px;
-                font-family: 'barkentina_testregular';
+                font-family: $font_logo;
                 font-style: italic;
                 font-weight: bold;
             }
@@ -240,12 +256,11 @@ nav {
 .read-more {
     max-height: 0;
     overflow: hidden;
-    position: relative;
-    // z-index: 1;
+    
 }
 
 .read-more-button {
-    position: relative;
+    
     display: block;
     z-index: 1;
     top: -10px;
@@ -260,21 +275,20 @@ nav {
     margin-top: 20px;
     cursor: pointer;
     &::before {
-        position: relative;
+        
         content: "Read more ...";
         z-index: 1;
     }
 }
 
-
 main {
     height: 100%;
     width: 100%;
     margin-top: $nav_height * 1.5;
-    position: relative;
+    
 
     .main__module {
-        position: relative;
+        
         width: 85%;
         margin: 50px 5% 50px 10%;
         padding: 10px;
@@ -292,14 +306,15 @@ main {
             width: 100%;
             color: $header_text;
             font-size: 1.5rem;
-            font-family: 'merienda';
+            font-family: $font_header;
+            margin-bottom: 20px;
         }
         
         %sub-header {
             width: 100%;
             color: $normal_text;
             font-size: 1.4rem;
-            font-family: 'Source Sans Pro';
+            font-family: $font_normal;
             font-weight: bold;
         }
 
@@ -309,43 +324,44 @@ main {
 
         .main__module__content {
             width: 100%;
-            position: relative;
+            
 
             %content-img {
                 width: 30%;
                 height: auto;
-                // margin: 20px 0 10px;
             }
-                img {
-                    max-width: 100%;
-                    position: relative;
+
+            img {
+                max-width: 100%;
+                
+                margin: 0;
+                height: auto;
+
+                &.img-right {
+                    @extend %content-img;
+                    float: right;
                     margin: 0;
-                    height: auto;
-                    &.img-right {
-                        @extend %content-img;
-                        float: right;
-                        margin: 0;
-                        margin-left: 20px;
-                        padding: 0;
-                        text-align: right;
-                        @media (max-width: $smartphone_width) {
-                            margin-left: 10px;
-                            width: 50%;
-                        }
-                    }
-                    &.img-left {
-                        @extend %content-img;
-                        float: left;
-                        margin: 0;
-                        margin-right: 20px;
-                        padding: 0;
-                        text-align: left;
-                        @media (max-width: $smartphone_width) {
-                            margin-right: 10px;
-                            width: 50%;
-                        }
+                    margin-left: 20px;
+                    padding: 0;
+                    text-align: right;
+                    @media (max-width: $smartphone_width) {
+                        margin-left: 10px;
+                        width: 50%;
                     }
                 }
+                &.img-left {
+                    @extend %content-img;
+                    float: left;
+                    margin: 0;
+                    margin-right: 20px;
+                    padding: 0;
+                    text-align: left;
+                    @media (max-width: $smartphone_width) {
+                        margin-right: 10px;
+                        width: 50%;
+                    }
+                }
+            }
 
             .main__module__content__img1 {
                 @extend %content-img;
@@ -388,14 +404,18 @@ main {
             p {
                 text-align: justify;
                 width: 100%;
-                text-indent: 3%;
+                text-indent: 2%;
                 margin: 0;
                 margin-bottom: 20px;
-                &:first-of-type {
-                    text-indent: 0;
-                }
             }
-        }
+
+            b {
+                font-family: $font_header;
+                color: $header_text;
+                font-weight: bold;
+            }
+        } // main__module__content
+        
         &.main__module_full-width {
             width: 100%;
             margin-left: 0;
@@ -403,80 +423,67 @@ main {
             padding: 0;
         }
         
-        &.main__module_footer {
-            width: 100%;
-            margin: 0;
-            background-color: $nav_bgc;
-            position: relative;
 
-            .main__module__header {
-                color: $nav_text;
-                padding-left: 100px;
-                @media (max-width: $smartphone_width) {
-                    padding-left: 20px;
-                }
-            }
-            img {
-                position: absolute;
-                right: -10px;
-                top: -83px;
-                height: 90%;
-                @media (max-width: $smartphone_width) {
-                    display: none;
-                }
+    } // main__module
+} // main
 
-            }
-            .main__module__content {
-                text-align: left;
-                color: $nav_text;
-                hr {margin-top: 50px;}
-                p {
-                    padding-left: 120px;
-                    @media (max-width: $smartphone_width) {
-                        padding-left: 40px;
-                    }
-                }
+footer {
+    background-color: $nav_bgc;
+    color: $nav_text;
+    width: 100%;
+    margin: 0;
+    
 
-                h2 {
-                    padding-left: 120px;
-                    @media (max-width: $smartphone_width) {
-                        padding-left: 40px;
-                    }
-                    position: relative;
+    
+    .footer__header {
+        padding-left: 100px;
+        font-family: $font_header;
+        font-size: 1.5rem;
+        @media (max-width: $smartphone_width) {
+            padding-left: 20px;
+        }
+    }
+    
+    .footer__content {
+        
+        text-align: left;
+        margin-left: 120px;
+        @media (max-width: $smartphone_width) {
+            margin-left: 40px;
+        }
 
-                    &.copyright{
-                        font-size: 1em;
-                        color: $nav_text;
-                        font-weight: normal;
-                        text-align: center;
-                        width: 100%;
-                        padding-left: 0;
-                        img {
-                            position: absolute;
-                            left: 0;
-                            right: 0;
-                            margin: auto;
-                            top: -60px;
-                            width: 50px;
-                            background-color: $nav-bgc;
-                            box-sizing: content-box;
-                        }
-                    }
-                }
+        img {
+            position: absolute;
+            max-height: 166%;
+            right: 0;
+            top: -34px;
+            @media (max-width: $smartphone_width) {
+                display: none;
             }
         }
 
     }
+    
+    .footer-copyright {
+        
+        text-align: center;
+        hr {
+            margin: 50px 0;
+        }
+        img {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: -30px;
+            margin: auto;
+            width: 50px;
+            background-color: $nav-bgc;
+            box-sizing: content-box;
+        }
+    }
 
-} // main
+} // footer
 
-.main__module__content_wine {
-    font-family: 'barkentina_testregular';
-    color: $header_text;
-    font-style: italic;
-    font-weight: bold;
-    margin-right: 15px;
-}
 
 .grape {
     position: fixed;
@@ -499,12 +506,11 @@ main {
     width: 430px;
     @media (max-width: $tablet_width) {
         width: 330px;
-        top: $nav_height * 0.8;
     }
     @media (max-width: $smartphone_width) {
         width: 210px;
         left: -25px;
-        top: $nav_smartphone_height;
+        top: $nav_smartphone_height * 0.8;
     }
 }
 

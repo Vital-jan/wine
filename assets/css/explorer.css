@@ -1,16 +1,22 @@
+* {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
 .explorer-slider {
   margin: 0 auto;
   position: relative;
   width: 100%;
   clear: both;
   text-align: center;
-  height: 550px;
 }
 
 .explorer-slider img {
   opacity: 0;
   height: 100%;
-  position: absolute;
   height: auto;
   bottom: 0;
   left: 0;
@@ -138,9 +144,7 @@
   margin-left: 10px;
 }
 
-.explorer-portfolio .explorer-portfolio__arrow.left {
-  -webkit-transform: rotate(180deg);
-          transform: rotate(180deg);
+.explorer-portfolio .explorer-portfolio__arrow.right {
   margin-right: 10px;
 }
 
@@ -163,6 +167,7 @@
 
 .explorer-portfolio .explorer-portfolio__product-list .explorer-portfolio__product-list__item {
   position: absolute;
+  overflow: hidden;
   top: 0;
   left: 0;
   background-color: white;

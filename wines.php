@@ -23,24 +23,24 @@ $module_wines = "
         </p>
 
         <ul>
-            <li><span class=\"main__module__content_wine\">Saperavi:</span> Georgia’s flagship wine and award winner is your introduction to Georgian wine. It has been produced since 1886 and used in many blends. Saperavi means \"dye;\" its color is deep red to black.</li>
+            <li><b>Saperavi:</b> Georgia’s flagship wine and award winner is your introduction to Georgian wine. It has been produced since 1886 and used in many blends. Saperavi means \"dye;\" its color is deep red to black.</li>
 
-            <li><span class=\"main__module__content_wine\">Rkatsiteli:</span> Georgia’s best-known white wine; it’s often compared to a Petit Chablis.</li>
+            <li><b>Rkatsiteli:</b> Georgia’s best-known white wine; it’s often compared to a Petit Chablis.</li>
 
-            <li><span class=\"main__module__content_wine\">Mukuzani:</span> From the Saperavi grape and stored in oak barrels for nine months. It’s one of Georgia’s highest-quality wines and the best I had in my two-week visit.</li>
+            <li><b>Mukuzani:</b> From the Saperavi grape and stored in oak barrels for nine months. It’s one of Georgia’s highest-quality wines and the best I had in my two-week visit.</li>
 
-            <li><span class=\"main__module__content_wine\">Kindzmarauli:</span> A semisweet that’s been produced since 1942. Also from the Saperavi grape. It has won numerous international contests.</li>
+            <li><b>Kindzmarauli:</b> A semisweet that’s been produced since 1942. Also from the Saperavi grape. It has won numerous international contests.</li>
 
-            <li><span class=\"main__module__content_wine\">Tsolikouri:</span> A semisweet white often used in blends for the international market.</li>
+            <li><b>Tsolikouri:</b> A semisweet white often used in blends for the international market.</li>
 
-            <li><span class=\"main__module__content_wine\">Tsinandali:</span> A blend of Rkatsiteli and Mtsvane grapes. It’s one of Georgia’s most popular, inexpensive table wines.</li>
+            <li><b>Tsinandali:</b> A blend of Rkatsiteli and Mtsvane grapes. It’s one of Georgia’s most popular, inexpensive table wines.</li>
 
-            <li><span class=\"main__module__content_wine\">Khvanchkara:</span> The favorite of the most famous Georgian, Joseph Stalin. Its blend of Mujuretukit and Alexandreuli grapes is semisweet and relatively expensive.</li>
+            <li><b>Khvanchkara:</b> The favorite of the most famous Georgian, Joseph Stalin. Its blend of Mujuretukit and Alexandreuli grapes is semisweet and relatively expensive.</li>
 
-            <li><span class=\"main__module__content_wine\">Mtsvane Pét-Nat:</span> One of Georgia’s best-known sparkling wines, which are growing in popularity. Made in qvevri, Mtsvane means “new, young and green.” Okro’s Wines’ Mtsvane Pét-Nat made Esquire’s 2017 list of the world’s top 10 sparkling wines.</li>
+            <li><b>Mtsvane Pét-Nat:</b> One of Georgia’s best-known sparkling wines, which are growing in popularity. Made in qvevri, Mtsvane means “new, young and green.” Okro’s Wines’ Mtsvane Pét-Nat made Esquire’s 2017 list of the world’s top 10 sparkling wines.</li>
 
-            <li><span class=\"main__module__content_wine\">Ojaleshi:</span> This semisweet is considered one of Georgia’s best red wines. The name means “grows on trees,” which the grape once did.</li>
-            <li><span class=\"main__module__content_wine\">Khikhvi:</span> A versatile white dry table wine made in qvevri.</li>
+            <li><b>Ojaleshi:</b> This semisweet is considered one of Georgia’s best red wines. The name means “grows on trees,” which the grape once did.</li>
+            <li><b>Khikhvi:</b> A versatile white dry table wine made in qvevri.</li>
         </ul>
     </div>
     </div>

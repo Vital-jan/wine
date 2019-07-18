@@ -10,9 +10,13 @@
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  position: relative;
 }
 
 body {
+  position: relative;
   min-width: 350px;
   font-family: 'Source Sans Pro';
   background-color: beige;
@@ -29,7 +33,15 @@ body {
 }
 
 .center {
-  text-align: center;
+  text-align: center !important;
+}
+
+.layer1 {
+  z-index: 1 !important;
+}
+
+.layer2 {
+  z-index: 2 !important;
 }
 
 #home-arrow {
@@ -95,7 +107,7 @@ nav {
           user-select: none;
   -webkit-box-shadow: 0 0 20px 7px #c07e7e;
           box-shadow: 0 0 20px 7px #c07e7e;
-  font-family: 'Merienda';
+  font-family: "merienda";
 }
 
 @media (max-width: 900px) {
@@ -156,7 +168,7 @@ nav .nav__logo .nav__logo__text {
 nav .nav__logo .nav__logo__text span {
   color: beige;
   margin-left: 5px;
-  font-family: 'barkentina_testregular';
+  font-family: "barkentina_testregular";
   font-style: italic;
   font-weight: bold;
 }
@@ -294,11 +306,9 @@ nav .nav__smartmenu .nav__smartmenu__close span {
 .read-more {
   max-height: 0;
   overflow: hidden;
-  position: relative;
 }
 
 .read-more-button {
-  position: relative;
   display: block;
   z-index: 1;
   top: -10px;
@@ -315,7 +325,6 @@ nav .nav__smartmenu .nav__smartmenu__close span {
 }
 
 .read-more-button::before {
-  position: relative;
   content: "Read more ...";
   z-index: 1;
 }
@@ -324,11 +333,9 @@ main {
   height: 100%;
   width: 100%;
   margin-top: 225px;
-  position: relative;
 }
 
 main .main__module {
-  position: relative;
   width: 85%;
   margin: 50px 5% 50px 10%;
   padding: 10px;
@@ -356,20 +363,20 @@ main .main__module .main__module__header {
   width: 100%;
   color: #80011f;
   font-size: 1.5rem;
-  font-family: 'merienda';
+  font-family: "merienda";
+  margin-bottom: 20px;
 }
 
 main .main__module .main__module__sub-header, main .main__module .main__module__content h1, main .main__module .main__module__content h2, main .main__module .main__module__content h3, main .main__module .main__module__content h4, main .main__module .main__module__content h5, main .main__module .main__module__content h6 {
   width: 100%;
   color: #2e4226;
   font-size: 1.4rem;
-  font-family: 'Source Sans Pro';
+  font-family: "Source Sans Pro";
   font-weight: bold;
 }
 
 main .main__module .main__module__content {
   width: 100%;
-  position: relative;
 }
 
 main .main__module .main__module__content img.img-right, main .main__module .main__module__content img.img-left, main .main__module .main__module__content .main__module__content__img1, main .main__module .main__module__content .main__module__content__img2 {
@@ -379,7 +386,6 @@ main .main__module .main__module__content img.img-right, main .main__module .mai
 
 main .main__module .main__module__content img {
   max-width: 100%;
-  position: relative;
   margin: 0;
   height: auto;
 }
@@ -453,13 +459,15 @@ main .main__module .main__module__content div {
 main .main__module .main__module__content p {
   text-align: justify;
   width: 100%;
-  text-indent: 3%;
+  text-indent: 2%;
   margin: 0;
   margin-bottom: 20px;
 }
 
-main .main__module .main__module__content p:first-of-type {
-  text-indent: 0;
+main .main__module .main__module__content b {
+  font-family: "merienda";
+  color: #80011f;
+  font-weight: bold;
 }
 
 main .main__module.main__module_full-width {
@@ -469,94 +477,67 @@ main .main__module.main__module_full-width {
   padding: 0;
 }
 
-main .main__module.main__module_footer {
+footer {
+  background-color: #410505;
+  color: beige;
   width: 100%;
   margin: 0;
-  background-color: #410505;
-  position: relative;
 }
 
-main .main__module.main__module_footer .main__module__header {
-  color: beige;
+footer .footer__header {
   padding-left: 100px;
+  font-family: "merienda";
+  font-size: 1.5rem;
 }
 
 @media (max-width: 900px) {
-  main .main__module.main__module_footer .main__module__header {
+  footer .footer__header {
     padding-left: 20px;
   }
 }
 
-main .main__module.main__module_footer img {
-  position: absolute;
-  right: -10px;
-  top: -83px;
-  height: 90%;
+footer .footer__content {
+  text-align: left;
+  margin-left: 120px;
 }
 
 @media (max-width: 900px) {
-  main .main__module.main__module_footer img {
+  footer .footer__content {
+    margin-left: 40px;
+  }
+}
+
+footer .footer__content img {
+  position: absolute;
+  max-height: 166%;
+  right: 0;
+  top: -34px;
+}
+
+@media (max-width: 900px) {
+  footer .footer__content img {
     display: none;
   }
 }
 
-main .main__module.main__module_footer .main__module__content {
-  text-align: left;
-  color: beige;
-}
-
-main .main__module.main__module_footer .main__module__content hr {
-  margin-top: 50px;
-}
-
-main .main__module.main__module_footer .main__module__content p {
-  padding-left: 120px;
-}
-
-@media (max-width: 900px) {
-  main .main__module.main__module_footer .main__module__content p {
-    padding-left: 40px;
-  }
-}
-
-main .main__module.main__module_footer .main__module__content h2 {
-  padding-left: 120px;
-  position: relative;
-}
-
-@media (max-width: 900px) {
-  main .main__module.main__module_footer .main__module__content h2 {
-    padding-left: 40px;
-  }
-}
-
-main .main__module.main__module_footer .main__module__content h2.copyright {
-  font-size: 1em;
-  color: beige;
-  font-weight: normal;
+footer .footer-copyright {
   text-align: center;
-  width: 100%;
-  padding-left: 0;
 }
 
-main .main__module.main__module_footer .main__module__content h2.copyright img {
+footer .footer-copyright hr {
+  margin: 50px 0;
+}
+
+footer .footer-copyright img {
   position: absolute;
   left: 0;
   right: 0;
+  top: -30px;
   margin: auto;
-  top: -60px;
   width: 50px;
   background-color: #410505;
   -webkit-box-sizing: content-box;
           box-sizing: content-box;
-}
-
-.main__module__content_wine {
-  font-family: 'barkentina_testregular';
-  color: #80011f;
-  font-style: italic;
-  font-weight: bold;
-  margin-right: 15px;
 }
 
 .grape {
@@ -589,7 +570,6 @@ main .main__module.main__module_footer .main__module__content h2.copyright img {
 @media (max-width: 1050px) {
   .frame_top {
     width: 330px;
-    top: 120px;
   }
 }
 
@@ -597,7 +577,7 @@ main .main__module.main__module_footer .main__module__content h2.copyright img {
   .frame_top {
     width: 210px;
     left: -25px;
-    top: 100px;
+    top: 80px;
   }
 }
 /*# sourceMappingURL=styles.css.map */

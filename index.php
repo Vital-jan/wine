@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1.0, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- <meta http-equiv="pragma" content="no-cache">
-    <meta http-equiv="cache-control" content="no-cache"> -->
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
     <meta name="description" content="World’s Finest Wines - importer/wholesaler of Georgian wines.">
     <meta name='author' content='Vitalii Kolomiiets, Kyiv, Ukraine, vitaljan@gmail.com viber:+380632209770'>
     <title>World's Finest Wines</title>
@@ -26,16 +26,22 @@
     require_once "portfolio.php";
     require_once "footer.php";
 
-    $main_content = array ( // контент сайту
-        array("menu_item"=>"Home", "id"=>"home", "class"=>"main__module_full-width center", // блок полной ширины с центрированным текстом
+    $main_content = array ( // масив, що формує контент сайту
+        // type = ["", "full-width", "full-width-center", "footer"]
+        // "" - звичайний модуль, йому додається клас .main__module
+        // "full-width" - модуль на повну ширину екрану, йому додається клас .main__module_full-width
+        // "full-width" - модуль на повну ширину екрану відцентрований, йому додається клас .main__module_full-width .center
+        // "footer" - розділ <footer>
+
+        array("menu_item"=>"Home", "type"=>"full-width-center", "class"=>"", // блок полной ширины с центрированным текстом
         "header"=>"Welcome to the wonderful world of wines from the county of Georgia!", 
         "text"=>'', "img1"=>"", "img2"=>""),
 
-        array("menu_item"=>"", "id"=>"slider_module", "class"=>"main__module_full-width", // блок полной ширины для слайдера
+        array("menu_item"=>"", "type"=>"full-width-center", "class"=>"", // блок полной ширины для слайдера
         "header"=>"", 
         "text"=>"<div id='slider'></div>", "img1"=>"", "img2"=>""),
 
-        array("menu_item"=>"", "id"=>"home-text", "class"=>"", 
+        array("menu_item"=>"", "type"=>"", "class"=>"", 
         "header"=>"", 
         "text"=>'<p>Georgian wines have become a must-have for the world’s best restaurants and wine merchants. Georgian wines are now among the trendiest in the world.</p>
         <div class="read-more">
@@ -47,25 +53,25 @@
         </div>
         ', "img1"=>"", "img2"=>""),
 
-        array("menu_item"=>"About us", "id"=>"about", "class"=>"", 
+        array("menu_item"=>"About us", "type"=>"", "class"=>"", 
         "header"=>"About us", 
         "text"=>$module_about, "img1"=>"assets/img/tost.jpg", "img2"=>""),
 
-        array("menu_item"=>"Georgian Winemaking", "id"=>"gwines", "class"=>"", 
+        array("menu_item"=>"Georgian Winemaking", "type"=>"", "class"=>"", 
         "header"=>"Georgian Winemaking",
         "text"=>$module_wines, "img1"=>"assets/img/barrel.jpg", "img2"=>""),
 
-        array("menu_item"=>"Explore our wines", "id"=>"products", "class"=>"",
+        array("menu_item"=>"Explore our wines", "type"=>"", "class"=>"",
         "header"=>"Explore our wines",
         "text"=>"All our wines are natural and organic.
 
         The rich, intriguing and seductive flavors of Georgian wines will impress even the most sophisticated wine lovers. Try our wine and let the quality and character of the Georgian grapes speak for themselves", "img1"=>"", "img2"=>""),
 
-        array("menu_item"=>"", "id"=>"", "class"=>"main__module_full-width", // блок полной ширины для портфолио
+        array("menu_item"=>"", "type"=>"full-width-center", "class"=>"layer1", // блок полной ширины для портфолио
         "header"=>"",
         "text"=>$portfolio, "img1"=>"", "img2"=>""),
 
-        array("menu_item"=>"Contact us", "id"=>"contacts", "class"=>"main__module_footer",
+        array("menu_item"=>"Contact us", "type"=>"footer", "class"=>"",
         "header"=>"Our contacts:",
         "text"=>$footer, "img1"=>"", "img2"=>"")
     );
@@ -88,7 +94,7 @@
             // створюємо головне меню
                 $n = 0;
                 foreach($main_content as $key=>$value) {
-                    $id = ($value['id'] == '' ? "module{$n}" : "{$value["id"]}");
+                    $id = ($value['type'] == 'footer') ? "footer" : "module{$n}";
                     $n++;
                     if ($value['menu_item'])
                     echo "
@@ -103,7 +109,7 @@
                     ";
                 $n = 0;
                 foreach($main_content as $key=>$value) {
-                    $id = ($value['id'] == '' ? "module{$n}" : "{$value["id"]}");
+                    $id = ($value['type'] == 'footer') ? "footer" : "module{$n}";
                     $n++;
                     if ($value['menu_item'])
                     echo "
@@ -127,14 +133,20 @@
         // створюємо розділи сайту
             $n = 0;
             foreach($main_content as $key=>$value) {
-                $attr = $value['id'] == '' ? "module{$n}" : "{$value['id']}";
+                if ($value['type'] == 'footer') continue;
+                $id = "module{$n}";
+                $class = "main__module";
+                if ($value["type"] == 'full-width') $class .= ' main__module_full-width';
+                if ($value["type"] == 'full-width-center') $class .= ' main__module_full-width center';
+                if ($value['class']) $class .= ' '.$value['class'];
+
                 $h12 = ($n == 0) ? 'h1' : 'h2';
                 $sub = $value['menu_item'] ? '' : 'sub-';
                 $header = $value['header'] ? "<{$h12} class='main__module__{$sub}header'>{$value['header']}</{$h12}>" : "";
                 $img1 = $value['img1'] ? "<div class='main__module__content__img1'><img src='{$value['img1']}'></div>" : '';
                 $img2 = $value['img2'] ? "<div class='main__module__content__img2'><img src='{$value['img2']}'></div>" : '';
                 echo "
-                <div class='main__module {$value['class']}' id='{$attr}'>
+                <div class='{$class}' id='{$id}'>
                     {$header}
                     <div class='main__module__content'>
                         {$img1}
@@ -148,6 +160,31 @@
         ?>
         
     </main>
+
+    <footer>
+        <?
+            foreach($main_content as $value) {
+                if ($value['type'] == 'footer') {
+                    echo "
+                    <div id='footer'>
+                        <h2 class='footer__header'>{$value['header']}</h2>
+                        <div class='footer__content'>{$value['text']}</div>
+                    </div>
+
+                    <div class='footer-copyright'>
+                        <hr>
+                        <img src = 'assets/img/logo_small.png'>
+                        We do not sell directly to the public.  Please find a retailer near you and ask about Georgian Wines.
+                        <br><br>
+                        All rights reserved.
+                    </div>
+
+        
+                    ";
+                }
+            }
+        ?>
+    </footer>
 
     <script>
         document.addEventListener("DOMContentLoaded", ()=>{
@@ -256,6 +293,7 @@ function wind (maxX, maxY, delay){ // анімація картинки вино
 
     let el = document.querySelector('.frame_top');
     let startPosition = el.getBoundingClientRect().y;
+    let nav = document.querySelector('nav');
 
     windAnimation = true;
     let fps = 30;
@@ -275,9 +313,12 @@ function wind (maxX, maxY, delay){ // анімація картинки вино
             i = 0;
             interval = setInterval(()=>{
             i++;
+            
             if (i >= iteration) {
                 clearInterval(interval);
                 windAnimation = false;
+                el.style.top = nav.getBoundingClientRect().height * 0.8 + 'px';
+                return;
             }
             el.style.transform = `skew(${x}deg, ${y}deg)`;
             el.style.top = `${startPosition+y*3}px`;
@@ -291,11 +332,12 @@ function wind (maxX, maxY, delay){ // анімація картинки вино
         x += dx;
         y += dy;
     }, time);
+
 }
 
 setSlider(3, 'assets/img/slider/', 'img', 3, 0.5, 'slider', [], false, false);
 
-setPortfolio('portfolio', getComputedStyle(document.querySelector('nav')).color, 'rgb(65, 5, 5)');
+setPortfolio('portfolio', 'white', 'rgb(65, 5, 5)');
 // --------------------------------------------------------------
 
 
@@ -320,6 +362,7 @@ window.onscroll = ()=>{
                     }
                 };
             if (currentNavElement) currentNavElement.classList.remove('nav__elem_active');
+
         }
 
         }); // DOMContentLoaded

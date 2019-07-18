@@ -1,9 +1,17 @@
 
-$slider_height: 550px;
-$portfolio_arrow_bgc: red;
+
 $portfolio_height: 400px;
 $portfolio_item_width: 300px;
+
+$portfolio_arrow_bgc: red;
 $portfolio_item_bgc: white;
+
+* {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 // Слайдер
 .explorer-slider {
@@ -12,11 +20,10 @@ $portfolio_item_bgc: white;
     width: 100%;
     clear: both;
     text-align: center;
-    height: $slider-height;
     img {
         opacity:0;
         height: 100%;
-        position: absolute;
+        // position: absolute;
         height: auto;
         bottom: 0;
         left: 0;
@@ -111,8 +118,7 @@ $portfolio_item_bgc: white;
             transform: rotate(180deg);
             margin-left: 10px;
         }
-        &.left {
-            transform: rotate(180deg);
+        &.right {
             margin-right: 10px;
         }
         &::before {
@@ -131,6 +137,7 @@ $portfolio_item_bgc: white;
         box-sizing: content-box;
         .explorer-portfolio__product-list__item {
             position: absolute;
+            overflow: hidden;
             top: 0;
             left: 0;
             background-color: $portfolio_item_bgc;
