@@ -13,6 +13,11 @@ $portfolio_item_bgc: white;
     box-sizing: border-box;
 }
 
+.hidden-element {
+    visibility: hidden;
+    width: 0;
+}
+
 // Слайдер
 .explorer-slider {
     margin: 0 auto;
@@ -131,11 +136,11 @@ $portfolio_item_bgc: white;
         height: $portfolio_height;
         overflow: hidden;
         position: relative;
-        margin: 0;
         padding: 0;
         box-sizing: content-box;
         .explorer-portfolio__product-list__item {
             position: absolute;
+            // margin: 0;
             overflow: hidden;
             top: 0;
             left: 0;
@@ -146,7 +151,7 @@ $portfolio_item_bgc: white;
             margin: 0;
             padding: 0;
             width: $portfolio_item_width;
-            height: $portfolio_height;
+            height: 100%;
             cursor: pointer;
             opacity: 0.7;
             &:hover {
@@ -158,6 +163,15 @@ $portfolio_item_bgc: white;
                 margin: 0;
                 box-sizing: border-box;
             }
+        }
+        .explorer-portfolio__product-list__item__description {
+            visibility: hidden;
+            width: 0;
+            height: 100%;
+            overflow-y: scroll;
+            position: absolute;
+            top: 0;
+            left: 0;
         }
     }
 }

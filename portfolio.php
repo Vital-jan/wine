@@ -55,6 +55,11 @@
             <h2 class='wine__class'>{$value['class']}</h2>
         </div>
         ";
+        if ($value['description']) $portfolio .= "
+        <div class='explorer-portfolio__product-list__item__description'>
+        {$value['description']}
+        </div>
+        ";
     }
 
     $portfolio .= "</div>";

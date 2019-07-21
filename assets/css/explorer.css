@@ -6,6 +6,11 @@
           box-sizing: border-box;
 }
 
+.hidden-element {
+  visibility: hidden;
+  width: 0;
+}
+
 .explorer-slider {
   margin: 0 auto;
   position: relative;
@@ -159,7 +164,6 @@
   height: 400px;
   overflow: hidden;
   position: relative;
-  margin: 0;
   padding: 0;
   -webkit-box-sizing: content-box;
           box-sizing: content-box;
@@ -178,7 +182,7 @@
   margin: 0;
   padding: 0;
   width: 300px;
-  height: 400px;
+  height: 100%;
   cursor: pointer;
   opacity: 0.7;
 }
@@ -193,5 +197,15 @@
   margin: 0;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+}
+
+.explorer-portfolio .explorer-portfolio__product-list .explorer-portfolio__product-list__item__description {
+  visibility: hidden;
+  width: 0;
+  height: 100%;
+  overflow-y: scroll;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 /*# sourceMappingURL=explorer.css.map */
