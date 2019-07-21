@@ -188,21 +188,31 @@ function setSlider(
 
 // ==============================================================================
 function setPortfolio (id, arrowColor, arrowBgc) {
-  // id передає ідентифікатор елементу класа .explorer-portfolio, який повинен містити наступну структуру:
-  // <div class='explorer-portfolio__arrow left'></div>
-  // <div class='explorer-portfolio__product-list'>
+  // id передає ідентифікатор елементу без класу, який повинен містити елементи портфоліо.
+  // кожен з елементів портфоліо повинен бути класу .explorer-portfolio__product-list__item.
+  // <div id="portfolio1">
   //   <div class='explorer-portfolio__product-list__item'>1-й ел-т портфоліо</div>
   //     ........
   //   <div class='explorer-portfolio__product-list__item'>n-й ел-т портфоліо</div>
   // </div>
-  // <div class='explorer-portfolio__arrow'></div>
+  // setPortfolio('portfolio1', 'red', 'white')
 
+  let parent = document.querySelector(`#${id}`);
+  parent.classList.add('explorer-portfolio');
+  let parentHTML = parent.innerHTML;
+  parent.innerHTML = `
+    <div class='explorer-portfolio__arrow left'></div>
+    <div class='explorer-portfolio__product-list'>
+        ${parentHTML}
+    </div>
+    <div class='explorer-portfolio__arrow right'></div>
+  `;
   let productList = document.querySelector(`#${id} .explorer-portfolio__product-list`);
   let blockChain = document.querySelectorAll(`#${id} .explorer-portfolio__product-list__item`); // ланцюжок елементів портфоліо
   let maxProductNumber = blockChain.length; // кількість ел-тів портфоліо
   let left = document.querySelector(`#${id} .explorer-portfolio__arrow.left`);
   let right = document.querySelector(`#${id} .explorer-portfolio__arrow.right`);
-  
+
   let currentProduct = 1; // поточний товар в слайдері товарів
 
   left.style.backgroundColor = arrowBgc; // колір стрілок

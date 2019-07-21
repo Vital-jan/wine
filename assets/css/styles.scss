@@ -437,6 +437,7 @@ footer {
     
     .footer__header {
         padding-left: 100px;
+        padding-top: 20px;
         font-family: $font_header;
         font-size: 1.5rem;
         @media (max-width: $smartphone_width) {
@@ -447,16 +448,16 @@ footer {
     .footer__content {
         
         text-align: left;
-        margin-left: 120px;
+        padding-left: 120px;
         @media (max-width: $smartphone_width) {
-            margin-left: 40px;
+            padding-left: 40px;
         }
 
         img {
             position: absolute;
-            max-height: 166%;
+            max-height: 182%;
             right: 0;
-            top: -34px;
+            top: -54px;
             @media (max-width: $smartphone_width) {
                 display: none;
             }
@@ -488,8 +489,8 @@ footer {
 .grape {
     position: fixed;
     width: 170px;
-    right: -10px;
-    top: 0;
+    right: -14px;
+    top: -4px;
     @media (max-width: $tablet_width) {
         display:block;
     }
@@ -514,3 +515,98 @@ footer {
     }
 }
 
+.wine {
+    display: flex!important;
+    flex-wrap: wrap!important;
+    flex-direction: column!important;
+    justify-content: flex-start!important;
+    align-items: center!important;
+    background-image: url(../img/product_bg.jpg);
+    background-size: 100% 105%;
+    background-position: 0px 0px;
+    background-repeat: no-repeat;
+
+    .wine__name {
+        font-size: 1.5em!important;
+        font-weight: bold!important;
+        color: $nav_bgc!important;
+    }
+    .wine__year {
+        color: $nav_text!important;
+        font-size: 1.4em!important;
+        font-family: 'merienda'!important;
+        font-weight: bold!important;
+    }
+    .wine__class {
+        font-size: 1em!important;
+        top: -5px!important;
+        color: white!important;
+    }
+    img {
+        height: 68%!important;
+        margin-top: 13px!important;
+    }
+
+// &:nth-child(2) {
+//     display: flex!important;
+//     flex-wrap: wrap!important;
+//     flex-direction: column!important;
+//     justify-content: flex-start!important;
+//     align-items: center!important;
+//     // background-color: #f6f6f6!important;
+//     background-image: url(../img/product_bg4.png);
+//     background-size:   131% 113%;
+//     background-position: -22px -34px;
+//     background-repeat: no-repeat;
+
+//     .wine__name {
+//         font-size: 1.5em!important;
+//         font-weight: bold!important;
+//     }
+//     .wine__year {
+//         color: $nav_bgc!important;
+//         font-size: 1.4em!important;
+//         font-family: 'merienda'!important;
+//         font-weight: bold!important;
+//     }
+//     .wine__class {
+//         font-size: 1em!important;
+//         top: -5px;
+//     }
+//     img {
+//         height: 62%!important;
+//         margin-top: 10px!important;
+//     }
+// }
+// &:nth-child(3) {
+//     display: flex!important;
+//     flex-wrap: wrap!important;
+//     flex-direction: column!important;
+//     justify-content: flex-start!important;
+//     align-items: center!important;
+//     background-color: #f6f6f6!important;
+//     background-image: url(../img/product_bg2.jpg);
+//     background-size:   100% auto;
+//     background-position: 0 295px;
+//     background-repeat: no-repeat;
+
+//     .wine__name {
+//         font-size: 1.5em!important;
+//         font-weight: bold!important;
+//     }
+//     .wine__year {
+//         color: $nav_bgc!important;
+//         font-size: 1.4em!important;
+//         font-family: 'merienda'!important;
+//         font-weight: bold!important;
+//     }
+//     .wine__class {
+//         font-size: 1em!important;
+//         top: -5px;
+//     }
+//     img {
+//         height: 62%!important;
+//         margin-top: 10px!important;
+//     }
+// }
+}

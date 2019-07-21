@@ -486,6 +486,7 @@ footer {
 
 footer .footer__header {
   padding-left: 100px;
+  padding-top: 20px;
   font-family: "merienda";
   font-size: 1.5rem;
 }
@@ -498,20 +499,20 @@ footer .footer__header {
 
 footer .footer__content {
   text-align: left;
-  margin-left: 120px;
+  padding-left: 120px;
 }
 
 @media (max-width: 900px) {
   footer .footer__content {
-    margin-left: 40px;
+    padding-left: 40px;
   }
 }
 
 footer .footer__content img {
   position: absolute;
-  max-height: 166%;
+  max-height: 182%;
   right: 0;
-  top: -34px;
+  top: -54px;
 }
 
 @media (max-width: 900px) {
@@ -543,8 +544,8 @@ footer .footer-copyright img {
 .grape {
   position: fixed;
   width: 170px;
-  right: -10px;
-  top: 0;
+  right: -14px;
+  top: -4px;
 }
 
 @media (max-width: 1050px) {
@@ -579,5 +580,51 @@ footer .footer-copyright img {
     left: -25px;
     top: 80px;
   }
+}
+
+.wine {
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  -ms-flex-wrap: wrap !important;
+      flex-wrap: wrap !important;
+  -webkit-box-orient: vertical !important;
+  -webkit-box-direction: normal !important;
+      -ms-flex-direction: column !important;
+          flex-direction: column !important;
+  -webkit-box-pack: start !important;
+      -ms-flex-pack: start !important;
+          justify-content: flex-start !important;
+  -webkit-box-align: center !important;
+      -ms-flex-align: center !important;
+          align-items: center !important;
+  background-image: url(../img/product_bg.jpg);
+  background-size: 100% 105%;
+  background-position: 0px 0px;
+  background-repeat: no-repeat;
+}
+
+.wine .wine__name {
+  font-size: 1.5em !important;
+  font-weight: bold !important;
+  color: #410505 !important;
+}
+
+.wine .wine__year {
+  color: beige !important;
+  font-size: 1.4em !important;
+  font-family: "merienda" !important;
+  font-weight: bold !important;
+}
+
+.wine .wine__class {
+  font-size: 1em !important;
+  top: -5px !important;
+  color: white !important;
+}
+
+.wine img {
+  height: 68% !important;
+  margin-top: 13px !important;
 }
 /*# sourceMappingURL=styles.css.map */

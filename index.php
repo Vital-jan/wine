@@ -12,13 +12,14 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="assets/js/explorer.js"></script>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="assets/css/explorer.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
     <link href="https://fonts.googleapis.com/css?family=Merienda|Source+Sans+Pro&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- font-family: 'Merienda', cursive;
     font-family: 'Source Sans Pro', sans-serif; -->
 </head>
+
 
 <?
     require_once "about.php";
@@ -55,7 +56,7 @@
 
         array("menu_item"=>"About us", "type"=>"", "class"=>"", 
         "header"=>"About us", 
-        "text"=>$module_about, "img1"=>"assets/img/tost.jpg", "img2"=>""),
+        "text"=>$module_about, "img1"=>"assets/img/toast.jpg", "img2"=>""),
 
         array("menu_item"=>"Georgian Winemaking", "type"=>"", "class"=>"", 
         "header"=>"Georgian Winemaking",
@@ -337,9 +338,8 @@ function wind (maxX, maxY, delay){ // анімація картинки вино
 
 setSlider(3, 'assets/img/slider/', 'img', 3, 0.5, 'slider', [], false, false);
 
-setPortfolio('portfolio', 'white', 'rgb(65, 5, 5)');
+setPortfolio('portfolio1', 'white', 'rgb(65, 5, 5)');
 // --------------------------------------------------------------
-
 
 window.onscroll = ()=>{
             wind(1, 3, 800); // анімація картинки виноградна лоза

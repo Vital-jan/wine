@@ -1,45 +1,61 @@
 <?
-    $product = array(
+    $product_list = array(
         array(
             'name'=>'Mukuzani',
+            'img'=>'wine1.png',
+            'alt'=>'Mukuzani Georgian wine by World Finest Wines',
+            'year'=>'2017',
+            'class'=>'dry red',
             'description'=>'mukuzini wine is ....',
-            'country_icon'=>'georgia.png',
+            'country_icon'=>'flag_georgia.png',
             'country_name'=>'Georgia',
-            'color'=>'red',
             'grape'=>'',
             'region'=>'',
-            'year'=>'',
             'shugar'=>'3%',
-            'spirit'=>'9%',
-            'quality'=>'collection',
-            'description1'=>''
+            'spirit'=>'9%'
         ),
         array(
             'name'=>'Khvanchkara',
+            'img'=>'wine1.png',
+            'alt'=>'Khvanchkara Georgian wine by World Finest Wines',
+            'year'=>'2016',
+            'class'=>'dry red',
             'description'=>'Khvanchkara wine is ....',
-            'country_icon'=>'georgia.png',
+            'country_icon'=>'flag_georgia.png',
             'country_name'=>'Georgia',
-            'color'=>'red',
             'grape'=>'',
             'region'=>'',
-            'year'=>'',
             'shugar'=>'3%',
-            'spirit'=>'9%',
-            'quality'=>'collection',
-            'description1'=>''
+            'spirit'=>'9%'
         ),
+        array(
+            'name'=>'Tsinandali',
+            'img'=>'wine1.png',
+            'alt'=>'Tsinandali Georgian wine by World Finest Wines',
+            'year'=>'2015',
+            'class'=>'half-dry white',
+            'description'=>'Tsinandali wine is ....',
+            'country_icon'=>'flag_georgia.png',
+            'country_name'=>'Georgia',
+            'grape'=>'',
+            'region'=>'',
+            'shugar'=>'3%',
+            'spirit'=>'9%'
+        )
     );
-    $portfolio="
-    <div class='explorer-portfolio' id='portfolio'>
-    <div class='explorer-portfolio__arrow left'></div>
-    <div class='explorer-portfolio__product-list'>
-      <div class='explorer-portfolio__product-list__item'>a<img src='assets/img/product/wine1.png'></div>
-      <div class='explorer-portfolio__product-list__item'>b<img src='assets/img/product/wine2.jpg'></div>
-      <div class='explorer-portfolio__product-list__item'>c<img src='assets/img/product/wine3.jpg'></div>
-      <div class='explorer-portfolio__product-list__item'>d<img src='assets/img/product/wine4.jpg'></div>
-      <div class='explorer-portfolio__product-list__item'>e<img src='assets/img/product/wine5.jpg'></div>
-    </div>
-    <div class='explorer-portfolio__arrow right'></div>
-    </div>
-    ";
+
+    $portfolio="<div id='portfolio1'>";
+
+    foreach($product_list as $value) {
+        $portfolio .="
+        <div class='explorer-portfolio__product-list__item wine'>
+            <img src='assets/img/product/{$value['img']}' alt='{$value['alt']}'>
+            <h2 class='wine__name'> {$value['name']}</h2>
+            <h2 class='wine__year'> {$value['year']}</h2>
+            <h2 class='wine__class'>{$value['class']}</h2>
+        </div>
+        ";
+    }
+
+    $portfolio .= "</div>";
     ?>

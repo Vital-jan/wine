@@ -23,7 +23,6 @@ $portfolio_item_bgc: white;
     img {
         opacity:0;
         height: 100%;
-        // position: absolute;
         height: auto;
         bottom: 0;
         left: 0;
@@ -142,15 +141,11 @@ $portfolio_item_bgc: white;
             left: 0;
             background-color: $portfolio_item_bgc;
             box-sizing: border-box;
-            display: inline-block;
             overflow: hidden;
             text-align: center;
             margin: 0;
             padding: 0;
             width: $portfolio_item_width;
-            // @media (max-width: $smartphone_width - 300) {
-            //     width: $product_width * 0.7;
-            // }
             height: $portfolio_height;
             cursor: pointer;
             opacity: 0.7;
