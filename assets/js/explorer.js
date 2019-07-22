@@ -221,6 +221,7 @@ function setPortfolio (id, arrowColor, arrowBgc, width = 300, minMargin = 10, he
   let currentProductNumber = 1; // поточна кількість видимих ел-тів
   
   let currentProduct = 1; // поточний ел-т портфоліо
+  let openElement = null; // розгорнутий ел-т портфоліо
   
   let productWidth; // поточна ширина ел-ту портфоліо
   let margin = minMargin; // поточний margin
@@ -341,17 +342,8 @@ function setPortfolio (id, arrowColor, arrowBgc, width = 300, minMargin = 10, he
   }
 
   // ---------------------------------------------------------------------------------
-  function rotate (event) { // повертання елементів портфоліо
-
-      let back;
-
-      let el = event.target.closest('.explorer-portfolio__product-list__item');
-      if (el) {back = el.nextElementSibling} 
-      else {
-        el = event.target.closest('.explorer-portfolio__product-list__item__description');
-        back = el.previousElementSibling;
-      }
-      
+  function rotate (el, back) { // повертання елементів портфоліо
+      if (!el || !back) return;
       let w = 1;
       let interval = setInterval(()=>{
         el.style.transform = `scaleX(${w})`;
@@ -373,5 +365,33 @@ function setPortfolio (id, arrowColor, arrowBgc, width = 300, minMargin = 10, he
       }, 10)
     }; // ------------------  rotate
 
-  productList.addEventListener('click', rotate); // обробник кліку на списку елементів портфоліо
+  productList.addEventListener('click', ()=> {// обробник кліку на списку елементів портфоліо
+
+    let back;
+
+    let el = event.target.closest('.explorer-portfolio__product-list__item');
+    if (el) {
+      if (openElement) rotate(openElement, openElement.previousElementSibling);
+      back = el.nextElementSibling;
+      openElement = back;
+    } 
+    else {
+      el = event.target.closest('.explorer-portfolio__product-list__item__description');
+      if (!el) return;
+      back = el.previousElementSibling;
+      openElement = null;
+    }
+
+    rotate (el, back);
+  });
+
+  parent.addEventListener ('click', (event)=>{ // обробник кліку по стрілках на предмет згортання розгорнутого ел-та
+    if (event.target == left || event.target == right) {
+      if (openElement) {
+        rotate(openElement, openElement.previousElementSibling);
+        openElement = null;
+      }
+    }
+  });
+
   }
