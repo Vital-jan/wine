@@ -13,11 +13,6 @@ $portfolio_item_bgc: white;
     box-sizing: border-box;
 }
 
-.hidden-element {
-    visibility: hidden;
-    width: 0;
-}
-
 // Слайдер
 .explorer-slider {
     margin: 0 auto;
@@ -168,10 +163,22 @@ $portfolio_item_bgc: white;
             visibility: hidden;
             width: 0;
             height: 100%;
-            overflow-y: scroll;
+            overflow: hidden;
+            text-overflow: ellipsis;
             position: absolute;
             top: 0;
             left: 0;
         }
+
+        .explorer-portfolio__product-list__item_hidden {
+            visibility: hidden!important;
+            transform: scaleX(0);
+        }
+        .explorer-portfolio__product-list__item_visible {
+            visibility: visible!important;
+            transform: scaleX(0);
+        }
+        
+        
     }
 }

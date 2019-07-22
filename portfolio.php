@@ -6,7 +6,7 @@
             'alt'=>'Mukuzani Georgian wine by World Finest Wines',
             'year'=>'2017',
             'class'=>'dry red',
-            'description'=>'mukuzini wine is ....',
+            'description'=>'Mukuzani wine is ....',
             'country_icon'=>'flag_georgia.png',
             'country_name'=>'Georgia',
             'grape'=>'',
@@ -34,7 +34,7 @@
             'alt'=>'Tsinandali Georgian wine by World Finest Wines',
             'year'=>'2015',
             'class'=>'half-dry white',
-            'description'=>'Tsinandali wine is ....',
+            'description'=>'<p>Tsinandali wine is Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores dignissimos beatae dolorum eveniet ab nostrum placeat alias impedit provident harum.</p><p>Tsinandali wine is Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores dignissimos beatae dolorum eveniet ab nostrum placeat alias impedit provident harum.Dolores dignissimos beatae dolorum eveniet ab nostrum placeat alias impedit provident harum.</p><p>Tsinandali wine is Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores dignissimos beatae dolorum eveniet ab nostrum placeat alias impedit provident harum.</p>',
             'country_icon'=>'flag_georgia.png',
             'country_name'=>'Georgia',
             'grape'=>'',
@@ -56,11 +56,12 @@
         </div>
         ";
         if ($value['description']) $portfolio .= "
-        <div class='explorer-portfolio__product-list__item__description'>
+        <div class='explorer-portfolio__product-list__item__description wine-description'>
         {$value['description']}
         </div>
         ";
     }
+    
 
     $portfolio .= "</div>";
     ?>

@@ -429,9 +429,11 @@ main {
 
 footer {
     background-color: $nav_bgc;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
     color: $nav_text;
     width: 100%;
-    margin: 0;
+    margin: 150px 0 0;
     
 
     
@@ -515,6 +517,16 @@ footer {
     }
 }
 
+.wine-description {
+    background-image: url(../img/paper.jpg);
+    background-size: 100% 100%;
+    padding: 20px 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    p {
+        text-align: center!important;
+    }
+}
 .wine {
     display: flex!important;
     flex-wrap: wrap!important;
@@ -547,66 +559,4 @@ footer {
         margin-top: 13px!important;
     }
 
-// &:nth-child(2) {
-//     display: flex!important;
-//     flex-wrap: wrap!important;
-//     flex-direction: column!important;
-//     justify-content: flex-start!important;
-//     align-items: center!important;
-//     // background-color: #f6f6f6!important;
-//     background-image: url(../img/product_bg4.png);
-//     background-size:   131% 113%;
-//     background-position: -22px -34px;
-//     background-repeat: no-repeat;
-
-//     .wine__name {
-//         font-size: 1.5em!important;
-//         font-weight: bold!important;
-//     }
-//     .wine__year {
-//         color: $nav_bgc!important;
-//         font-size: 1.4em!important;
-//         font-family: 'merienda'!important;
-//         font-weight: bold!important;
-//     }
-//     .wine__class {
-//         font-size: 1em!important;
-//         top: -5px;
-//     }
-//     img {
-//         height: 62%!important;
-//         margin-top: 10px!important;
-//     }
-// }
-// &:nth-child(3) {
-//     display: flex!important;
-//     flex-wrap: wrap!important;
-//     flex-direction: column!important;
-//     justify-content: flex-start!important;
-//     align-items: center!important;
-//     background-color: #f6f6f6!important;
-//     background-image: url(../img/product_bg2.jpg);
-//     background-size:   100% auto;
-//     background-position: 0 295px;
-//     background-repeat: no-repeat;
-
-//     .wine__name {
-//         font-size: 1.5em!important;
-//         font-weight: bold!important;
-//     }
-//     .wine__year {
-//         color: $nav_bgc!important;
-//         font-size: 1.4em!important;
-//         font-family: 'merienda'!important;
-//         font-weight: bold!important;
-//     }
-//     .wine__class {
-//         font-size: 1em!important;
-//         top: -5px;
-//     }
-//     img {
-//         height: 62%!important;
-//         margin-top: 10px!important;
-//     }
-// }
 }

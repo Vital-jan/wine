@@ -6,11 +6,6 @@
           box-sizing: border-box;
 }
 
-.hidden-element {
-  visibility: hidden;
-  width: 0;
-}
-
 .explorer-slider {
   margin: 0 auto;
   position: relative;
@@ -203,9 +198,22 @@
   visibility: hidden;
   width: 0;
   height: 100%;
-  overflow-y: scroll;
+  overflow: hidden;
+  text-overflow: ellipsis;
   position: absolute;
   top: 0;
   left: 0;
+}
+
+.explorer-portfolio .explorer-portfolio__product-list .explorer-portfolio__product-list__item_hidden {
+  visibility: hidden !important;
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+}
+
+.explorer-portfolio .explorer-portfolio__product-list .explorer-portfolio__product-list__item_visible {
+  visibility: visible !important;
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
 }
 /*# sourceMappingURL=explorer.css.map */

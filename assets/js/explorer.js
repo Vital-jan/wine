@@ -197,6 +197,7 @@ function setPortfolio (id, arrowColor, arrowBgc, width = 300, minMargin = 10, he
   //   <div class='explorer-portfolio__product-list__item'>n-й ел-т портфоліо</div>
   // </div>
   // setPortfolio('portfolio1', 'red', 'white')
+  // width, minMargin, height - ширина, мінімальний margin, висота ел-тів портфоліо
 
   let parent = document.querySelector(`#${id}`);
   parent.classList.add('explorer-portfolio');
@@ -209,12 +210,19 @@ function setPortfolio (id, arrowColor, arrowBgc, width = 300, minMargin = 10, he
     </div>
     <div class='explorer-portfolio__arrow right'></div>
   `;
-  let productList = document.querySelector(`#${id} .explorer-portfolio__product-list`);
+  let productList = document.querySelector(`#${id} .explorer-portfolio__product-list`); // блок з переліком ел-тів портфоліо
+
   let blockChain = document.querySelectorAll(`#${id} .explorer-portfolio__product-list__item`); // ланцюжок елементів портфоліо
+
   let maxProductNumber = blockChain.length; // кількість ел-тів портфоліо
-  let margin = 10;
-  const left = document.querySelector(`#${id} .explorer-portfolio__arrow.left`);
+
+  let margin = minMargin;
+
+  const left = document.querySelector(`#${id} .explorer-portfolio__arrow.left`); // стрілки вліво-право
   const right = document.querySelector(`#${id} .explorer-portfolio__arrow.right`);
+
+  let leftAllow = false; // дозволити клікабельність стрілок
+  let rightAllow = true; // 
 
   let currentProduct = 1; // поточний товар в слайдері товарів
 
@@ -227,23 +235,34 @@ function setPortfolio (id, arrowColor, arrowBgc, width = 300, minMargin = 10, he
   //parent - батьківський ел-т, який містить перелік товарів
   //blockChain - масив елементів-товарів
   //margin - сумарний лівий та правий маржин між товарами (дублюється в productShift)
-  currentProduct = 1;
+  
+  currentProduct = 1; // скидаємо вказівник поточного ел-ту
 
   let x = parent.getBoundingClientRect().width; // ширина батьківського ел.
-  let w = width;/* blockChain[0].getBoundingClientRect().width; */ // ширина єл-тів
+  let w = width; // ширина єл-тів
 
-  margin = minMargin;
+  margin = minMargin; // скидання значення margin
+
   let n = Math.floor(x / (w + margin) ); // скільки ел-тів вміщується на екрані
   n = n > maxProductNumber ? maxProductNumber : n;
-  
+
+  // клікабельність стрілок вліво-право
+  if (currentProduct + n > maxProductNumber) {rightAllow = false} else rightAllow = true;
+  if (currentProduct <= 1) {leftAllow = false} else leftAllow = true;
+
   if (w + margin >= x) { // якщо батьківський ел-т вужчий, ніж один вкладений елемент
     w = x - margin;
     n = Math.floor(x / (w + margin) );
     if (w < 0) return;
   }
 
-  blockChain.forEach((i)=>{
+  let next; // елемент "зворотній бік" елементу портфоліо
+
+  blockChain.forEach((i)=>{ // привласнення значень ширини блоків
     i.style.width = w + 'px';
+    next = i.nextElementSibling;
+    next.style.width = w + 'px';
+
   });
 
   let field = x - (w + margin) * maxProductNumber; // якщо батьківський ел-т ширший, ніж треба для розміщення усіх ел-тів
@@ -251,7 +270,7 @@ function setPortfolio (id, arrowColor, arrowBgc, width = 300, minMargin = 10, he
   margin += field / maxProductNumber;
 
 
-  if (n < maxProductNumber) {
+  if (n < maxProductNumber) { // видимість стрілок вліво-право якщо всі елементі не вміщуються
     left.style.visibility = 'visible';
     right.style.visibility = 'visible';
   } else {
@@ -259,41 +278,58 @@ function setPortfolio (id, arrowColor, arrowBgc, width = 300, minMargin = 10, he
     right.style.visibility = 'hidden';
   }
 
-  let lm = x;
+  let lm = x; // вирахування координат елементів портфоліо
   if (n > 0) lm = (x - (w + margin) * n) / (n + 1);
 
-  let leftPos = lm;
+  let leftPos = lm; // привласнення координат елементів портфоліо
   blockChain.forEach((i)=>{
       i.style.left = leftPos + margin / 2 + 'px';
+      let next = i.nextElementSibling;
+      next.style.left = leftPos + margin / 2 + 'px';
+  
       leftPos += lm + w + margin;
   })
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------
   function productShift(parent, blockChain, direction) { // зсув переліку товарів
     //parent - батьківський ел-т, який містить перелік товарів
     //blockChain - масив елементів-товарів
     //direction - напрямок зсуву анімації
-    //margin - сумарний лівий та правий маржин між товарами (дублюється в productRefresh)
-    if (currentProduct == 1 && direction == '+=') return;
-    if (currentProduct == maxProductNumber && direction == '-=') return;
-    if (currentProduct + 1 >= maxProductNumber && direction == '-=') return;
-    currentProduct = direction == '+=' ? currentProduct - 1 : currentProduct + 1;
+
+    currentProduct = direction == '+=' ? currentProduct - 1 : currentProduct + 1; // змінюємо значення вказівника поточного ел-ту
+
     let x = parent.getBoundingClientRect().width;
-    let w = blockChain[0].getBoundingClientRect().width + margin;
-    let n = Math.floor(x / w);
+    let w = width;
+
+    margin = minMargin; // скидання значення margin
+
+    let n = Math.floor(x / (w + margin) ); // скільки ел-тів вміщується на екрані
+    n = n > maxProductNumber ? maxProductNumber : n;
+
+    if (currentProduct + n > maxProductNumber) {rightAllow = false} else rightAllow = true;
+    if (currentProduct <= 1) {leftAllow = false} else leftAllow = true;
+  
     let lm = x;
     if (n > 0) lm = (x - w * n) / (n + 1);
-    let left = lm + w;
+    let leftShift = lm + w;
+    let next;
     blockChain.forEach((i)=>{
-        $(i).animate({left: `${direction}${left}`});
+        $(i).animate({left: `${direction}${leftShift}`});
+        i.style.left = i.getBoundingClientRect().x + (direction == '-=' ? -1 : 1) * leftShift + 'px';
+        next = i.nextElementSibling;
+        $(next).animate({left: `${direction}${leftShift}`});
+        next.style.left = next.getBoundingClientRect().x + (direction == '-=' ? -1 : 1) * leftShift + 'px';
     });
   }
 
   right.addEventListener('click', (event)=>{ // зсув переліку товарів по кліку стрілки
+    if (rightAllow)
     productShift(productList, blockChain, '-=');
   });
-
+  
   left.addEventListener('click', (event)=>{ // зсув переліку товарів по кліку стрілки
+    if (leftAllow)
     productShift(productList, blockChain, '+=');
   });
 
@@ -325,7 +361,37 @@ function setPortfolio (id, arrowColor, arrowBgc, width = 300, minMargin = 10, he
     productRefresh(productList, blockChain);
   }
 
-  productList.addEventListener('click', (event)=>{
-    console.log(event.target.closest('.explorer-portfolio__product-list__item'))
-  });
-}
+  function rotate (event) { // повертання елементів портфоліо
+
+      let back;
+
+      let el = event.target.closest('.explorer-portfolio__product-list__item');
+      if (el) {back = el.nextElementSibling} 
+      else {
+        el = event.target.closest('.explorer-portfolio__product-list__item__description');
+        back = el.previousElementSibling;
+      }
+      
+      let w = 1;
+      let interval = setInterval(()=>{
+        el.style.transform = `scaleX(${w})`;
+        w -= 0.05;
+        
+        if (w <= 0) {
+          clearInterval(interval);
+          el.classList.toggle('explorer-portfolio__product-list__item_hidden');
+          back.classList.toggle('explorer-portfolio__product-list__item_visible');
+          el.classList.toggle('explorer-portfolio__product-list__item_visible');
+          back.classList.toggle('explorer-portfolio__product-list__item_hidden');
+          w = 0;
+          interval = setInterval(()=>{
+            back.style.transform = `scaleX(${w})`;
+            w += 0.05;
+            if (w >= 1) clearInterval(interval);
+          }, 10)
+        }
+      }, 10)
+    }; // ------------------  rotate
+
+  productList.addEventListener('click', rotate); // обробник кліку на списку елементів портфоліо
+  }

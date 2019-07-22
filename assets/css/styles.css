@@ -479,9 +479,11 @@ main .main__module.main__module_full-width {
 
 footer {
   background-color: #410505;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
   color: beige;
   width: 100%;
-  margin: 0;
+  margin: 150px 0 0;
 }
 
 footer .footer__header {
@@ -580,6 +582,18 @@ footer .footer-copyright img {
     left: -25px;
     top: 80px;
   }
+}
+
+.wine-description {
+  background-image: url(../img/paper.jpg);
+  background-size: 100% 100%;
+  padding: 20px 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.wine-description p {
+  text-align: center !important;
 }
 
 .wine {
