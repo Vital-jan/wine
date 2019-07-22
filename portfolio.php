@@ -41,6 +41,34 @@
             'region'=>'',
             'shugar'=>'3%',
             'spirit'=>'9%'
+        ),
+        array(
+            'name'=>'Saperavi',
+            'img'=>'wine1.png',
+            'alt'=>'Saperavi Georgian wine by World Finest Wines',
+            'year'=>'2015',
+            'class'=>'dry red',
+            'description'=>'<p>Saperavi wine is Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores dignissimos beatae dolorum eveniet ab nostrum placeat alias impedit provident harum.</p><p>Saperavi wine is Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores dignissimos beatae dolorum eveniet ab nostrum placeat alias impedit provident harum.Dolores dignissimos beatae dolorum eveniet ab nostrum placeat alias impedit provident harum.</p><p>Saperavi wine is Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores dignissimos beatae dolorum eveniet ab nostrum placeat alias impedit provident harum.</p>',
+            'country_icon'=>'flag_georgia.png',
+            'country_name'=>'Georgia',
+            'grape'=>'',
+            'region'=>'',
+            'shugar'=>'3%',
+            'spirit'=>'9%'
+        ),
+        array(
+            'name'=>'Kindzmarauli',
+            'img'=>'wine1.png',
+            'alt'=>'Kindzmarauli Georgian wine by World Finest Wines',
+            'year'=>'2015',
+            'class'=>'half-sweet red',
+            'description'=>'<p>Kindzmarauli wine is Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores dignissimos beatae dolorum eveniet ab nostrum placeat alias impedit provident harum.</p><p>Kindzmarauli wine is Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores dignissimos beatae dolorum eveniet ab nostrum placeat alias impedit provident harum.Dolores dignissimos beatae dolorum eveniet ab nostrum placeat alias impedit provident harum.</p><p>Kindzmarauli wine is Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores dignissimos beatae dolorum eveniet ab nostrum placeat alias impedit provident harum.</p>',
+            'country_icon'=>'flag_georgia.png',
+            'country_name'=>'Georgia',
+            'grape'=>'',
+            'region'=>'',
+            'shugar'=>'3%',
+            'spirit'=>'9%'
         )
     );
 

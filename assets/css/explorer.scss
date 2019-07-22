@@ -112,7 +112,6 @@ $portfolio_item_bgc: white;
         border-radius: 50%;
         background-color: $portfolio_arrow_bgc;
         cursor: pointer;
-        opacity: 0.5;
         &.left {
             transform: rotate(180deg);
             margin-left: 10px;
@@ -135,7 +134,6 @@ $portfolio_item_bgc: white;
         box-sizing: content-box;
         .explorer-portfolio__product-list__item {
             position: absolute;
-            // margin: 0;
             overflow: hidden;
             top: 0;
             left: 0;
@@ -182,4 +180,38 @@ $portfolio_item_bgc: white;
         
         
     }
+}
+
+.explorer-scroll {
+    position: relative;
+    overflow: hidden;
+    margin: auto;
+    padding: 20px;
+    .explorer-scroll__block {
+        position: absolute;
+        top: 0;
+    }
+    .explorer-scroll__arrow {
+        user-select: none;
+        position: absolute;
+        cursor: pointer;
+        left: 0;
+        height: 20px;
+        width: 100%;
+        text-align: center;
+        background-color: #fff;
+        line-height: 20px;
+        &.arrow_top {
+            top: 0;
+        }
+        &.arrow_bottom {
+            bottom: 0;
+            transform: rotate(180deg);
+        }
+    }
+}
+.scroll1 {
+    height: 200px;
+    width: 200px;
+    background-color: beige;
 }

@@ -243,30 +243,29 @@ function setPortfolio (id, arrowColor, arrowBgc, width = 300, minMargin = 10, he
   productListWidth = productList.getBoundingClientRect().width; // визначення поточної ширини батьківського ел.
   productWidth = width; // скидання ширини ел-тів
   margin = minMargin; // скидання значення margin
-
   currentProductNumber = Math.floor(productListWidth / (productWidth + margin) ); // скільки ел-тів вміщується на екрані
   currentProductNumber = currentProductNumber > maxProductNumber ? maxProductNumber : currentProductNumber;
-
-  if (productWidth + margin >= productListWidth) { // якщо батьківський ел-т вужчий, ніж один вкладений елемент
-    productWidth = productListWidth - margin;
-    currentProductNumber = Math.floor(productListWidth / (productWidth + margin) );
-    if (productWidth < 0) return;
-  }
-
+  currentProductNumber = currentProductNumber < 1 ? 1 : currentProductNumber;
+  
+  if (productWidth + margin >= productListWidth) margin = 5; // вкладений елемент + margin ширший батьківського
+  if (productWidth >= productListWidth) productWidth = productListWidth * 0.95; // вкладений елемент без margin ширший батьківського
+  
+  // currentProductNumber = Math.floor(productListWidth / (productWidth + margin) );
+  if (productWidth < 0) return;
+  
   let next; // елемент "зворотній бік" елементу портфоліо
-
+  
   blockChain.forEach((i)=>{ // привласнення значень ширини блоків
     i.style.width = productWidth + 'px';
     next = i.nextElementSibling;
     next.style.width = productWidth + 'px';
-
+    
   });
-
+  
   let field = productListWidth - (productWidth + margin) * currentProductNumber; // додатковий margin якщо батьківський ел-т ширший, ніж треба для розміщення усіх ел-тів
   field = field < 0 ? 0 : field;
   margin += field / currentProductNumber;
-
-
+  
   if (currentProductNumber < maxProductNumber) { // видимість стрілок вліво-право якщо всі елементі не вміщуються
     if (currentProduct > 1) {left.style.visibility = 'visible'} else left.style.visibility = 'hidden';
     right.style.visibility = 'visible';
@@ -274,7 +273,6 @@ function setPortfolio (id, arrowColor, arrowBgc, width = 300, minMargin = 10, he
     left.style.visibility = 'hidden';
     right.style.visibility = 'hidden';
   }
-
   let shift = productWidth + margin; // вирахування координат елементів портфоліо
 
   let leftPos = margin / 2; // привласнення координат елементів портфоліо
@@ -315,24 +313,14 @@ function setPortfolio (id, arrowColor, arrowBgc, width = 300, minMargin = 10, he
 
   right.addEventListener('mouseenter', (event)=>{ // анімація стрілки по наведенню
     if (currentProduct < maxProductNumber) {
-        event.target.style.opacity = 1;
         $(event.target).animate({top: '+=5'}, 100).animate({top: '-=5'}, 100);;
     }
-  });
-
-  right.addEventListener('mouseleave', (event)=>{ // анімація стрілки по наведенню
-    event.target.style.opacity = 0.7;
   });
 
   left.addEventListener('mouseenter', (event)=>{ // анімація стрілки по наведенню
     if (currentProduct > 1) {
-        event.target.style.opacity = 1;
         $(event.target).animate({top: '+=5'}, 100).animate({top: '-=5'}, 100);;
     }
-  });
-
-  left.addEventListener('mouseleave', (event)=>{ // анімація стрілки по наведенню
-    event.target.style.opacity = 0.7;
   });
 
   productRefresh(); // вивід переліку елементів після завантаження сторінки

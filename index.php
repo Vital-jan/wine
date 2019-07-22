@@ -338,7 +338,7 @@ function wind (maxX, maxY, delay){ // анімація картинки вино
 
 setSlider(3, 'assets/img/slider/', 'img', 3, 0.5, 'slider', [], false, false);
 
-setPortfolio('portfolio1', 'white', 'rgb(65, 5, 5)');
+setPortfolio('portfolio1', 'white', 'rgb(65, 5, 5)', 300, 100);
 // --------------------------------------------------------------
 
 window.onscroll = ()=>{

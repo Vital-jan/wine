@@ -619,6 +619,7 @@ footer .footer-copyright img {
 }
 
 .wine .wine__name {
+  width: 90% !important;
   font-size: 1.5em !important;
   font-weight: bold !important;
   color: #410505 !important;
