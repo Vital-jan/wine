@@ -12,47 +12,33 @@
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 <link rel="stylesheet" href="assets/css/explorer.css">
 <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+<script src='assets/js/explorer.js'></script>
+
+<style>
+    .scroll1 {
+    height: 200px;
+    width: 200px;
+    background-color: beige;
+    text-align: center;
+}
+</style>
 </head>
 <body>
 
-<div id='scroll1' class="explorer-scroll scroll1">
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum sequi possimus nesciunt corporis consequuntur officia nisi beatae, atque temporibus facilis aut laborum quae, recusandae nihil error dolore perferendis! Magni, architecto. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur pariatur laudantium dignissimos sed voluptatibus iste molestiae consectetur consequatur ratione autem.</p>
-</div>
+    <div id='scroll1' class='scroll1'>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum sequi possimus nesciunt corporis consequuntur officia nisi beatae, atque temporibus facilis aut laborum quae, recusandae nihil error dolore perferendis! Magni, architecto. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur pariatur laudantium dignissimos sed voluptatibus iste molestiae consectetur consequatur ratione autem.</p>
+    </div>
+    <div id='scroll2' class='scroll1'>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum sequi possimus nesciunt corporis consequuntur officia nisi beatae, atque temporibus facilis aut laborum quae, recusandae nihil error dolore perferendis! Magni, architecto. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur pariatur laudantium dignissimos sed voluptatibus iste molestiae consectetur consequatur ratione autem.</p>
+    </div>
+    <div id='scroll3' class='scroll1'>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum sequi possimus nesciunt corporis consequuntur officia nisi beatae, atque temporibus facilis aut laborum quae, recusandae nihil error dolore perferendis! Magni, architecto. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur pariatur laudantium dignissimos sed voluptatibus iste molestiae consectetur consequatur ratione autem.</p>
+    </div>
 
 </body>
 <script>
-    let id = 'scroll1';
-    let arrowHeight = 30;
-    // ---------------------------------
-    let el = document.querySelector(`#${id}`);
 
-    html = el.innerHTML;
-    el.innerHTML = `
-        <div class='explorer-scroll__block'>${html}</div>
-        <div class='explorer-scroll__arrow arrow_top'>&#9650</div>
-        <div class='explorer-scroll__arrow arrow_bottom'>&#9650</div>
-    `;
-    let up = document.querySelector(`#${id} .arrow_top`);
-    let down = document.querySelector(`#${id} .arrow_bottom`);
-    let scroll = document.querySelector(`#${id} .explorer-scroll__block`);
-
-    up.style.background = getComputedStyle(el).background;
-    down.style.background = getComputedStyle(el).background;
-    up.style.height = arrowHeight + 'px';
-    down.style.height = arrowHeight + 'px';
-
-    let minY = scroll.scrollHeight - el.clientHeight;
-    scroll.style.top = arrowHeight + 'px';
-
-    up.addEventListener('click', (event)=>{
-        if (parseInt(scroll.style.top) < arrowHeight)
-        $(scroll).animate({top: '+=50px'}, 500);
-    })
-    
-    down.addEventListener('click', (event)=>{
-        if (parseInt(scroll.style.top) > -minY)
-        $(scroll).animate({top: '-=50px'}, 500);
-    })
+    setScroll('scroll1', 30);
 
 </script>
 </html>

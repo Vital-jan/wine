@@ -221,42 +221,51 @@
   position: relative;
   overflow: hidden;
   margin: auto;
-  padding: 20px;
 }
 
 .explorer-scroll .explorer-scroll__block {
   position: absolute;
   top: 0;
+  padding: 0 15px;
 }
 
 .explorer-scroll .explorer-scroll__arrow {
+  z-index: 2;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
   position: absolute;
-  cursor: pointer;
   left: 0;
   height: 20px;
   width: 100%;
   text-align: center;
   background-color: #fff;
-  line-height: 20px;
 }
 
 .explorer-scroll .explorer-scroll__arrow.arrow_top {
   top: 0;
+  opacity: .5;
+  cursor: default;
+}
+
+.explorer-scroll .explorer-scroll__arrow.arrow_top span {
+  display: inline-block;
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
 }
 
 .explorer-scroll .explorer-scroll__arrow.arrow_bottom {
   bottom: 0;
-  -webkit-transform: rotate(180deg);
-          transform: rotate(180deg);
+  opacity: 1;
+  cursor: pointer;
 }
 
-.scroll1 {
-  height: 200px;
-  width: 200px;
-  background-color: beige;
+.explorer-scroll .explorer-scroll__arrow.arrow_bottom span {
+  display: inline-block;
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+  line-height: 20px;
+  top: 5px;
 }
 /*# sourceMappingURL=explorer.css.map */

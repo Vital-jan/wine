@@ -354,7 +354,6 @@ function setPortfolio (id, arrowColor, arrowBgc, width = 300, minMargin = 10, he
     }; // ------------------  rotate
 
   productList.addEventListener('click', ()=> {// обробник кліку на списку елементів портфоліо
-
     let back;
 
     let el = event.target.closest('.explorer-portfolio__product-list__item');
@@ -382,4 +381,130 @@ function setPortfolio (id, arrowColor, arrowBgc, width = 300, minMargin = 10, he
     }
   });
 
-  }
+  } // setPortfolio
+
+  // ==========================================================================================================================
+  function setScroll(id, arrowHeight = 30, background = null, arrowColor = 0, step = 50, duration = 500, buttonLayer = 2) {
+  // ==========================================================================================================================
+    // id - ідентифікатор елементу, зміст якого повинен скролитись
+    // arrowHeight - висота едементів стрілок
+    // background - значення відповідної властивості css (якщо порожній, використовується фон батьківського контейнеру)
+    // arrowColor - колір стрілок
+    // step - крок скролінгу на 1 клік в px
+    // duration - тривалість скролінгу на step px
+    // buttonLayer - властивість css z-index для кнопок-стрілок
+    // на сенсорних екранах скроллінг відбувається по click, на desktop - наведення.
+    // якщо весь контент вміщується в контейнер, кнопки не відображаються та ніяких дій не відбувається.
+
+    let el = document.querySelector(`#${id}`); // елемент, який мусить скролитись
+    if (!el) return;
+
+    let scrolling = false; // чи відбувається скрол-анімація
+
+    el.classList.add("explorer-scroll"); // додаєм клас
+    let html = el.innerHTML; // додаєм вкладені ел-ти
+    el.innerHTML = `  
+        <div class='explorer-scroll__block'>${html}</div>
+        `;
+
+    let overflow = el.scrollHeight - el.clientHeight; // розмір прокрутки
+    if (overflow <= 0)  return;
+    
+    // додаєм стрілки
+    el.innerHTML += `
+      <div class='explorer-scroll__arrow arrow_top'><span>&#10148;</span></div>
+      <div class='explorer-scroll__arrow arrow_bottom'><span>&#10148;</span></div>`;
+    
+    let up = document.querySelector(`#${id} .arrow_top`); // стрілки
+    let down = document.querySelector(`#${id} .arrow_bottom`);
+    let scroll = document.querySelector(`#${id} .explorer-scroll__block`); // блок, який переміщується
+
+    if (!background) { // встановлюємо фон кнопок
+      up.style.background = getComputedStyle(el).background;
+      down.style.background = getComputedStyle(el).background;
+    }
+
+    up.style.height = arrowHeight + 'px'; // стилізуємо кнопки
+    down.style.height = arrowHeight + 'px';
+    up.style.color = arrowColor;
+    down.style.color = arrowColor;
+    up.style.zIndex = buttonLayer;
+    down.style.zIndex = buttonLayer;
+
+    scroll.style.top = arrowHeight + 'px';
+
+  // обробники стрілок
+    up.addEventListener('mouseenter', (event)=>{ 
+      event.stopPropagation();
+      if (parseInt(scroll.style.top) >= arrowHeight) return;
+
+      scrolling = true;
+      down.style.opacity = 1;
+      down.style.cursor = 'pointer';
+
+      $(scroll).animate({top: arrowHeight}, overflow * 10, ()=>{
+        scrolling = false;
+        up.style.opacity = .5;
+        up.style.cursor = 'default';
+      });
+    });
+
+    up.addEventListener('mouseleave', (event)=>{
+      if (scrolling) $(scroll).stop();
+      scrolling = false;
+    });
+
+    up.addEventListener('click', (event)=>{
+      event.stopPropagation();
+      if (scrolling) return;
+
+      if (parseInt(scroll.style.top) < arrowHeight) {
+
+          $(scroll).animate({top: `+=${step}px`}, duration);
+          down.style.opacity = 1;
+          down.style.cursor = 'pointer';
+      }
+      else {
+          $(scroll).animate({top: '+=10px'}, 100).animate({top: '-=10px'}, 100);
+          up.style.opacity = .5;
+          up.style.cursor = 'default';
+      }
+    })
+    
+    down.addEventListener('mouseenter', (event)=>{
+      event.stopPropagation();
+      if (parseInt(scroll.style.top) <= -overflow) return;
+
+      scrolling = true;
+      up.style.opacity = 1;
+      up.style.cursor = 'pointer';
+
+      $(scroll).animate({top: `-=${overflow + arrowHeight + parseInt(scroll.style.top)}px`}, overflow * 10, ()=>{
+        scrolling = false;
+        down.style.opacity = .5;
+        down.style.cursor = 'default';
+      });
+    });
+
+    down.addEventListener('mouseleave', (event)=>{
+      if (scrolling) $(scroll).stop();
+      scrolling = false;
+    });
+    
+    down.addEventListener('click', (event)=>{
+      event.stopPropagation();
+      if (scrolling) return;
+
+        if (parseInt(scroll.style.top) > -overflow)
+        {
+            $(scroll).animate({top: `-=${step}px`}, duration);
+            up.style.opacity = 1;
+            up.style.cursor = 'pointer';
+        }
+        else {
+            $(scroll).animate({top: '-=10px'}, 100).animate({top: '+=10px'}, 100);
+            down.style.opacity = .5;
+            down.style.cursor = 'default';
+        }
+    })
+}

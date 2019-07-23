@@ -339,6 +339,12 @@ function wind (maxX, maxY, delay){ // анімація картинки вино
 setSlider(3, 'assets/img/slider/', 'img', 3, 0.5, 'slider', [], false, false);
 
 setPortfolio('portfolio1', 'white', 'rgb(65, 5, 5)', 300, 100);
+
+let scrollList = document.querySelectorAll('#portfolio1 .wine-description');
+scrollList.forEach((i)=>{
+    setScroll(i.getAttribute('id'));
+})
+
 // --------------------------------------------------------------
 
 window.onscroll = ()=>{

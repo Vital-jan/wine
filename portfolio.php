@@ -74,6 +74,7 @@
 
     $portfolio="<div id='portfolio1'>";
 
+    $counter = 1;
     foreach($product_list as $value) {
         $portfolio .="
         <div class='explorer-portfolio__product-list__item wine'>
@@ -83,11 +84,13 @@
             <h2 class='wine__class'>{$value['class']}</h2>
         </div>
         ";
-        if ($value['description']) $portfolio .= "
-        <div class='explorer-portfolio__product-list__item__description wine-description'>
+        $portfolio .= "
+        <div id = 'scroll{$counter}' class='explorer-portfolio__product-list__item__description wine-description'>
         {$value['description']}
         </div>
         ";
+
+        $counter++;
     }
     
 
