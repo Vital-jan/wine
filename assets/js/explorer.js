@@ -258,7 +258,7 @@ function setPortfolio (id, arrowColor, arrowBgc, width = 300, minMargin = 10, he
   blockChain.forEach((i)=>{ // привласнення значень ширини блоків
     i.style.width = productWidth + 'px';
     next = i.nextElementSibling;
-    next.style.width = productWidth + 'px';
+    if (next.classList.contains('explorer-portfolio__product-list__item__description')) next.style.width = productWidth + 'px';
     
   });
   
@@ -279,11 +279,11 @@ function setPortfolio (id, arrowColor, arrowBgc, width = 300, minMargin = 10, he
   
   blockChain.forEach((i)=>{
       i.style.left = leftPos + 'px';
-      i.nextElementSibling.style.left = leftPos + 'px'; // зворотній бік елементу
+      next = i.nextElementSibling;
+      if (next.classList.contains('explorer-portfolio__product-list__item__description')) next.style.left = leftPos + 'px'; // зворотній бік елементу
   
       leftPos += shift;
   })
-
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------
@@ -297,9 +297,11 @@ function setPortfolio (id, arrowColor, arrowBgc, width = 300, minMargin = 10, he
   
     let shift = productWidth + margin;
 
+    let next;
     blockChain.forEach((i)=>{
         $(i).animate({left: `${direction}${shift}`});
-        $(i.nextElementSibling).animate({left: `${direction}${shift}`});
+        next = i.nextElementSibling;
+        if (next.classList.contains('explorer-portfolio__product-list__item__description')) $(next).animate({left: `${direction}${shift}`});
     });
   } // productShift -----------------------------------------------------------------------------
 
@@ -323,7 +325,7 @@ function setPortfolio (id, arrowColor, arrowBgc, width = 300, minMargin = 10, he
     }
   });
 
-  productRefresh(); // вивід переліку елементів після завантаження сторінки
+  productRefresh(); // первинний вивід переліку елементів
                 
   window.onresize = ()=> { // оновлення переліку елементів після зміни розміру екрану
     productRefresh();
@@ -331,12 +333,16 @@ function setPortfolio (id, arrowColor, arrowBgc, width = 300, minMargin = 10, he
 
   // ---------------------------------------------------------------------------------
   function rotate (el, back) { // повертання елементів портфоліо
-      if (!el || !back) return;
+      if (!el || !back) return; // якщо відсутній один з елементів
+
+      let el2Scroll = back.querySelector('.explorer-scroll__block'); // Знаходимо елемент зі скроллом
+      let el2ScrollArrow = back.querySelector('.arrow_top'); // знаходимо ел-т стрілка вгору
+      let top = 0;
+      if (el2ScrollArrow) top = el2ScrollArrow.style.height;
+      if (el2Scroll) el2Scroll.style.top = top; // початкове значення скролу після відображення
+
       let w = 1;
       let interval = setInterval(()=>{
-        el.style.transform = `scaleX(${w})`;
-        w -= 0.05;
-        
         if (w <= 0) {
           clearInterval(interval);
           el.classList.toggle('explorer-portfolio__product-list__item_hidden');
@@ -345,17 +351,20 @@ function setPortfolio (id, arrowColor, arrowBgc, width = 300, minMargin = 10, he
           back.classList.toggle('explorer-portfolio__product-list__item_hidden');
           w = 0;
           interval = setInterval(()=>{
+            if (w >= 1) clearInterval(interval);
             back.style.transform = `scaleX(${w})`;
             w += 0.05;
-            if (w >= 1) clearInterval(interval);
           }, 10)
         }
+
+        el.style.transform = `scaleX(${w})`;
+        w -= 0.05;
+        
       }, 10)
     }; // ------------------  rotate
 
-  productList.addEventListener('click', ()=> {// обробник кліку на списку елементів портфоліо
+  productList.addEventListener('click', (event)=> {// обробник кліку на списку елементів портфоліо
     let back;
-
     let el = event.target.closest('.explorer-portfolio__product-list__item');
     if (el) {
       if (openElement) rotate(openElement, openElement.previousElementSibling);
@@ -368,7 +377,7 @@ function setPortfolio (id, arrowColor, arrowBgc, width = 300, minMargin = 10, he
       back = el.previousElementSibling;
       openElement = null;
     }
-
+    
     rotate (el, back);
   });
 
@@ -384,7 +393,7 @@ function setPortfolio (id, arrowColor, arrowBgc, width = 300, minMargin = 10, he
   } // setPortfolio
 
   // ==========================================================================================================================
-  function setScroll(id, arrowHeight = 30, background = null, arrowColor = 0, step = 50, duration = 500, buttonLayer = 2) {
+  function setScroll(id, arrowHeight = 30, background = null, arrowColor = 0, step = null, duration = 500, buttonLayer = 2) {
   // ==========================================================================================================================
     // id - ідентифікатор елементу, зміст якого повинен скролитись
     // arrowHeight - висота едементів стрілок
@@ -400,6 +409,7 @@ function setPortfolio (id, arrowColor, arrowBgc, width = 300, minMargin = 10, he
     if (!el) return;
 
     let scrolling = false; // чи відбувається скрол-анімація
+    let noScroll = false; // заборона скролінгу по наведенню для смартфона (смартфон генерує mouseover+click)
 
     el.classList.add("explorer-scroll"); // додаєм клас
     let html = el.innerHTML; // додаєм вкладені ел-ти
@@ -418,6 +428,7 @@ function setPortfolio (id, arrowColor, arrowBgc, width = 300, minMargin = 10, he
     let up = document.querySelector(`#${id} .arrow_top`); // стрілки
     let down = document.querySelector(`#${id} .arrow_bottom`);
     let scroll = document.querySelector(`#${id} .explorer-scroll__block`); // блок, який переміщується
+    if (!step) step = el.getBoundingClientRect().height / 3;
 
     if (!background) { // встановлюємо фон кнопок
       up.style.background = getComputedStyle(el).background;
@@ -434,7 +445,12 @@ function setPortfolio (id, arrowColor, arrowBgc, width = 300, minMargin = 10, he
     scroll.style.top = arrowHeight + 'px';
 
   // обробники стрілок
-    up.addEventListener('mouseenter', (event)=>{ 
+    up.addEventListener('mouseover', (event)=>{
+      if (noScroll){
+        noScroll = false;
+        return;
+      }
+
       event.stopPropagation();
       if (parseInt(scroll.style.top) >= arrowHeight) return;
 
@@ -449,13 +465,18 @@ function setPortfolio (id, arrowColor, arrowBgc, width = 300, minMargin = 10, he
       });
     });
 
-    up.addEventListener('mouseleave', (event)=>{
+    up.addEventListener('mouseout', (event)=>{
       if (scrolling) $(scroll).stop();
       scrolling = false;
     });
 
     up.addEventListener('click', (event)=>{
       event.stopPropagation();
+    });
+
+    up.addEventListener('touchstart', (event)=>{
+      event.stopPropagation();
+      noScroll = true;
       if (scrolling) return;
 
       if (parseInt(scroll.style.top) < arrowHeight) {
@@ -471,27 +492,36 @@ function setPortfolio (id, arrowColor, arrowBgc, width = 300, minMargin = 10, he
       }
     })
     
-    down.addEventListener('mouseenter', (event)=>{
+    down.addEventListener('mouseover', (event)=>{
+      if (noScroll){
+        noScroll = false;
+        return;
+      }
       event.stopPropagation();
-      if (parseInt(scroll.style.top) <= -overflow) return;
+      if (parseInt(scroll.style.top) <= -(overflow + arrowHeight)) return;
 
       scrolling = true;
       up.style.opacity = 1;
       up.style.cursor = 'pointer';
 
-      $(scroll).animate({top: `-=${overflow + arrowHeight + parseInt(scroll.style.top)}px`}, overflow * 10, ()=>{
+      $(scroll).animate({top: `-=${overflow + arrowHeight * 2 + parseInt(scroll.style.top)}px`}, overflow * 10, ()=>{
         scrolling = false;
         down.style.opacity = .5;
         down.style.cursor = 'default';
       });
     });
 
-    down.addEventListener('mouseleave', (event)=>{
+    down.addEventListener('mouseout', (event)=>{
       if (scrolling) $(scroll).stop();
       scrolling = false;
     });
     
     down.addEventListener('click', (event)=>{
+      event.stopPropagation();
+    });
+
+    down.addEventListener('touchstart', (event)=>{
+      noScroll = true;
       event.stopPropagation();
       if (scrolling) return;
 

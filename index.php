@@ -66,7 +66,7 @@
         "header"=>"Explore our wines",
         "text"=>"All our wines are natural and organic.
 
-        The rich, intriguing and seductive flavors of Georgian wines will impress even the most sophisticated wine lovers. Try our wine and let the quality and character of the Georgian grapes speak for themselves", "img1"=>"", "img2"=>""),
+        The rich, intriguing and seductive flavors of Georgian wines will impress even the most sophisticated wine lovers. Try our wine and let the quality and character of the Georgian grapes speak for themselves.", "img1"=>"", "img2"=>""),
 
         array("menu_item"=>"", "type"=>"full-width-center", "class"=>"layer1", // блок полной ширины для портфолио
         "header"=>"",
