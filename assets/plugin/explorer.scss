@@ -18,35 +18,34 @@ $portfolio_item_bgc: white;
     margin: 0 auto;
     position: relative;
     width: 100%;
+    height: auto;
     clear: both;
     text-align: center;
+    overflow: hidden;
     img {
         opacity:0;
-        height: 100%;
-        height: auto;
+        width: 100%;
         bottom: 0;
         left: 0;
         right: 0;
         margin: auto;
         max-width: 100%;
-        max-height: 100%;
     }
-    .circles {
+    .button-container {
         display: flex;
         justify-content: center;
         align-items: center;
         position: absolute;
+        left: 0; right: 0;
+        margin: auto;
         bottom: 10px;
-        width: 100%;
     }
     .circle {
-        width: 20px;
-        height: 20px;
         border-radius: 50%;
         background-color: white;
         border: 5px solid white;
         box-sizing: border-box;
-        margin: 2px;
+        margin: 0;
         opacity: 0.6;
         cursor: pointer;
             &:hover {
@@ -54,17 +53,11 @@ $portfolio_item_bgc: white;
             }
     }
     .arrow {
-        color: white;
-        border: 1px solid darkgray;
-        background-color: gray;
+        box-sizing: border-box;
         opacity: 0.5;
-        font-weight: bold;
-        border-radius: 50%;
-        width: 2rem;
-        height: 2rem;
-        font-size: 2rem;
-        line-height: 2rem;
-        margin: 0 5px;
+        border: 1px solid transparent;
+        border-left: 1px solid white;
+        margin: 0;
         cursor: pointer;
         user-select: none;
             &.no-active {
@@ -77,22 +70,18 @@ $portfolio_item_bgc: white;
                 opacity:1;
             }
         }
-    h3 {
-        font-weight: normal;
+    .explorer-slider__title {
         text-align: center;
-        font-size: 20px;
         left: 0;
         right: 0;
+        top: 0;
         margin: 5px auto;
         position: absolute;
-        bottom: -30px;
         text-align: center;
         height: 25px;
-        overflow: hidden;
         opacity: 0;
-	    font-family: sans-serif;
     }
-}
+    }
 
 // Портфолио
 .explorer-portfolio {
@@ -146,7 +135,7 @@ $portfolio_item_bgc: white;
             width: $portfolio_item_width;
             height: 100%;
             cursor: pointer;
-            opacity: 0.7;
+            opacity: 0.85;
             &:hover {
                 opacity: 1;
             }

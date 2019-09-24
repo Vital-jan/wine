@@ -2,7 +2,7 @@
     $product_list = array(
         array(
             'name'=>'Mukuzani',
-            'img'=>'wine1.png',
+            'img'=>'wine5.png',
             'alt'=>'Mukuzani Georgian wine by World Finest Wines',
             'year'=>'2017',
             'class'=>'dry red',
@@ -16,7 +16,7 @@
         ),
         array(
             'name'=>'Khvanchkara',
-            'img'=>'wine1.png',
+            'img'=>'wine5.png',
             'alt'=>'Khvanchkara Georgian wine by World Finest Wines',
             'year'=>'2016',
             'class'=>'dry red',
@@ -30,10 +30,10 @@
         ),
         array(
             'name'=>'Tsinandali',
-            'img'=>'wine1.png',
+            'img'=>'wine5.png',
             'alt'=>'Tsinandali Georgian wine by World Finest Wines',
             'year'=>'2015',
-            'class'=>'half-dry white',
+            'class'=>'semi dry white',
             'description'=>'<p>Tsinandali wine is Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores dignissimos beatae dolorum eveniet ab nostrum placeat alias impedit provident harum.</p><p>Tsinandali wine is Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores dignissimos beatae dolorum eveniet ab nostrum placeat alias impedit provident harum.Dolores dignissimos beatae dolorum eveniet ab nostrum placeat alias impedit provident harum.</p><p>Tsinandali wine is Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores dignissimos beatae dolorum eveniet ab nostrum placeat alias impedit provident harum.</p>',
             'country_icon'=>'flag_georgia.png',
             'country_name'=>'Georgia',
@@ -44,7 +44,7 @@
         ),
         array(
             'name'=>'Saperavi',
-            'img'=>'wine1.png',
+            'img'=>'wine5.png',
             'alt'=>'Saperavi Georgian wine by World Finest Wines',
             'year'=>'2015',
             'class'=>'dry red',
@@ -58,10 +58,10 @@
         ),
         array(
             'name'=>'Kindzmarauli',
-            'img'=>'wine1.png',
+            'img'=>'wine5.png',
             'alt'=>'Kindzmarauli Georgian wine by World Finest Wines',
             'year'=>'2015',
-            'class'=>'half-sweet red',
+            'class'=>'semi sweet red',
             'description'=>'<p>Kindzmarauli wine is Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores dignissimos beatae dolorum eveniet ab nostrum placeat alias impedit provident harum.</p><p>Kindzmarauli wine is Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores dignissimos beatae dolorum eveniet ab nostrum placeat alias impedit provident harum.Dolores dignissimos beatae dolorum eveniet ab nostrum placeat alias impedit provident harum.</p><p>Kindzmarauli wine is Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores dignissimos beatae dolorum eveniet ab nostrum placeat alias impedit provident harum.</p>',
             'country_icon'=>'flag_georgia.png',
             'country_name'=>'Georgia',

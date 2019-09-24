@@ -10,12 +10,11 @@
     <meta name='author' content='Vitalii Kolomiiets, Kyiv, Ukraine, vitaljan@gmail.com viber:+380632209770'>
     <title>World's Finest Wines</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="assets/js/explorer.js"></script>
+    <script src="assets/plugin/explorer.js"></script>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="assets/css/explorer.css">
+    <link rel="stylesheet" href="assets/plugin/explorer.css">
     <link rel="stylesheet" href="assets/css/styles.css">
     <link href="https://fonts.googleapis.com/css?family=Merienda|Source+Sans+Pro&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- font-family: 'Merienda', cursive;
     font-family: 'Source Sans Pro', sans-serif; -->
 </head>
@@ -34,23 +33,37 @@
         // "full-width" - модуль на повну ширину екрану відцентрований, йому додається клас .main__module_full-width .center
         // "footer" - розділ <footer>
 
-        array("menu_item"=>"Home", "type"=>"full-width-center", "class"=>"", // блок полной ширины с центрированным текстом
-        "header"=>"Welcome to the wonderful world of wines from the county of Georgia!", 
-        "text"=>'', "img1"=>"", "img2"=>""),
-
         array("menu_item"=>"", "type"=>"full-width-center", "class"=>"", // блок полной ширины для слайдера
         "header"=>"", 
         "text"=>"<div id='slider'></div>", "img1"=>"", "img2"=>""),
 
+        array("menu_item"=>"Home", "type"=>"full-width-center", "class"=>"", // блок полной ширины с центрированным текстом
+        "header"=>"Welcome to the wonderful world of wines from the county of Georgia!", 
+        "text"=>'', "img1"=>"", "img2"=>""),
+
         array("menu_item"=>"", "type"=>"", "class"=>"", 
         "header"=>"", 
-        "text"=>'<p>Georgian wines have become a must-have for the world’s best restaurants and wine merchants. Georgian wines are now among the trendiest in the world.</p>
-        <div class="read-more">
-        <p>Georgia is the “Cradle of Wine” and is one of the oldest wine regions of the world. In Georgia there is evidence that wine has been made for more than 8,000 years. Georgia has some of the oldest and most distinct grape-growing terroirs on the planet, where they have cultivated not just vines, but a world-class wine culture. Georgia produces wines that are unlike anywhere else. Georgian grapes are unique, indigenous that often cannot be found elsewhere.   They present both unique flavors and aromas. Acid is a lot mellower and not as aggressive. Georgia boasts more than 500 varieties of indigenous grapes—nearly one-sixth of the world’s grape varieties—including endangered vines found nowhere else on Earth.</p>
-        
-        <p>Georgia is a small mountainous country in the area where Europe and Asia meet. Georgia is on the same latitude as Tuscany and has similar territorial conditions perfect for wine production.  A rich diversity of soil, climate, the angle at which the sun falls on the vineyards and the many indigenous grape varieties creates a huge variety of wine tastes and aromas.</p>
-        
-        <p>Gradually, Georgian wine is becoming more popular in the U.S. Take advantage and drink these wines. Be adventures with your palate. Drink different!  Are you ready for it?</p>
+        "text"=>'
+        <p>As the world discovers natural wines, Georgian ancient wine culture is attracting attention. Georgian
+wines have already become a must-have for the world’s best restaurants and wine merchants in Europe.
+They are now among the trendiest in the world. Gradually, Georgian wines are becoming more popular
+in the U.S.</p>
+<p>
+Georgia is the “Cradle of Wine” and is one of the oldest wine regions of the world. In Georgia there is
+evidence that wine has been made for more than 8,000 years. Georgia has some of the oldest and most
+distinct grape-growing terroirs on the planet, where they have cultivated not just vines, but a world-
+class wine culture. Georgia produces wines that are unlike anywhere else. Georgian grapes are unique,
+indigenous that often cannot be found elsewhere. They present both unique flavors and aromas. Acid
+is a lot mellower and not as aggressive. Georgia boasts more than 500 varieties of indigenous
+grapes—nearly one-sixth of the world’s grape varieties—including endangered vines found nowhere
+else on Earth.</p>
+<p>
+Georgia is a small mountainous country in the area where Europe and Asia meet. Georgia is on the same
+latitude as Tuscany and has similar territorial conditions perfect for wine production. A rich diversity of
+soil, climate, the angle at which the sun falls on the vineyards and the many indigenous grape varieties
+creates a huge variety of wine tastes and aromas.
+Take advantage and drink these wines. Be adventures with your palate. Drink different. Are you ready
+for it?</p>
         </div>
         ', "img1"=>"", "img2"=>""),
 
@@ -64,9 +77,9 @@
 
         array("menu_item"=>"Explore our wines", "type"=>"", "class"=>"",
         "header"=>"Explore our wines",
-        "text"=>"All our wines are natural and organic.
-
-        The rich, intriguing and seductive flavors of Georgian wines will impress even the most sophisticated wine lovers. Try our wine and let the quality and character of the Georgian grapes speak for themselves.", "img1"=>"", "img2"=>""),
+        "text"=>"The rich, intriguing and seductive flavors of Georgian wines will impress even the most
+        sophisticated wine lovers. Try our wine and let the quality and character of the Georgian grapes
+        speak for themselves.", "img1"=>"", "img2"=>""),
 
         array("menu_item"=>"", "type"=>"full-width-center", "class"=>"layer1", // блок полной ширины для портфолио
         "header"=>"",
@@ -115,8 +128,9 @@
                     if ($value['menu_item'])
                     echo "
                     <li class='nav__smartmenu__elem' data-id='{$id}'>
-                    {$value['menu_item']}<br><hr>
+                    {$value['menu_item']}
                     </li>
+                    <li class='nav__smartmenu__separator'></li>
                     ";
                 }
                     echo "
@@ -175,7 +189,7 @@
                     <div class='footer-copyright'>
                         <hr>
                         <img src = 'assets/img/logo_small.png'>
-                        We do not sell directly to the public.  Please find a retailer near you and ask about Georgian Wines.
+                        We do not sell directly to the public. Please find a <a href='/'> wine merchant</a> near you and ask about Georgian Wines.
                         <br><br>
                         All rights reserved.
                     </div>
@@ -336,7 +350,7 @@ function wind (maxX, maxY, delay){ // анімація картинки вино
 
 }
 
-setSlider(3, 'assets/img/slider/', 'img', 3, 0.5, 'slider', [], false, false);
+setSlider(3, 'assets/img/slider/', 'img', 3, 0.5, 'slider');
 
 setPortfolio('portfolio1', 'white', 'rgb(65, 5, 5)', 300, 100);
 
