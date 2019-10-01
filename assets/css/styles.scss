@@ -6,7 +6,7 @@ $nav_active_text : rgb(192, 126, 126);
 $nav_selected_text : rgb(209, 174, 174);
 $nav_height: 150px;
 $nav_smartphone_height: 100px;
-
+$font_link: rgb(238, 158, 158);
 $smartphone_width: 900px;
 $tablet_width: 1050px;
 
@@ -57,6 +57,12 @@ body {
     margin: 0;
     padding: 0;
     color: $normal_text;
+}
+
+a {
+    text-decoration: none;
+    color: $font_link;
+    border-bottom: 1px solid $font_link;
 }
 
 .hidden-elem {
@@ -266,7 +272,6 @@ nav {
 .read-more {
     max-height: 0;
     overflow: hidden;
-    
 }
 
 .read-more-button {
@@ -284,8 +289,8 @@ nav {
     font-weight: bold;
     margin-top: 20px;
     cursor: pointer;
+
     &::before {
-        
         content: "Read more ...";
         z-index: 1;
     }
@@ -408,10 +413,6 @@ main {
                 margin: 20px 0;
             }
             
-            div {
-                width: 100%;
-            }
-            
             p {
                 text-align: justify;
                 width: 100%;
@@ -425,6 +426,7 @@ main {
                 color: $header_text;
                 font-weight: bold;
             }
+
         } // main__module__content
         
         &.main__module_full-width {
@@ -531,7 +533,6 @@ footer {
 .wine-description {
     background-image: url(../img/paper.jpg);
     background-size: 100% 100%;
-    padding: 20px 10px;
     overflow: hidden;
     text-overflow: ellipsis;
     p {
@@ -553,22 +554,56 @@ footer {
         width: 90%!important;
         font-size: 1.5em!important;
         font-weight: bold!important;
-        color: $nav_bgc!important;
-    }
-    .wine__year {
         color: $nav_text!important;
-        font-size: 1.4em!important;
-        font-family: 'merienda'!important;
-        font-weight: bold!important;
+        text-shadow: black -1px -1px 2px ;
     }
     .wine__class {
         font-size: 1em!important;
-        top: -5px!important;
-        color: white!important;
+        color: $nav_text!important;
+        bottom: -10px;
+        position: absolute;
+        text-shadow: black 1px 1px 0;
     }
     img {
         height: 68%!important;
         margin-top: 13px!important;
+    }
+
+    %wine-type {
+        width: 20%;
+        color: black;
+        position: absolute;
+        top: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        font-family: $font_header;
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+    .qvevri {
+        @extend %wine-type;
+        left: 10px;
+    }
+    .pdo {
+        @extend %wine-type;
+        right: 10px;
+    }
+    .wine-read-more {
+        position: absolute;
+        bottom: -27px;
+        height: 25px;
+        width: 55%;
+        background-image: url(../img/paper.jpg);
+        font-size: 0.8em;
+        font-style: italic;
+        color: $nav_bgc;
+        // visibility: hidden;
+        // @media (max-width: $tablet_width) {
+        //     visibility: visible;
+        // }
     }
 
 }

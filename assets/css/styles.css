@@ -28,6 +28,12 @@ body {
   color: #2e4226;
 }
 
+a {
+  text-decoration: none;
+  color: #ee9e9e;
+  border-bottom: 1px solid #ee9e9e;
+}
+
 .hidden-elem {
   display: none !important;
 }
@@ -466,10 +472,6 @@ main .main__module .main__module__content li {
   margin: 20px 0;
 }
 
-main .main__module .main__module__content div {
-  width: 100%;
-}
-
 main .main__module .main__module__content p {
   text-align: justify;
   width: 100%;
@@ -601,7 +603,6 @@ footer .footer-copyright img {
 .wine-description {
   background-image: url(../img/paper.jpg);
   background-size: 100% 100%;
-  padding: 20px 10px;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -636,24 +637,62 @@ footer .footer-copyright img {
   width: 90% !important;
   font-size: 1.5em !important;
   font-weight: bold !important;
-  color: #410505 !important;
-}
-
-.wine .wine__year {
   color: beige !important;
-  font-size: 1.4em !important;
-  font-family: "merienda" !important;
-  font-weight: bold !important;
+  text-shadow: black -1px -1px 2px;
 }
 
 .wine .wine__class {
   font-size: 1em !important;
-  top: -5px !important;
-  color: white !important;
+  color: beige !important;
+  bottom: -10px;
+  position: absolute;
+  text-shadow: black 1px 1px 0;
 }
 
 .wine img {
   height: 68% !important;
   margin-top: 13px !important;
+}
+
+.wine .qvevri, .wine .pdo {
+  width: 20%;
+  color: black;
+  position: absolute;
+  top: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  font-family: "merienda";
+}
+
+.wine .qvevri img, .wine .pdo img {
+  width: 100%;
+  height: auto;
+}
+
+.wine .qvevri {
+  left: 10px;
+}
+
+.wine .pdo {
+  right: 10px;
+}
+
+.wine .wine-read-more {
+  position: absolute;
+  bottom: -27px;
+  height: 25px;
+  width: 55%;
+  background-image: url(../img/paper.jpg);
+  font-size: 0.8em;
+  font-style: italic;
+  color: #410505;
 }
 /*# sourceMappingURL=styles.css.map */

@@ -38,7 +38,7 @@
         "text"=>"<div id='slider'></div>", "img1"=>"", "img2"=>""),
 
         array("menu_item"=>"Home", "type"=>"full-width-center", "class"=>"", // блок полной ширины с центрированным текстом
-        "header"=>"Welcome to the wonderful world of wines from the county of Georgia!", 
+        "header"=>"Welcome to the wonderful world of wines from the country of Georgia!", 
         "text"=>'', "img1"=>"", "img2"=>""),
 
         array("menu_item"=>"", "type"=>"", "class"=>"", 
@@ -74,6 +74,10 @@ for it?</p>
         array("menu_item"=>"Georgian Winemaking", "type"=>"", "class"=>"", 
         "header"=>"Georgian Winemaking",
         "text"=>$module_wines, "img1"=>"assets/img/barrel.jpg", "img2"=>""),
+
+        array("menu_item"=>"", "type"=>"", "class"=>"", 
+        "header"=>"",
+        "text"=>$module_wines2, "img2"=>"assets/img/kvevry.jpg"),
 
         array("menu_item"=>"Explore our wines", "type"=>"", "class"=>"",
         "header"=>"Explore our wines",
@@ -226,6 +230,22 @@ for it?</p>
             }
         })
 
+        document.addEventListener('mouseover', (event)=>{
+            if (!event.target.classList) return;
+            if (event.target.classList.contains('bottle')) {
+                let el = event.target;
+                let angle = 0;
+                let delta = -1;
+                let interval = setInterval(()=>{
+                    angle += delta;
+                    el.style.transform = `rotate(${angle}deg)`;
+                    if (angle == -7) delta = 1;
+                    if (angle == 5) delta = -1;
+                    if (angle == 0 && delta == -1) clearInterval(interval);
+                }, 10);
+            }
+
+        })
         let navButton = document.createElement('span'); // створюємо кнопку меню-смартфон
         navButton.innerHTML = "&#9776;";
         navButton.classList.add('nav__button');
@@ -360,6 +380,7 @@ scrollList.forEach((i)=>{
 })
 
 // --------------------------------------------------------------
+
 
 window.onscroll = ()=>{
             wind(1, 3, 800); // анімація картинки виноградна лоза
